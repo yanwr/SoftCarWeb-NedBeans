@@ -12,21 +12,7 @@
 </head>
 <body>
     
-    <header class="cabeça" id="cabeça">
-            <input type="checkbox" id="bt-menu">
-            <label for="bt-menu">&#9776;</label>
-            <nav class="first-nav">
-                <ul>
-                    <li class="liNav"><a href="login.html">Entrar</a></li>
-                    <li class="liNav"><a href="cadastro.html" class="li-nav">Cadastrar</a></li>
-                    <li class="liNav"><a href="solicitarCarona.html" class="li-nav">Solicitar Carona</a></li>
-                    <li class="liNav"><a href="oferecerCarona.html" class="">Oferecer Carona</a></li>
-                </ul>
-            </nav>
-           <!-- <div class="divLogo">
-                <img id="logo" src="img/softcar-blue.png" href="home.html">
-            </div> -->
-    </header>
+   <%@include file="NavBar.jsp" %>
 
     <!-- Banners aparecendo -->
     <section class="first-section" id="first-section">

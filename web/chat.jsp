@@ -15,6 +15,7 @@
     <title>Document</title>
 </head>
 <body>
+    <%@include file="NavBarLogado.jsp" %>
     <div class="container">
         <div class="containerDeContatos" id="containerDeContatos">
             <div class="procurarContatos" id="procurarContatos">
@@ -155,7 +156,7 @@
                         <li class="batePapoRight">
                             <div class="mensagemMinha"><!-- Float right -->
                                 Sim, Sr, estou otimo, top né, weschenfelder Rodrigues, lalallala, asdauisdas
-                                    lllll. RUHIWEHRUWIEHR. dasdasdasd llllllllllllllllllllllllllllllllllllllllllllllllllll lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll ! 
+                                    
                             </div>
                         </li>
                     </ul>
