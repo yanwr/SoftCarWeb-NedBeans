@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : chat
     Created on : 24/09/2019, 14:28:20
@@ -12,7 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="Css/chat.css" rel="stylesheet">
-    <title>Document</title>
+    <link rel="shortcut icon" href="img/softcar-blue-icon.png" type="image/x-png">
+    <title>SoftCar - Chat</title>
 </head>
 <body>
     <%@include file="NavBarLogado.jsp" %>

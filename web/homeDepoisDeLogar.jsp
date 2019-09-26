@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Softcar</title>
+    <title>SoftCar - Home</title>
     <script src="https://kit.fontawesome.com/7136158624.js" crossorigin="anonymous"></script>
   </head>
     <script>
