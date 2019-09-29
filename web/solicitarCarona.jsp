@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : solicitarCarona
     Created on : 26/09/2019, 17:02:30
@@ -22,8 +23,10 @@
     <div class="wrap" id="wrap">
         
         <div class="search">
-          <input type="search" placeholder="Para onde vai" />
-          <input type="search" placeholder="De onde sai" />
+            <h1 class="textos">Para onde você vai ?</h1>
+            <input type="search" placeholder="Bairro / Empresa / Escritório" />
+            <h1 class="textos">De onde você sai ?</h1>
+            <input type="search" placeholder="Bairro / Empresa / Escritório" />
         </div>
         
         <div class="top">
@@ -31,42 +34,158 @@
         </div>
         
         <main>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+            <div class="card">
+                <div class="hrPost">20/20/2000 21:00</div>
+                <div class="perfilUser">
+                    <div class="nomeUser">
+                        <div class="imgPerfil" id="imgPerfil" style=" background-image: url(img/1.png);margin-top: -25px;"></div>
+                        <p id="nameUser">Yan Weschenfelder Rodrigues</p>
+                    </div>
+                </div>
+                <div class="dadosCorrida">
+                    <ul class="dCorrida">
+                        <li class="saida">
+                            Saida: <p id="nomeSaida">Vargem Grande</p>
+                        </li>
+                        <li class="para">
+                            Para: <p id="nomePara">Empresa</p>
+                        </li>
+                    </ul>
+                    <ul class="dCorrida2">
+                        <li class="data">
+                            Data: <p id="dataCorrida">12/12/2019</p>
+                        </li>
+                        <li class="hora">
+                            Hora: <p id="horaCorrida">21:22</p>
+                        </li>
+                        <li class="assentos">
+                            Assentos: <p id="assentosCorrida">6</p>
+                        </li>    
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="hrPost">20/20/2000 21:00</div>
+                <div class="perfilUser">
+                    <div class="nomeUser">
+                        <div class="imgPerfil" id="imgPerfil" style=" background-image: url(img/1.png);margin-top: -25px;"></div>
+                        <p id="nameUser">Yan Weschenfelder Rodrigues</p>
+                    </div>
+                </div>
+                <div class="dadosCorrida">
+                    <ul class="dCorrida">
+                        <li class="saida">
+                            Saida: <p id="nomeSaida">Vargem Grande</p>
+                        </li>
+                        <li class="para">
+                            Para: <p id="nomePara">Empresa</p>
+                        </li>
+                    </ul>
+                    <ul class="dCorrida2">
+                        <li class="data">
+                            Data: <p id="dataCorrida">12/12/2019</p>
+                        </li>
+                        <li class="hora">
+                            Hora: <p id="horaCorrida">21:22</p>
+                        </li>
+                        <li class="assentos">
+                            Assentos: <p id="assentosCorrida">6</p>
+                        </li>    
+                    </ul>
+                </div>
+            </div>
+            <div class="card">
+                <div class="hrPost">20/20/2000 21:00</div>
+                <div class="perfilUser">
+                    <div class="nomeUser">
+                        <div class="imgPerfil" id="imgPerfil" style=" background-image: url(img/1.png);margin-top: -25px;"></div>
+                        <p id="nameUser">Yan Weschenfelder Rodrigues</p>
+                    </div>
+                </div>
+                <div class="dadosCorrida">
+                    <ul class="dCorrida">
+                        <li class="saida">
+                            Saida: <p id="nomeSaida">Vargem Grande</p>
+                        </li>
+                        <li class="para">
+                            Para: <p id="nomePara">Empresa</p>
+                        </li>
+                    </ul>
+                    <ul class="dCorrida2">
+                        <li class="data">
+                            Data: <p id="dataCorrida">12/12/2019</p>
+                        </li>
+                        <li class="hora">
+                            Hora: <p id="horaCorrida">21:22</p>
+                        </li>
+                        <li class="assentos">
+                            Assentos: <p id="assentosCorrida">6</p>
+                        </li>    
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="hrPost">20/20/2000 21:00</div>
+                <div class="perfilUser">
+                    <div class="nomeUser">
+                        <div class="imgPerfil" id="imgPerfil" style=" background-image: url(img/1.png);margin-top: -25px;"></div>
+                        <p id="nameUser">Yan Weschenfelder Rodrigues</p>
+                    </div>
+                </div>
+                <div class="dadosCorrida">
+                    <ul class="dCorrida">
+                        <li class="saida">
+                            Saida: <p id="nomeSaida">Vargem Grande</p>
+                        </li>
+                        <li class="para">
+                            Para: <p id="nomePara">Empresa</p>
+                        </li>
+                    </ul>
+                    <ul class="dCorrida2">
+                        <li class="data">
+                            Data: <p id="dataCorrida">12/12/2019</p>
+                        </li>
+                        <li class="hora">
+                            Hora: <p id="horaCorrida">21:22</p>
+                        </li>
+                        <li class="assentos">
+                            Assentos: <p id="assentosCorrida">6</p>
+                        </li>    
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="hrPost">20/20/2000 21:00</div>
+                <div class="perfilUser">
+                    <div class="nomeUser">
+                        <div class="imgPerfil" id="imgPerfil" style=" background-image: url(img/1.png);margin-top: -25px;"></div>
+                        <p id="nameUser">Yan Weschenfelder Rodrigues</p>
+                    </div>
+                </div>
+                <div class="dadosCorrida">
+                    <ul class="dCorrida">
+                        <li class="saida">
+                            Saida: <p id="nomeSaida">Vargem Grande</p>
+                        </li>
+                        <li class="para">
+                            Para: <p id="nomePara">Empresa</p>
+                        </li>
+                    </ul>
+                    <ul class="dCorrida2">
+                        <li class="data">
+                            Data: <p id="dataCorrida">12/12/2019</p>
+                        </li>
+                        <li class="hora">
+                            Hora: <p id="horaCorrida">21:22</p>
+                        </li>
+                        <li class="assentos">
+                            Assentos: <p id="assentosCorrida">6</p>
+                        </li>    
+                    </ul>
+                </div>
+            </div>
         </main>
         
       </div>

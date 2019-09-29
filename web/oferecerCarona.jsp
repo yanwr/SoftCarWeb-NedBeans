@@ -21,11 +21,18 @@
      <!-- -------- Oferecer Carona ------------ --> 
     <div class="centro">
         <div class="form">
-            <input type="text" class="form-field" placeholder="De onde sai"/>
-            <input type="text" class="form-field" placeholder="Para onde vai"/>
+            <h1 class="textos">De onde você vai sair ?</h1>
+            <input type="search" class="form-field" placeholder="Bairro"/>
+            <h1 class="textos">Para onde deseja ir ?</h1>
+            <input type="search" class="form-field" placeholder="Empresa / Escritório"/>
+            <h1 class="textos">Horário de saída ?</h1>
             <input type="time" class="form-field" placeholder="Horário"/>
-            <input type="number" class="form-field" placeholder="Assento"/>
-            <input type="number" class="form-field" placeholder="Taxa(opcional)"/>
+            <h1 class="textos">Dia(s) de saída ?</h1>
+            <input type="date" class="form-field" placeholder="Data"/>
+            <h1 class="textos">Quantos assentos disponíveis ?</h1>
+            <input type="number" min="1" max="6" value="1" class="form-field" placeholder="Assento"/>
+            <h1 class="textos">Taxa(opcional) ?</h1>
+            <input type="number" value="0" class="form-field" placeholder="Taxa"/>
             <input type="button" class="form-button" value="Enviar"/>
         </div>
     </div>

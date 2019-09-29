@@ -12,10 +12,18 @@
     overflow: auto;
     position: relative;
   }
+  
+  .textos{
+    font-size: 17px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: coral;
+    padding-bottom: 5px;
+    margin-left: 8px;
+  }
 
   .search {
     position: absolute;
-    top: 155px;
+    top: 120px;
     left: 20px;
     right: 20px;  
   }
@@ -33,17 +41,18 @@
     width: 100%;
     border: 1px solid #ccc;
     padding: 8px;
+    padding-inline-start: 15px;
     margin-bottom: 5px;
     font-size: 15px;
     border-color: #564a4a;
     border-radius: 12px;
     outline: 0;
     font-family: 'Rubik', sans-serif;
-    border: 2px solid #ddd;
+
   }
 
   .search input:focus {
-    border-color: #203364;
+    border-color: #069;
   }
   
   .top {
@@ -63,19 +72,76 @@
     flex-wrap:wrap; 
     justify-content: space-between;
   }
-  main div {
+ .card {
+   
+    display: inline-block;
     width: 300px;
-    display: inline-flex;
-    height: 150px;
     background: #ccc;
-    margin: 0 0 20px 0;
+    margin: 25px 0 20px 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
-
-  main div:hover{
+  .card:hover{
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   }
-
-  main div a{
-    color: #203364;
-    font-weight: bold;
+  /* ---------- Img User ----------*/
+  .hrPost{
+        color:white;
+        margin-top: -17px;
+        background-color: #203364;
+        display: flex;
+        padding: 3px;
+        width: auto;
+        height: auto;
+        border-radius: 8px 8px 0px 0px;
+        float: right;
+        font-size: 10px;
+  }
+  .perfilUser{
+      display: block; 
+      background-color: #203364;
+      color:white;
+      font-size: 20px;
+  }
+  .imgPerfil{
+      height: 70px; 
+      width: 70px; 
+      background-size: cover;
+      margin: auto;
+  }
+  .nomeUser{
+      width: 100%;
+      padding-top: 5px;
+      padding-bottom: 15px;
+      text-align: center;
+  }
+  .dadosCorrida{
+      padding-top: 10px;
+      display: inline-block  ;
+  }
+  
+  .dCorrida{
+      list-style: none;
+      float: left; 
+  }
+  .dCorrida li{
+     display: flex;
+     padding-top: 5px;
+     padding-left: 10px;
+  }
+  .dCorrida p{
+      padding-left: 5px;
+  }
+  .dCorrida2{
+      list-style: none;
+  }
+  .dCorrida2 li{
+      float: left;
+      padding: 10px 20px 5px 10px;
+  }
+  #nomeSaida, #nomePara, #dataCorrida, #horaCorrida, #assentosCorrida{
+      font-size: 17px;
+      font-weight: normal;
+  }
+  .saida, .para, .data, .hora, .assentos{
+      font-size: 18px;
   }
