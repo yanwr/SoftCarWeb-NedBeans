@@ -22,9 +22,9 @@
     <div class="centro">
         <div class="form">
             <h1 class="textos">De onde você vai sair ?</h1>
-            <input type="search" class="form-field" placeholder="Bairro"/>
+            <input type="search" class="form-field" placeholder="Bairro / Empresa / Escritório"/>
             <h1 class="textos">Para onde deseja ir ?</h1>
-            <input type="search" class="form-field" placeholder="Empresa / Escritório"/>
+            <input type="search" class="form-field" placeholder="Bairro / Empresa / Escritório"/>
             <h1 class="textos">Horário de saída ?</h1>
             <input type="time" class="form-field" placeholder="Horário"/>
             <h1 class="textos">Dia(s) de saída ?</h1>
@@ -33,7 +33,7 @@
             <input type="number" min="1" max="6" value="1" class="form-field" placeholder="Assento"/>
             <h1 class="textos">Taxa(opcional) ?</h1>
             <input type="number" value="0" class="form-field" placeholder="Taxa"/>
-            <input type="button" class="form-button" value="Enviar"/>
+            <input type="button" class="form-button" value="ADICIONAR CARONA"/>
         </div>
     </div>
 </body>

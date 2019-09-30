@@ -262,16 +262,12 @@
                 width: 10%;
                 font-size:20px;
             }
-            #DAs{
-                background: url(/Sa-Softcar.com-master/img/icons8-editar-20.png);
-
-            }
             .btns{
                 margin: 0px 0px 0px 60%; 
                 margin-top: -20px; 
             }
             .btnEditImg{
-                margin: 0px 0px 0px 20%; 
+                margin: 0px 0px 0px 25%; 
                 margin-top: -20px; 
 
             }
@@ -422,7 +418,11 @@
                 }
             }
         </style>
-     
+        <script>
+            function lala(){
+                alert("Dasdasd");
+            }
+            </script>
     </head>
     <body>
      <!-- --------------- NavBarLOgado ---------- -->
@@ -441,15 +441,15 @@
                                     <h3 class="nameUser">Joao Victor da Silva Rodrigues</h3>
                                 </a>
                             </li>
-                            <li><a href="#" id="liUm" class="aMenu"><i class="fas fa-home"></i>Home</a></li>
+                            <li><a href="homeDepoisDeLogar.jsp" id="liUm" class="aMenu"><i class="fas fa-home"></i>Home</a></li>
                             <li><a class="aMenu" onclick="document.getElementById('modal-wrapper').style.display='block'" ><i class="fas fa-user-cog"></i>Perfil</a></li>
                             <li><a href="chat.jsp" class="aMenu" ><i class="far fa-comment-dots"></i>Chat</a></li>
                             <li><a href="#" class="aMenu" ><i class="fas fa-power-off"></i>Sair</a></li>
                         </ul>
                     </li>
                     
-                    <li class="liNav"><a href="solicitarCarona.html" class="aNav"><i class="fas fa-search"></i>Solicitar Carona</a></li>
-                    <li class="liNav"><a href="oferecerCarona.html" class="aNav"><i class="fas fa-plus-circle"></i>Oferecer Carona</a></li>
+                    <li class="liNav"><a href="solicitarCarona.jsp" class="aNav"><i class="fas fa-search"></i>Solicitar Carona</a></li>
+                    <li class="liNav"><a href="oferecerCarona.jsp" class="aNav"><i class="fas fa-plus-circle"></i>Oferecer Carona</a></li>
                 </ul>
             </nav>
     </header>
@@ -461,7 +461,7 @@
               <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
               <div  class="avatar" id="" style="background-image: url(img/1.png)"></div>
               <div id="btnEditImg" class="btnEditImg">
-                  <label id="fotoUser" for="trocaFoto"><img  src="img/icons8-editar-20.png "></label>
+                  <label id="fotoUser" for="trocaFoto"><i class="fas fa-edit" style="color:coral;"></i></label>
                   <input type="file" id="trocaFoto">
               </div>
              </div>
@@ -471,8 +471,8 @@
                   <h1 class="textosMain">SoftPlayer</h1>
                   <p id="nomeUser" class="textosSeg">Yan Weschenfelder</p>
               </div>
-              <div id="btnEditUser" class="btns">
-                      <img src="img/icons8-editar-20.png " >
+                <div id="btnEditUser" class="btns">
+                    <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
       
               <div class="dadosProf">
@@ -480,7 +480,7 @@
                   <p id="nomeProf" class="textosSeg">Programador</p>
               </div>
               <div id="btnEditProf" class="btns">
-                      <img src="img/icons8-editar-20.png " >
+                      <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
       
               <div class="dadosTempo">
@@ -488,7 +488,7 @@
                       <p id="nomeTempo" class="textosSeg">2 anos</p>
               </div>
               <div id="btnEditTemp" class="btns">
-                      <img src="img/icons8-editar-20.png " >
+                      <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
       
               <div class="dadosCont">
@@ -496,7 +496,7 @@
                   <p id="nomeCont" class="textosSeg">(48)996894386</p>
               </div>
               <div id="btnEditCont" class="btns">
-                  <img src="img/icons8-editar-20.png " >
+                 <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
             </div>
         </form>

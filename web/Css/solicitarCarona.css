@@ -76,7 +76,7 @@
    
     display: inline-block;
     width: 300px;
-    background: #ccc;
+    background: #eee;
     margin: 25px 0 20px 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
@@ -116,7 +116,9 @@
   }
   .dadosCorrida{
       padding-top: 10px;
-      display: inline-block  ;
+      display: inline-block;
+      color: #069;
+      background-color: #eee
   }
   
   .dCorrida{

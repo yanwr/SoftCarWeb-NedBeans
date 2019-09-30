@@ -1,6 +1,9 @@
 body
 {
     background-color: #fff;
+    background-image: url(../img/dasd.png); 
+    background-size: cover; 
+    background-repeat: no-repeat;
 }
 .centro{
     position: absolute;
