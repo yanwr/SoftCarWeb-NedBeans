@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="https://kit.fontawesome.com/7136158624.js" crossorigin="anonymous"></script>
+       
         <style>
             *{
                 margin: 0;
@@ -418,16 +418,12 @@
                 }
             }
         </style>
-        <script>
-            function lala(){
-                alert("Dasdasd");
-            }
-            </script>
+
     </head>
     <body>
      <!-- --------------- NavBarLOgado ---------- -->
     <header class="cabeça" id="cabeça">
-            <div class="divLogo" ><img class="logo" src="img/softcar-blue.png" alt=""></div>
+        <div class="divLogo" ><a href="homeDepoisDeLogar.jsp"><img class="logo" src="img/softcar-blue.png" alt=""></a></div>
             <input type="checkbox" id="bt-menu">
             <label for="bt-menu">&#9776;</label>
             
@@ -503,4 +499,5 @@
     </div>
       
     </body>
+     <script src="https://kit.fontawesome.com/7136158624.js" crossorigin="anonymous"></script>
 </html>

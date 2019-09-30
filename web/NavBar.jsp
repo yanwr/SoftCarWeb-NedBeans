@@ -10,7 +10,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://kit.fontawesome.com/7136158624.js" crossorigin="anonymous"></script>
         <style>
             *{margin:0; padding: 0;}
             /* ----- icons -------*/
@@ -149,17 +148,18 @@
     </head>
     <body>
          <header class="cabeça" id="cabeça">
-         <div class="divLogo" ><img class="logo" src="img/softcar-blue.png" alt=""></div>
+             <div class="divLogo" ><a href="home.jsp"><img class="logo" src="img/softcar-blue.png" alt=""></a></div>
             <input type="checkbox" id="bt-menu">
             <label for="bt-menu">&#9776;</label>
             <nav class="first-nav">
                 <ul>
-                    <li class="liNav"><a><i class="fas fa-sign-in-alt"></i>Entrar</a></li>
-                    <li class="liNav"><a><i class="fas fa-user-plus"></i>Cadastrar</a></li>
-                    <li class="liNav"><a href="solicitarCarona.html"><i class="fas fa-search"></i>Solicitar Carona</a></li>
-                    <li class="liNav"><a href="oferecerCarona.html"><i class="fas fa-plus-circle"></i>Oferecer Carona</a></li>
+                    <li class="liNav"><a href="login.jsp"><i class="fas fa-sign-in-alt"></i>Entrar</a></li>
+                    <li class="liNav"><a href="cadastro.jsp"><i class="fas fa-user-plus"></i>Cadastrar</a></li>
+                    <li class="liNav"><a href="login.jsp"><i class="fas fa-search"></i>Solicitar Carona</a></li>
+                    <li class="liNav"><a href="login.jsp"><i class="fas fa-plus-circle"></i>Oferecer Carona</a></li>
                 </ul>
             </nav>
         </header>
     </body>
+    <script src="https://kit.fontawesome.com/7136158624.js" crossorigin="anonymous"></script>
 </html>
