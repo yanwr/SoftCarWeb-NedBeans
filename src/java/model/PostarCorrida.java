@@ -1,8 +1,8 @@
 
-package br.com.classes;
+package model;
 
 public class PostarCorrida {
-    private Usuario motorista;
+    private Perfil motorista;
     private String hrSaida;
     private String hrPostada;
     private String destino;
@@ -10,7 +10,7 @@ public class PostarCorrida {
     private int lugares;
     private float taxa;
 
-    public PostarCorrida(Usuario motorista, String hrSaida, String hrPostada, String destino, String saida, int lugares, float taxa) {
+    public PostarCorrida(Perfil motorista, String hrSaida, String hrPostada, String destino, String saida, int lugares, float taxa) {
         this.motorista = motorista;
         this.hrSaida = hrSaida;
         this.hrPostada = hrPostada;
@@ -71,11 +71,11 @@ public class PostarCorrida {
         this.taxa = taxa;
     }
 
-    public Usuario getMotorista() {
+    public Perfil getMotorista() {
         return motorista;
     }
 
-    public void setMotorista(Usuario motorista) {
+    public void setMotorista(Perfil motorista) {
         this.motorista = motorista;
     }
 

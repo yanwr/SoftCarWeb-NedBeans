@@ -1,7 +1,7 @@
 
-package br.com.classes;
+package model;
 
-public class Usuario {
+public class Perfil {
     
     private String nomecompleto;
     private String profissao;
@@ -10,7 +10,7 @@ public class Usuario {
     private String foto;
     private int idade;
 
-    public Usuario(String nomecompleto, String profissao, String tempoTrabalhado, String nmrcel, String foto, int idade) {
+    public Perfil(String nomecompleto, String profissao, String tempoTrabalhado, String nmrcel, String foto, int idade) {
         this.nomecompleto = nomecompleto;
         this.profissao = profissao;
         this.tempoTrabalhado = tempoTrabalhado;
@@ -19,7 +19,7 @@ public class Usuario {
         this.idade = idade;
     }
 
-    public Usuario() {
+    public Perfil() {
     }
 
     public String getNomecompleto() {
