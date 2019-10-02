@@ -23,16 +23,16 @@
                 <h2 class="animation a1">Cadastre-se</h2>
                 <h4 class="animation a2">Cadastre-se usando e-mail e senha</h4>
               </div>
-              <div class="form">
-                <input type="email" id="email" class="form-field animation a3" placeholder="Email">
+              <form action=" " class="form">
+                <input type="email" id="email" name="email" class="form-field animation a3" placeholder="Email">
                 <span id="textinho"></span>
-                <input type="password" id="senha" class="form-field animation a4" placeholder="Senha">
+                <input type="password" id="senha" name="senha" class="form-field animation a4" placeholder="Senha">
                 <span id="textinho1"></span>
-                <input type="password" id="confsenha" class="form-field animation a5" placeholder="Confirmar Senha">
+                <input type="password" id="confsenha" name="confsenha" class="form-field animation a5" placeholder="Confirmar Senha">
                 <span id="textinho2"></span>
                 <br>
                 <button class="animation a6" onclick="return conferirCad()">CADASTRAR-SE</button>
-              </div>
+              </form>
             </div>
         </div>
 </body>

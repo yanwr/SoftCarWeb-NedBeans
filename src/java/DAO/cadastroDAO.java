@@ -11,6 +11,9 @@ import model.Usuario;
 public class cadastroDAO {
     
     Connection com = connectionDB.connection();
+
+    public cadastroDAO() {
+    }
     
     public void cadUser(Usuario user){
         
@@ -26,5 +29,4 @@ public class cadastroDAO {
             System.out.println(e);;
         }
     }
-    
 }
