@@ -18,7 +18,7 @@ public class cadastroDAO {
     public void cadUser(Usuario user){
         
         try {
-            String sql = "insert into Usuario(nome, senha) values(?,?)";
+            String sql = "insert into usuario(email, senha) values(?,?)";
             PreparedStatement stmt = com.prepareStatement(sql);
             stmt.setObject(1, user.getNome());
             stmt.setObject(2, user.getSenha());
@@ -26,7 +26,7 @@ public class cadastroDAO {
             stmt.close();
             
         } catch (Exception e) {
-            System.out.println(e);;
+            System.out.println(e);
         }
     }
 }

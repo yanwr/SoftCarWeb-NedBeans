@@ -1,7 +1,10 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package control;
 
-import DAO.cadastroDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -9,39 +12,37 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Usuario;
 
+/**
+ *
+ * @author Aluno
+ */
+@WebServlet(name = "NewServlet", urlPatterns = {"/NewServlet"})
+public class NewServlet extends HttpServlet {
 
-@WebServlet(name = "cadastro", urlPatterns = {"/cadastro"})
-public class cadastro extends HttpServlet {
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            // pegando dados que o usuario digitar no site
-            String email = request.getParameter("email");
-            String senha = request.getParameter("senha");
-            String confsenha = request.getParameter("confsenha");
-            // end pegando
-            
-            // comparar se a senha e o confirmar senha são iguais 
-            if(senha.equals(confsenha)){
-                Usuario user = new Usuario(email, senha);
-                cadastroDAO c = new cadastroDAO();
-                c.cadUser(user);
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>deu</title>");            
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Servlet NewServlet at " +"Deu certo"+ "</h1>");
-                out.println("</body>");
-                out.println("</html>");
-            }
-            // end comparar senhas 
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet NewServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
