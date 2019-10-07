@@ -4,28 +4,27 @@ import DB.connectionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.Usuario;
 
 public class cadastroDAO {
     
-    Connection com = connectionDB.connection();
+    Connection com;
 
     public cadastroDAO() {
+         com = connectionDB.getConnection();
     }
     
-    public void cadUser(Usuario user){
-        
+    public void inserirUser(Usuario user){
         try {
-            String sql = "insert into usuario(email, senha) values(?,?)";
-            PreparedStatement stmt = com.prepareStatement(sql);
-            stmt.setObject(1, user.getNome());
-            stmt.setObject(2, user.getSenha());
-            stmt.execute();
-            stmt.close();
             
-        } catch (Exception e) {
+            String sql = "insert into usuari(email, senha)" + " values(?,?)";
+            PreparedStatement stmt = com.prepareStatement(sql);
+            stmt.setString(1, user.getNome());
+            stmt.setString(2, user.getSenha());
+            
+            stmt.executeUpdate();
+            
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }

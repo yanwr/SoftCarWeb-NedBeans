@@ -82,7 +82,8 @@ body {
   border-color: #203364;
 }
 
-.form > button {
+.btn {
+    
   padding: 12px 10px;
   border: 0;
   background: #203364;
@@ -91,6 +92,9 @@ body {
   color: #fff;
   letter-spacing: 1px;
   font-family: 'Rubik', sans-serif;
+}
+.btn:hover{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .animation {

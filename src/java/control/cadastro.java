@@ -1,25 +1,21 @@
-
 package control;
 
 import DAO.cadastroDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Usuario;
 
-
-@WebServlet(name = "cadastro", urlPatterns = {"/cadastro"})
 public class cadastro extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+              
             // pegando dados que o usuario digitar no site
             String email = request.getParameter("email");
             String senha = request.getParameter("senha");
@@ -27,21 +23,35 @@ public class cadastro extends HttpServlet {
             // end pegando
             
             // comparar se a senha e o confirmar senha são iguais 
+            if(email.isEmpty() || email == null){
+                request.setAttribute("msgErroUm", "Campo Email obrigatório ou está invalido !");
+                request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+                return;
+            }
+            else if(senha.isEmpty() || senha == null){
+                request.setAttribute("msgErroDois", "Campo Senha é obrigatório !");
+                request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+                return;
+            }
+            else if(confsenha.isEmpty() || confsenha == null){
+                request.setAttribute("msgErroTres", "Campo Confirmar Senha é obrigatório ou está invalido !");
+                request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+                return;
+            }
+            
             if(senha.equals(confsenha)){
+
                 Usuario user = new Usuario(email, senha);
                 cadastroDAO c = new cadastroDAO();
-                c.cadUser(user);
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>deu</title>");            
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>Servlet NewServlet at " +"Deu certo"+ "</h1>");
-                out.println("</body>");
-                out.println("</html>");
+                c.inserirUser(user);
+
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert('Sucesso ! ')");
+                out.println("location='/SoftCarWeb/homeDepoisDeLogar.jsp';");
+                out.println("</script>");
             }
             // end comparar senhas 
+            
         }
     }
 
