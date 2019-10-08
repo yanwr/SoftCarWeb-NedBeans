@@ -48,6 +48,7 @@
             .first-nav ul{
                 list-style-type: none;
                 position: relative;
+                margin-top:-3px;
             }
             .first-nav ul li {
                 list-style: none;
@@ -431,12 +432,6 @@
                 <ul>
                     <li class="liNav"><a class="aNav" id="aNavUm" >Nome do User<i class="fas fa-angle-double-down" style="padding-left: 8px;"></i></a>
                         <ul class="ulPerfil">
-                            <li>
-                                <a class="AMaior" href="#">
-                                    <div class="ImgPerfil" style="background-image: url(img/1.png)"></div>
-                                    <h3 class="nameUser">Joao Victor da Silva Rodrigues</h3>
-                                </a>
-                            </li>
                             <li><a href="homeDepoisDeLogar.jsp" id="liUm" class="aMenu"><i class="fas fa-home"></i>Home</a></li>
                             <li><a class="aMenu" onclick="document.getElementById('modal-wrapper').style.display='block'" ><i class="fas fa-user-cog"></i>Perfil</a></li>
                             <li><a href="chat.jsp" class="aMenu" ><i class="far fa-comment-dots"></i>Chat</a></li>
