@@ -28,11 +28,24 @@
                 <input type="password" id="senha" class="form-field animation a4" placeholder="Senha">
                 <span id="erroSenha"></span>
                 <p class="animation a5"><a href="#">Esqueceu a senha</a></p>
-                <button class="animation a6" onclick="return conferirLog();">LOGIN</button> 
+                <button class="animation a6" onclick="return logar();">LOGIN</button> 
               </div>
             </div>
           <div class="right"></div>
         </div>
 </body>
 <script src="js/Verificacao.js"></script>
+<script>
+    function logar(){
+        var login = document.getElementById("Login").value;
+        var senha = document.getElementById("senha").value;
+        
+        if(login == "yan@gmail.com" && senha == "yyyy"){
+            window.location.href = "homeDepoisDeLogar.jsp";
+            
+        }
+        
+    }
+    
+</script>
 </html>

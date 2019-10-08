@@ -1,30 +1,30 @@
 package model;
 
 public class Usuario {
-    private String nome;
+    private String email;
     private String senha;
     private String confSenha;
 
     public Usuario() {
     }
 
-    public Usuario(String nome, String senha) {
-        this.nome = nome;
+    public Usuario(String email, String senha) {
+        this.email = email;
         this.senha = senha;
     }
 
-    public Usuario(String nome, String senha, String confSenha) {
-        this.nome = nome;
+    public Usuario(String email, String senha, String confSenha) {
+        this.email = email;
         this.senha = senha;
         this.confSenha = confSenha;
     }
 
-    public String getNome() {
-        return nome;
+    public String getEmail() {
+        return email;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
@@ -45,7 +45,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "nome=" + nome + ", senha=" + senha + ", confSenha=" + confSenha + '}';
+        return "Usuario{" + "email=" + email + ", senha=" + senha + ", confSenha=" + confSenha + '}';
     }
     
     

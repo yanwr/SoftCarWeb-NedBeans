@@ -435,6 +435,7 @@
                             <li><a href="homeDepoisDeLogar.jsp" id="liUm" class="aMenu"><i class="fas fa-home"></i>Home</a></li>
                             <li><a class="aMenu" onclick="document.getElementById('modal-wrapper').style.display='block'" ><i class="fas fa-user-cog"></i>Perfil</a></li>
                             <li><a href="chat.jsp" class="aMenu" ><i class="far fa-comment-dots"></i>Chat</a></li>
+                            <li><a href="chat.jsp" class="aMenu" ><i class="fas fa-question-circle"></i></i>Ajuda</a></li>
                             <li><a href="#" class="aMenu" ><i class="fas fa-power-off"></i>Sair</a></li>
                         </ul>
                     </li>

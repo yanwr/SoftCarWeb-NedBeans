@@ -19,7 +19,7 @@ public class cadastroDAO {
             
             String sql = "insert into usuari(email, senha)" + " values(?,?)";
             PreparedStatement stmt = com.prepareStatement(sql);
-            stmt.setString(1, user.getNome());
+            stmt.setString(1, user.getEmail());
             stmt.setString(2, user.getSenha());
             
             stmt.executeUpdate();
