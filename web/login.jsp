@@ -22,30 +22,18 @@
                 <h2 class="animation a1">Bem Vindo ao SoftCar</h2>
                 <h4 class="animation a2">Logue na sua conta usando e-mail e senha</h4>
               </div>
-              <div class="form">
-                <input type="text" id="Login" class="form-field animation a3" placeholder="Email">
+              <form class="form" action="login" method="post" >
+                <input type="text" id="Login" name="login" class="form-field animation a3" placeholder="Email">
                 <span id="erroLogin"></span>
-                <input type="password" id="senha" class="form-field animation a4" placeholder="Senha">
+                <input type="password" id="senha" name="senhaLogin" class="form-field animation a4" placeholder="Senha">
                 <span id="erroSenha"></span>
                 <p class="animation a5"><a href="#">Esqueceu a senha</a></p>
-                <button class="animation a6" onclick="return logar();">LOGIN</button> 
-              </div>
+                <input type="submit" class="animation a6" name="ENVIAR" value="LOGAR"> 
+              </form>
             </div>
           <div class="right"></div>
         </div>
 </body>
 <script src="js/Verificacao.js"></script>
-<script>
-    function logar(){
-        var login = document.getElementById("Login").value;
-        var senha = document.getElementById("senha").value;
-        
-        if(login == "yan@gmail.com" && senha == "yyyy"){
-            window.location.href = "homeDepoisDeLogar.jsp";
-            
-        }
-        
-    }
-    
-</script>
+
 </html>

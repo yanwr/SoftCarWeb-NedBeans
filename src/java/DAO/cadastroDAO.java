@@ -17,12 +17,14 @@ public class cadastroDAO {
     public void inserirUser(Usuario user){
         try {
             
-            String sql = "insert into usuari(email, senha)" + " values(?,?)";
-            PreparedStatement stmt = com.prepareStatement(sql);
-            stmt.setString(1, user.getEmail());
-            stmt.setString(2, user.getSenha());
+            String sql = "insert into usuario(email, senha)" + " values(?,?)";
+            PreparedStatement ps = com.prepareStatement(sql);
+            ps.setString(1, user.getEmail());
+            ps.setString(2, user.getSenha());
             
-            stmt.executeUpdate();
+            ps.executeUpdate();
+            ps.close();
+            com.close();
             
         } catch (SQLException e) {
             System.out.println(e);
