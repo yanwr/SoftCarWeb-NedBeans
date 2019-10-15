@@ -4,6 +4,11 @@
     Author     : Aluno
 --%>
 
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="DB.connectionDB"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -422,6 +427,8 @@
 
     </head>
     <body>
+        
+      
      <!-- --------------- NavBarLOgado ---------- -->
     <header class="cabeça" id="cabeça">
         <div class="divLogo" ><a href="homeDepoisDeLogar.jsp"><img class="logo" src="img/softcar-blue.png" alt=""></a></div>
@@ -429,8 +436,8 @@
             <label for="bt-menu">&#9776;</label>
             
             <nav class="first-nav">
-                <ul>
-                    <li class="liNav"><a class="aNav" id="aNavUm" >Nome do User<i class="fas fa-angle-double-down" style="padding-left: 8px;"></i></a>
+                <ul>       
+                    <li class="liNav"><a class="aNav" id="aNavUm" >${sessionScope.nomeUser}<i class="fas fa-angle-double-down" style="padding-left: 8px;"></i></a>
                         <ul class="ulPerfil">
                             <li><a href="homeDepoisDeLogar.jsp" id="liUm" class="aMenu"><i class="fas fa-home"></i>Home</a></li>
                             <li><a class="aMenu" onclick="document.getElementById('modal-wrapper').style.display='block'" ><i class="fas fa-user-cog"></i>Perfil</a></li>
@@ -445,10 +452,60 @@
                 </ul>
             </nav>
     </header>
+                        
+   <%
+        try {
+               // pegar dados da session 
+                int idz = (int) session.getAttribute("idUser");
+               //
+               // conexao banco
+               Connection con;
+               con = connectionDB.getConnection();
+
+               String sql = "select*from usuario where cod_user="+idz;
+               PreparedStatement ps = con.prepareStatement(sql);
+               ResultSet rs = ps.executeQuery(sql);
+               //
+
+               // variaveis para pegar os dados do banco
+                   
+                   String profissao = null;
+                   String tempoTrampo = null;
+                   String tel = null;
+                   String fotoPerfil = null;
+                   
+               //
+
+               while(rs.next()){
+                  
+                  
+                   profissao = rs.getString("profissao");
+                   tempoTrampo = rs.getString("tempo_trabalho");
+                   tel = rs.getString("numero_cel");
+                   fotoPerfil = rs.getString("foto_perfil");
+                   
+                   // mandar para session 
+                     
+                     session.setAttribute("profissao", profissao);
+                     session.setAttribute("tempoTrampo", tempoTrampo);
+                     session.setAttribute("tel", tel);
+                     session.setAttribute("fotoPerfil", fotoPerfil);
+                   //
+
+              }
+               // fechando connection 
+               ps.close();
+               rs.close();
+               con.close();
+               //
+           } catch (SQLException ex) {
+               System.out.println(ex);
+           }
+   %>
 
 <!-- ----------- Perfil -------------- -->
     <div id="modal-wrapper" class="modal">
-        <form class="modal-content animate" action="/action_page.php">
+        <form class="modal-content animate" action="">
             <div class="imgcontainer">
               <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
               <div  class="avatar" id="" style="background-image: url(img/1.png)"></div>
@@ -461,7 +518,7 @@
             <div class="container">
               <div class="dadosUser">
                   <h1 class="textosMain">SoftPlayer</h1>
-                  <p id="nomeUser" class="textosSeg">Yan Weschenfelder</p>
+                  <p id="nomeUser" class="textosSeg" name="nom">Yan Weschenfelder</p>
               </div>
                 <div id="btnEditUser" class="btns">
                     <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
@@ -469,15 +526,15 @@
       
               <div class="dadosProf">
                   <h1 class="textosMain">Profissão</h1>
-                  <p id="nomeProf" class="textosSeg">Programador</p>
+                  <p id="nomeProf" class="textosSeg">${sessionScope.profissao}</p>
               </div>
               <div id="btnEditProf" class="btns">
                       <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
       
               <div class="dadosTempo">
-                      <h1 class="textosMain">Tempo na SoftPlan</h1>
-                      <p id="nomeTempo" class="textosSeg">2 anos</p>
+                      <h1 class="textosMain">SoftPlayer desde:</h1>
+                      <p id="nomeTempo" class="textosSeg">${sessionScope.tempoTrampo}</p>
               </div>
               <div id="btnEditTemp" class="btns">
                       <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
@@ -485,7 +542,7 @@
       
               <div class="dadosCont">
                   <h1 class="textosMain">Contato</h1>
-                  <p id="nomeCont" class="textosSeg">(48)996894386</p>
+                  <p id="nomeCont" class="textosSeg">${sessionScope.tel}</p>
               </div>
               <div id="btnEditCont" class="btns">
                  <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>

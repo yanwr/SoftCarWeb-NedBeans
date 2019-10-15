@@ -2,7 +2,7 @@
 package model;
 
 public class PostarCorrida {
-    private Perfil motorista;
+    private Usuario motorista;
     private String hrSaida;
     private String hrPostada;
     private String destino;
@@ -10,7 +10,7 @@ public class PostarCorrida {
     private int lugares;
     private float taxa;
 
-    public PostarCorrida(Perfil motorista, String hrSaida, String hrPostada, String destino, String saida, int lugares, float taxa) {
+    public PostarCorrida(Usuario motorista, String hrSaida, String hrPostada, String destino, String saida, int lugares, float taxa) {
         this.motorista = motorista;
         this.hrSaida = hrSaida;
         this.hrPostada = hrPostada;
@@ -71,11 +71,11 @@ public class PostarCorrida {
         this.taxa = taxa;
     }
 
-    public Perfil getMotorista() {
+    public Usuario getMotorista() {
         return motorista;
     }
 
-    public void setMotorista(Perfil motorista) {
+    public void setMotorista(Usuario motorista) {
         this.motorista = motorista;
     }
 

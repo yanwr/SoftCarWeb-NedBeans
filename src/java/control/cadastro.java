@@ -18,6 +18,7 @@ public class cadastro extends HttpServlet {
               
             // pegando dados que o usuario digitar no site
             String email = request.getParameter("email");
+            String nomeUser = request.getParameter("nomeUser");
             String senha = request.getParameter("senha");
             String confsenha = request.getParameter("confsenha");
             // end pegando
@@ -28,20 +29,25 @@ public class cadastro extends HttpServlet {
                 request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
                 return;
             }
+             else if(nomeUser.isEmpty() || nomeUser == null){
+                request.setAttribute("msgErroDois", "Campo Nome é obrigatório !");
+                request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
+                return;
+            }
             else if(senha.isEmpty() || senha == null){
-                request.setAttribute("msgErroDois", "Campo Senha é obrigatório !");
+                request.setAttribute("msgErroTres", "Campo Senha é obrigatório !");
                 request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
                 return;
             }
             else if(confsenha.isEmpty() || confsenha == null){
-                request.setAttribute("msgErroTres", "Campo Confirmar Senha é obrigatório ou está invalido !");
+                request.setAttribute("msgErroQuatro", "Campo Confirmar Senha é obrigatório ou está invalido !");
                 request.getRequestDispatcher("/cadastro.jsp").forward(request, response);
                 return;
             }
             
             if(senha.equals(confsenha)){
 
-                Usuario user = new Usuario(email, senha);
+                Usuario user = new Usuario(email, senha, nomeUser);
                 cadastroDAO c = new cadastroDAO();
                 c.inserirUser(user);
 
@@ -49,6 +55,9 @@ public class cadastro extends HttpServlet {
                 out.println("alert('Sucesso ! ')");
                 out.println("location='/SoftCarWeb/homeDepoisDeLogar.jsp';");
                 out.println("</script>");
+                
+                request.getRequestDispatcher("/homeDepoisDeLogar.jsp").forward(request, response);
+                
             }
             // end comparar senhas 
             

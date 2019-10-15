@@ -28,7 +28,7 @@
                 <input type="password" id="senha" name="senhaLogin" class="form-field animation a4" placeholder="Senha">
                 <span id="erroSenha"></span>
                 <p class="animation a5"><a href="#">Esqueceu a senha</a></p>
-                <input type="submit" class="animation a6" name="ENVIAR" value="LOGAR"> 
+                <input type="submit" class="btnEnviar animation a6" name="ENVIAR" value="LOGAR"> 
               </form>
             </div>
           <div class="right"></div>

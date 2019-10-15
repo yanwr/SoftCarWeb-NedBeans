@@ -99,7 +99,7 @@ body {
   border-color: #203364;
 }
 
-.form > button {
+.form > .btnEnviar {
   padding: 12px 10px;
   border: 0;
   background: #203364;

@@ -45,6 +45,7 @@ public class login extends HttpServlet {
                    // pegar dados da pagina 
                    String email = request.getParameter("login");
                    String senhaLogin = request.getParameter("senhaLogin");
+ 
                    //
                    
                    // conexao banco
@@ -58,32 +59,35 @@ public class login extends HttpServlet {
                    
                    // variaveis para pegar os dados do banco
                    String s = null;
-                   int id;
+                   int id = 0;
+                   String nomeUser = null;
                    //
                    
                    while(rs.next()){
                       id = rs.getInt("cod_user");
                       s = rs.getString("senha");
-
+                      nomeUser = rs.getString("nome");
+                     
                    if(s.equals(senhaLogin)){
+                       // Mandar id para session 
+                        session.setAttribute("idUser", id);
+                        session.setAttribute("nomeUser", nomeUser);
+                        // mandar para homeLogado 
                        request.getRequestDispatcher("/homeDepoisDeLogar.jsp").forward(request, response);
+                       
+                        
                    }else{
                             out.println("<script type=\"text/javascript\">");
                             out.println("alert('Senha incorreta ou Softplayer não cadastrado !! ')");
                             out.println("location='/SoftCarWeb/login.jsp';");
                             out.println("</script>");
-                            
                      }
-                    // Mandar id para session 
-                    session.setAttribute("idUser", id);
-                    out.println("<script type=\"text/javascript\">");
-                    out.println("alert('"+session.getAttribute("idUser")+" ')");
-                    out.println("location='/SoftCarWeb/homeDepoisDeLogar.jsp';");
-                    out.println("</script>");
-                    
                   }
+                   // fechando connection 
                    ps.close();
+                   rs.close();
                    con.close();
+                   //
                } catch (SQLException ex) {
                    System.out.println(ex);
                }

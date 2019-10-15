@@ -11,40 +11,6 @@
     <title>SoftCar - Home</title>
     <script src="https://kit.fontawesome.com/7136158624.js" crossorigin="anonymous"></script>
   </head>
-    <script>
-        // If user clicks anywhere outside of the modal, Modal will close
-        
-        var modal = document.getElementById('modal-wrapper');
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        
-        var inputAddphoto = '<div class="avatar"></div>',
-            inputphoto = $('#trocaFoto');
-        
-        inputphoto.before(inputAddphoto);
-        
-        $('.avatar').on('click', function() {
-            $(this).siblings('#trocaFoto').trigger('click');
-        });
-        
-        inputphoto.on('change', function(){
-            var input = $(this),    reader = new FileReader();
-        
-            reader.onload = function (e) {
-                input.siblings('
-                reader = new FileReader();
-        
-            reader.onload = function (e) {
-                input.siblings('.avatar').css('background-image', 'url(' + e.target.result + ')');
-            };
-        
-            reader.readAsDataURL(this.files[0]);
-        });
-        
-        </script>
     
 </head>
 <body>
