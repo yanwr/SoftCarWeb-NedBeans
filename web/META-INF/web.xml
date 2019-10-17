@@ -4,12 +4,10 @@
         <servlet-name>Oferecer</servlet-name>
         <servlet-class>control.Oferecer</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>Oferecer</servlet-name>
         <url-pattern>/Oferecer</url-pattern>
     </servlet-mapping>
-   
     <session-config>
         <session-timeout>
             30
