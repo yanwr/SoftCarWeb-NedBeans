@@ -87,30 +87,43 @@ public class Oferecer extends HttpServlet {
                 PostarCorrida pc;
                 Bairro br;
                 Empresa em;
-                
+                EmpresaDAO empresa = new EmpresaDAO();
+                BairroDAO bairro = new BairroDAO();
+               //
+               
+               
                 // verificar se as variaveis sao obj Empresa
                 if(pSair.equals("SoftPlan") || pSair.equals("Escritorio")){
                     
-                    // empresas 
-                        EmpresaDAO empresa = new EmpresaDAO();
+                    // empresa
                         empresa.pegarIdEmpresa(pSair);
                     //
                     
                     //bairros
-                        BairroDAO bairro = new BairroDAO();
                         bairro.pegarIdBairro(pVai);
                     //
                     
-                    // mandar para o banco o dados se a SAIDA for de Empresa
+                    // mandar para o banco o dados se a SAIDA for de EMPRESA
                         pc = new PostarCorrida(user.getId(), dt, hr, hora, dia, bairro.getId(), empresa.getId(), assentos, taxa);
                         PostarCorridaDAO pcDAO = new PostarCorridaDAO();
+                        pcDAO.addCorridaSaidandoEmpresa(pc);
 
                     //
+                }else{
+                    
+                    // empresa
+                        empresa.pegarIdEmpresa(pVai);
+                    //
+                    
+                    //bairros
+                        bairro.pegarIdBairro(pSair);
+                    //
+                    
+                    // mandar para o banco o dados se a SAIDA for de BAIRRO
+                        pc = new PostarCorrida(user.getId(), dt, hr, hora, dia, empresa.getId(), bairro.getId(), assentos, taxa);
+                        PostarCorridaDAO pcDAO = new PostarCorridaDAO();
+                        pcDAO.addCorridaSaidandoBairro(pc);
                 }
-              
-                
-              //
-              
           }
      }
     

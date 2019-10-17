@@ -24,11 +24,18 @@ public class EmpresaDAO {
           
             while(rs.next()){
                 id = rs.getInt("cod_empresa");
-            }          
+            }
+            
+            ps.close();
+            rs.close();
+            com.close();
         }catch(SQLException ex){
                     System.out.println(ex);
-            }
+        }
+          
          return id;
+         
+         
     }
 
     public int getId() {

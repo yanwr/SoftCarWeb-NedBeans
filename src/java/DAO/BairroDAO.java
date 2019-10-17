@@ -25,7 +25,10 @@ public class BairroDAO {
           
             while(rs.next()){
                 id = rs.getInt("cod_bairro");
-            }          
+            }
+            ps.close();
+            rs.close();
+            com.close();
         }catch(SQLException ex){
                     System.out.println(ex);
             }
