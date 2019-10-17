@@ -24,7 +24,7 @@
                 <h4 class="animation a2">Cadastre-se usando e-mail e senha</h4>
               </div>
                 
-              <form action="Cadastro" class="form" method="post">
+              <form action="cadastro" class="form" method="post">
                 <input type="email" id="email" name="email" class="form-field animation a3" placeholder="Email">
                 <span id="textinho" class="animation a6">${requestScope.msgErroUm}</span>
                 <input type="text" id="nome" name="nomeUser" class="form-field animation a4" placeholder="Nome Completo">

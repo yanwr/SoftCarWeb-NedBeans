@@ -1,12 +1,6 @@
 
 package DAO;
 
-import DB.connectionDB;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import model.PostarCorrida;
-
 public class PostarCorridaDAO {
     
     Connection com;
