@@ -5,31 +5,11 @@
         <servlet-class>control.Oferecer</servlet-class>
     </servlet>
     
-    <servlet>
-        <servlet-name>Cadastro</servlet-name>
-        <servlet-class>control.Cadastro</servlet-class>
-    </servlet>
-    
-    <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>control.Login</servlet-class>
-    </servlet>
-    
     <servlet-mapping>
         <servlet-name>Oferecer</servlet-name>
         <url-pattern>/Oferecer</url-pattern>
     </servlet-mapping>
-    
-    <servlet-mapping>
-        <servlet-name>Cadastro</servlet-name>
-        <url-pattern>/Cadastro</url-pattern>
-    </servlet-mapping>
-    
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/Login</url-pattern>
-    </servlet-mapping>
-    
+   
     <session-config>
         <session-timeout>
             30
