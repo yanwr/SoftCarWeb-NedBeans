@@ -3,26 +3,54 @@ package model;
 
 public class PostarCorrida {
     private Usuario motorista;
+    private String dataCorrida;
+    private String horaCorrida;
     private String hrSaida;
-    private String hrPostada;
+    private String dtSaida;
     private String destino;
     private String saida;
-    private int lugares;
+    private int assentos;
     private float taxa;
-
-    public PostarCorrida(Usuario motorista, String hrSaida, String hrPostada, String destino, String saida, int lugares, float taxa) {
-        this.motorista = motorista;
-        this.hrSaida = hrSaida;
-        this.hrPostada = hrPostada;
-        this.destino = destino;
-        this.saida = saida;
-        this.lugares = lugares;
-        this.taxa = taxa;
-    }
 
     public PostarCorrida() {
     }
-   
+
+    public PostarCorrida(Usuario motorista, String dataCorrida, String horaCorrida, String hrSaida, String dtSaida, String destino, String saida, int assentos, float taxa) {
+        this.motorista = motorista;
+        this.dataCorrida = dataCorrida;
+        this.horaCorrida = horaCorrida;
+        this.hrSaida = hrSaida;
+        this.dtSaida = dtSaida;
+        this.destino = destino;
+        this.saida = saida;
+        this.assentos = assentos;
+        this.taxa = taxa;
+    }
+
+    public Usuario getMotorista() {
+        return motorista;
+    }
+
+    public void setMotorista(Usuario motorista) {
+        this.motorista = motorista;
+    }
+
+    public String getDataCorrida() {
+        return dataCorrida;
+    }
+
+    public void setDataCorrida(String dataCorrida) {
+        this.dataCorrida = dataCorrida;
+    }
+
+    public String getHoraCorrida() {
+        return horaCorrida;
+    }
+
+    public void setHoraCorrida(String horaCorrida) {
+        this.horaCorrida = horaCorrida;
+    }
+
     public String getHrSaida() {
         return hrSaida;
     }
@@ -31,12 +59,12 @@ public class PostarCorrida {
         this.hrSaida = hrSaida;
     }
 
-    public String getHrPostada() {
-        return hrPostada;
+    public String getDtSaida() {
+        return dtSaida;
     }
 
-    public void setHrPostada(String hrPostada) {
-        this.hrPostada = hrPostada;
+    public void setDtSaida(String dtSaida) {
+        this.dtSaida = dtSaida;
     }
 
     public String getDestino() {
@@ -55,12 +83,12 @@ public class PostarCorrida {
         this.saida = saida;
     }
 
-    public int getLugares() {
-        return lugares;
+    public int getAssentos() {
+        return assentos;
     }
 
-    public void setLugares(int lugares) {
-        this.lugares = lugares;
+    public void setAssentos(int assentos) {
+        this.assentos = assentos;
     }
 
     public float getTaxa() {
@@ -71,17 +99,7 @@ public class PostarCorrida {
         this.taxa = taxa;
     }
 
-    public Usuario getMotorista() {
-        return motorista;
-    }
-
-    public void setMotorista(Usuario motorista) {
-        this.motorista = motorista;
-    }
-
-    @Override
-    public String toString() {
-        return "PostarCorrida{" + "motorista=" + motorista + ", hrSaida=" + hrSaida + ", hrPostada=" + hrPostada + ", destino=" + destino + ", saida=" + saida + ", lugares=" + lugares + ", taxa=" + taxa + '}';
-    }
+    
+    
     
 }

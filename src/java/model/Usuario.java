@@ -2,6 +2,7 @@ package model;
 
 public class Usuario {
     //cadastro
+    private int id;
     private String email;
     private String senha;
     private String nomeUser;
@@ -25,7 +26,8 @@ public class Usuario {
     }
     //
     // para perfil
-    public Usuario(String nomeUser, String profissao, String tempoTrablho, String telefone, String fotoPerfil) {
+    public Usuario(int id, String nomeUser, String profissao, String tempoTrablho, String telefone, String fotoPerfil) {
+        this.id = id;
         this.nomeUser = nomeUser;
         this.profissao = profissao;
         this.tempoTrablho = tempoTrablho;
@@ -33,6 +35,14 @@ public class Usuario {
         this.fotoPerfil = fotoPerfil;
     }
     //
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
  
     public String getEmail() {
         return email;

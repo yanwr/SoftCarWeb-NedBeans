@@ -20,27 +20,21 @@
      <%@include file="NavBarLogado.jsp" %>
      <!-- -------- Oferecer Carona ------------ --> 
     <div class="centro">
-        <div class="form">
+        <form action="Oferecer" method="post" class="form">
             <h1 class="textos">De onde você vai sair ?</h1>
-            <input type="search" class="form-field" id="pSair" placeholder="Bairro / Empresa / Escritório"/>
-            <span id="erroPsair"></span>
+            <input type="search" class="form-field" id="pSair" name="pSair" placeholder="Bairro / Empresa / Escritório"/>${requestScope.erroPsair}
             <h1 class="textos">Para onde deseja ir ?</h1>
-            <input type="search" class="form-field" id="pVai" placeholder="Bairro / Empresa / Escritório"/>
-            <span id="erroPvai"></span>
+            <input type="search" class="form-field" id="pVai" name="pVai" placeholder="Bairro / Empresa / Escritório"/>${requestScope.erroPvai}
             <h1 class="textos">Horário de saída ?</h1>
-            <input type="time" class="form-field" id="hora"placeholder="Horário"/>
-            <span id="erroHora"></span>
-            <h1 class="textos">Dia(s) de saída ?</h1>
-            <input type="date" class="form-field" id="dia" placeholder="Data"/>
-            <span id="erroDia"></span>
+            <input type="time" class="form-field" id="hora" name="hora" placeholder="Horário"/>${requestScope.erroHora}
+            <h1 class="textos">Dia de saída ?</h1>
+            <input type="date" class="form-field" id="dia" name="dia" placeholder="Data"/>${requestScope.erroDia}
             <h1 class="textos">Quantos assentos disponíveis ?</h1>
-            <input type="number" id="assentos" min="1" max="6" value="1" class="form-field" placeholder="Assento"/>
-            <span id="erroAssentos"></span>
+            <input type="number" id="assentos" name="assentos" min="1" max="6" value="1" class="form-field" placeholder="Assento"/>${requestScope.erroAssentos}
             <h1 class="textos">Taxa(opcional) ?</h1>
-            <input type="number" id="taxa" value="0" class="form-field" placeholder="Taxa"/>
-            <span id="erroTaxa"></span>
-            <input type="button" class="form-button" onclick="return conferirOC()" value="ADICIONAR CARONA"/>
-        </div>
+            <input type="number" id="taxa" name="taxa" value="0" class="form-field" placeholder="Taxa"/>
+            <input type="submit" class="form-button" onclick="" name="ENVIAR" value="ADICIONAR CARONA"/>
+        </form>
     </div>
 </body>
 <script src="js/Verificacao.js"></script>

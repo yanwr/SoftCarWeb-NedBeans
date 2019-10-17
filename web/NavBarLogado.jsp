@@ -257,172 +257,7 @@
                     margin-left: 30%;
                  }
             }
-            /* --------------- Perfil -----------------*/
-            .s {
-                background-color: #4CAF50;
-                color: white;
-                padding: 14px 20px;
-                margin: 10px 10px 0px 0px;
-                border: none;
-                cursor: pointer;
-                width: 10%;
-                font-size:20px;
-            }
-            .btns{
-                margin: 0px 0px 0px 60%; 
-                margin-top: -20px; 
-            }
-            .btnEditImg{
-                margin: 0px 0px 0px 25%; 
-                margin-top: -20px; 
-
-            }
-            .dadosUser, .dadosProf, .dadosTempo, .dadosCont{
-                margin-top: 10px;
-            }
-            .textosMain{
-
-                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-                font-size: 25px;
-                color: coral;
-            }
-            .textosSeg{
-
-                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-                font-size: 20px;
-                color: #069;
-                margin-top: 10px;
-            }
-            .imgcontainer {
-                text-align: center;
-                margin: 24px 0 12px 0;
-                position: relative;
-            }
-            #trocaFoto{
-                display: none;
-            }
-            #fotoUser[for="trocaFoto"]{
-                display: block;
-            }
-            .avatar {
-                background-size: cover;
-                margin-top: -70px;
-                margin-left: 42%;
-                width: 100px;
-                height:100px;
-                border-radius: 50%;
-            }
-            .modal {
-                margin-top: 70px;
-                text-align: center;
-                display:none;
-                position: fixed;
-                z-index: 1;
-                left: 0;
-                top: 0;
-                width: 100%;
-                min-width: 200px;
-                overflow: auto;
-                background-color: rgba(0,0,0,0.4);
-            }
-            .modal-content {
-                background-color: #fefefe;
-                margin: 4% auto 15% auto;
-                border: 1px solid #888;
-                width: 40%; 
-                min-width: 200px;
-                padding-bottom: 30px;
-            }
-            .close {
-                position: absolute;
-                right: 8px;
-                margin-top: 40px;
-                color: #000;
-                font-size: 35px;
-                font-weight: bold;
-            }
-            .close:hover,.close:focus {
-                color: red;
-                cursor: pointer;
-            }
-            .animate {
-                animation: zoom 0.6s
-            }
-            @keyframes zoom {
-                from {transform: scale(0)} 
-                to {transform: scale(1)}
-            }
-
-            @media(max-width: 1200px){
-                .avatar{
-                    margin-left: 40%;
-                }
-                .btns{
-                    margin: 0px 0px 0px 60%; 
-                    margin-top: -20px; 
-                }
-                .btnEditImg{
-                    margin: 0px 0px 0px 30%; 
-                    margin-top: -20px; 
-                }
-            }
-
-            @media(max-width: 820px){
-                .avatar{
-                    margin-left: 35%;
-                }
-                .btns{
-                    margin: 0px 0px 0px 0%; 
-                    margin-top: 10px; 
-                }
-                .btnEditImg{
-                    margin: 0px 0px 0px 40%; 
-                    margin-top: -20px; 
-                }
-            }
-
-            @media(max-width: 730px){
-                .avatar{
-                    margin-left: 30%;
-                }
-                .btns{
-                    margin: 0px 0px 0px 0%; 
-                    margin-top: 10px; 
-                }
-                .btnEditImg{
-                    margin: 0px 0px 0px 40%; 
-                    margin-top: -20px; 
-                }
-            }
-
-            @media(max-width: 600px){
-                .avatar{
-                    margin-left: 25%;
-                }
-                .btns{
-                    margin: 0px 0px 0px 0%; 
-                    margin-top: 10px; 
-                }
-                .btnEditImg{
-                    margin: 0px 0px 0px 40%; 
-                    margin-top: -20px; 
-                }
-            }
-
-
-            @media(max-width: 485px){
-                .avatar{
-                    margin-left: 20%;
-                }
-                .btns{
-                    margin: 0px 0px 0px 0%; 
-                    margin-top: 10px; 
-                }
-                .btnEditImg{
-                    margin: 0px 0px 0px 50%; 
-                    margin-top: -20px; 
-                }
-            }
+            
         </style>
 
     </head>
@@ -437,12 +272,12 @@
             
             <nav class="first-nav">
                 <ul>       
-                    <li class="liNav"><a class="aNav" id="aNavUm" >${sessionScope.nomeUser}<i class="fas fa-angle-double-down" style="padding-left: 8px;"></i></a>
+                    <li class="liNav"><a class="aNav" id="aNavUm" >${sessionScope.usuario.nomeUser}<i class="fas fa-angle-double-down" style="padding-left: 8px;"></i></a>
                         <ul class="ulPerfil">
                             <li><a href="homeDepoisDeLogar.jsp" id="liUm" class="aMenu"><i class="fas fa-home"></i>Home</a></li>
-                            <li><a class="aMenu" onclick="document.getElementById('modal-wrapper').style.display='block'" ><i class="fas fa-user-cog"></i>Perfil</a></li>
+                            <li><a href="perfil.jsp" class="aMenu"><i class="fas fa-user-cog"></i>Perfil</a></li>
                             <li><a href="chat.jsp" class="aMenu" ><i class="far fa-comment-dots"></i>Chat</a></li>
-                            <li><a href="chat.jsp" class="aMenu" ><i class="fas fa-question-circle"></i></i>Ajuda</a></li>
+                            <li><a href="#" class="aMenu" ><i class="fas fa-question-circle"></i></i>Ajuda</a></li>
                             <li><a href="#" class="aMenu" ><i class="fas fa-power-off"></i>Sair</a></li>
                         </ul>
                     </li>
@@ -453,103 +288,8 @@
             </nav>
     </header>
                         
-   <%
-        try {
-               // pegar dados da session 
-                int idz = (int) session.getAttribute("idUser");
-               //
-               // conexao banco
-               Connection con;
-               con = connectionDB.getConnection();
+  
 
-               String sql = "select*from usuario where cod_user="+idz;
-               PreparedStatement ps = con.prepareStatement(sql);
-               ResultSet rs = ps.executeQuery(sql);
-               //
-
-               // variaveis para pegar os dados do banco
-                   
-                   String profissao = null;
-                   String tempoTrampo = null;
-                   String tel = null;
-                   String fotoPerfil = null;
-                   
-               //
-
-               while(rs.next()){
-                  
-                  
-                   profissao = rs.getString("profissao");
-                   tempoTrampo = rs.getString("tempo_trabalho");
-                   tel = rs.getString("numero_cel");
-                   fotoPerfil = rs.getString("foto_perfil");
-                   
-                   // mandar para session 
-                     
-                     session.setAttribute("profissao", profissao);
-                     session.setAttribute("tempoTrampo", tempoTrampo);
-                     session.setAttribute("tel", tel);
-                     session.setAttribute("fotoPerfil", fotoPerfil);
-                   //
-
-              }
-               // fechando connection 
-               ps.close();
-               rs.close();
-               con.close();
-               //
-           } catch (SQLException ex) {
-               System.out.println(ex);
-           }
-   %>
-
-<!-- ----------- Perfil -------------- -->
-    <div id="modal-wrapper" class="modal">
-        <form class="modal-content animate" action="">
-            <div class="imgcontainer">
-              <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
-              <div  class="avatar" id="" style="background-image: url(img/1.png)"></div>
-              <div id="btnEditImg" class="btnEditImg">
-                  <label id="fotoUser" for="trocaFoto"><i class="fas fa-edit" style="color:coral;"></i></label>
-                  <input type="file" id="trocaFoto">
-              </div>
-             </div>
-      
-            <div class="container">
-              <div class="dadosUser">
-                  <h1 class="textosMain">SoftPlayer</h1>
-                  <p id="nomeUser" class="textosSeg" name="nom">Yan Weschenfelder</p>
-              </div>
-                <div id="btnEditUser" class="btns">
-                    <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
-              </div>
-      
-              <div class="dadosProf">
-                  <h1 class="textosMain">Profissão</h1>
-                  <p id="nomeProf" class="textosSeg">${sessionScope.profissao}</p>
-              </div>
-              <div id="btnEditProf" class="btns">
-                      <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
-              </div>
-      
-              <div class="dadosTempo">
-                      <h1 class="textosMain">SoftPlayer desde:</h1>
-                      <p id="nomeTempo" class="textosSeg">${sessionScope.tempoTrampo}</p>
-              </div>
-              <div id="btnEditTemp" class="btns">
-                      <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
-              </div>
-      
-              <div class="dadosCont">
-                  <h1 class="textosMain">Contato</h1>
-                  <p id="nomeCont" class="textosSeg">${sessionScope.tel}</p>
-              </div>
-              <div id="btnEditCont" class="btns">
-                 <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
-              </div>
-            </div>
-        </form>
-    </div>
       
     </body>
      <script src="https://kit.fontawesome.com/7136158624.js" crossorigin="anonymous"></script>

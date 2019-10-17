@@ -24,7 +24,7 @@
                 <h4 class="animation a2">Cadastre-se usando e-mail e senha</h4>
               </div>
                 
-              <form action="cadastro" class="form">
+              <form action="cadastro" class="form" method="post">
                 <input type="email" id="email" name="email" class="form-field animation a3" placeholder="Email">
                 <span id="textinho" class="animation a6">${requestScope.msgErroUm}</span>
                 <input type="text" id="nome" name="nomeUser" class="form-field animation a4" placeholder="Nome Completo">
@@ -34,7 +34,7 @@
                 <input type="password" id="confsenha" name="confsenha" class="form-field animation a6" placeholder="Confirmar Senha">
                 <span id="textinho2" class="animation a6">${requestScope.msgErroTres}</span>
                 <br>
-                <input type="submit" class="btn animation a7" value="Enviar" />
+                <input type="submit" class="btn animation a7" name="ENVIAR" value="CADASTRAR"/>
               </form>
             </div>
         </div>

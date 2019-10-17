@@ -2,15 +2,19 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>cadastro</servlet-name>
-        <servlet-class>control.cadastro</servlet-class>
+        <servlet-class>control.Cadastro</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>login</servlet-name>
-        <servlet-class>control.login</servlet-class>
+        <servlet-class>control.Login</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>perfil</servlet-name>
         <servlet-class>control.perfil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Oferecer</servlet-name>
+        <servlet-class>control.Oferecer</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>perfil</servlet-name>
         <url-pattern>/perfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Oferecer</servlet-name>
+        <url-pattern>/Oferecer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

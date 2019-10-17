@@ -63,3 +63,11 @@ body
 .form-button:active{
     background-color: #069;
 }
+.fa-exclamation-circle{
+    margin-left: 100%;
+    margin-top: -22px;
+    padding-left: 5px;
+    padding-bottom: 8px;
+    color:red;
+}
+
