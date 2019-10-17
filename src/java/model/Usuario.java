@@ -43,7 +43,7 @@ public class Usuario {
     public void setId(int id) {
         this.id = id;
     }
- 
+
     public String getEmail() {
         return email;
     }
@@ -107,6 +107,8 @@ public class Usuario {
     public void setFotoPerfil(String fotoPerfil) {
         this.fotoPerfil = fotoPerfil;
     }
+
+   
 
     
     

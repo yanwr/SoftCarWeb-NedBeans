@@ -2,20 +2,20 @@
 package model;
 
 public class PostarCorrida {
-    private Usuario motorista;
+    private int motorista;
     private String dataCorrida;
     private String horaCorrida;
     private String hrSaida;
     private String dtSaida;
-    private String destino;
-    private String saida;
+    private int destino;
+    private int saida;
     private int assentos;
     private float taxa;
 
     public PostarCorrida() {
     }
 
-    public PostarCorrida(Usuario motorista, String dataCorrida, String horaCorrida, String hrSaida, String dtSaida, String destino, String saida, int assentos, float taxa) {
+    public PostarCorrida(int motorista, String dataCorrida, String horaCorrida, String hrSaida, String dtSaida, int destino, int saida, int assentos, float taxa) {
         this.motorista = motorista;
         this.dataCorrida = dataCorrida;
         this.horaCorrida = horaCorrida;
@@ -27,11 +27,11 @@ public class PostarCorrida {
         this.taxa = taxa;
     }
 
-    public Usuario getMotorista() {
+    public int getMotorista() {
         return motorista;
     }
 
-    public void setMotorista(Usuario motorista) {
+    public void setMotorista(int motorista) {
         this.motorista = motorista;
     }
 
@@ -67,19 +67,19 @@ public class PostarCorrida {
         this.dtSaida = dtSaida;
     }
 
-    public String getDestino() {
+    public int getDestino() {
         return destino;
     }
 
-    public void setDestino(String destino) {
+    public void setDestino(int destino) {
         this.destino = destino;
     }
 
-    public String getSaida() {
+    public int getSaida() {
         return saida;
     }
 
-    public void setSaida(String saida) {
+    public void setSaida(int saida) {
         this.saida = saida;
     }
 
@@ -99,6 +99,7 @@ public class PostarCorrida {
         this.taxa = taxa;
     }
 
+   
     
     
     

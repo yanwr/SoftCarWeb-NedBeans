@@ -1,6 +1,9 @@
 
 package control;
 
+import DAO.BairroDAO;
+import DAO.EmpresaDAO;
+import DAO.PostarCorridaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -10,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Bairro;
+import model.Empresa;
 import model.PostarCorrida;
 import model.Usuario;
 
@@ -79,7 +84,30 @@ public class Oferecer extends HttpServlet {
               //
               
               // obj das sua devida classe para mandar para o banco
-                PostarCorrida pc = new PostarCorrida(user, dt, hr, hora, dia, pVai, pSair, assentos, taxa);
+                PostarCorrida pc;
+                Bairro br;
+                Empresa em;
+                
+                // verificar se as variaveis sao obj Empresa
+                if(pSair.equals("SoftPlan") || pSair.equals("Escritorio")){
+                    
+                    // empresas 
+                        EmpresaDAO empresa = new EmpresaDAO();
+                        empresa.pegarIdEmpresa(pSair);
+                    //
+                    
+                    //bairros
+                        BairroDAO bairro = new BairroDAO();
+                        bairro.pegarIdBairro(pVai);
+                    //
+                    
+                    // mandar para o banco o dados se a SAIDA for de Empresa
+                        pc = new PostarCorrida(user.getId(), dt, hr, hora, dia, bairro.getId(), empresa.getId(), assentos, taxa);
+                        PostarCorridaDAO pcDAO = new PostarCorridaDAO();
+
+                    //
+                }
+              
                 
               //
               
