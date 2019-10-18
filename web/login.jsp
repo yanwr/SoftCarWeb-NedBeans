@@ -22,7 +22,7 @@
                 <h2 class="animation a1">Bem Vindo ao SoftCar</h2>
                 <h4 class="animation a2">Logue na sua conta usando e-mail e senha</h4>
               </div>
-              <form class="form" action="login" method="post" >
+              <form class="form" action="Login" method="post" >
                 <input type="text" id="Login" name="login" class="form-field animation a3" placeholder="Email">
                 <span id="erroLogin"></span>
                 <input type="password" id="senha" name="senhaLogin" class="form-field animation a4" placeholder="Senha">
