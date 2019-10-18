@@ -1,6 +1,9 @@
 
 package control;
 
+import DAO.BairroDAO;
+import DAO.EmpresaDAO;
+import DAO.PostarCorridaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -10,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Bairro;
+import model.Empresa;
 import model.PostarCorrida;
 import model.Usuario;
 
@@ -119,10 +124,6 @@ public class Oferecer extends HttpServlet {
                         PostarCorridaDAO pcDAO = new PostarCorridaDAO();
                         pcDAO.addCorridaSaidandoBairro(pc);
                 }
-                PostarCorrida pc = new PostarCorrida(user, dt, hr, hora, dia, pVai, pSair, assentos, taxa);
-                
-              //
-              
           }
      }
     

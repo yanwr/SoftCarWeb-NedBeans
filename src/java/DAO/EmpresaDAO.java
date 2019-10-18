@@ -10,10 +10,10 @@ import java.sql.SQLException;
 public class EmpresaDAO {
     Connection com;
      private int id;
-
+    
     public EmpresaDAO() {
          com = connectionDB.getConnection();
-    }
+}
     
     public int pegarIdEmpresa(String pe){
         try{
