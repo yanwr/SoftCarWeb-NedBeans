@@ -10,7 +10,7 @@ public class Usuario {
     //
     // perfil
     private String profissao;
-    private String tempoTrablho;
+    private String tempoTrampo;
     private String telefone;
     private String fotoPerfil;
     
@@ -24,13 +24,16 @@ public class Usuario {
         this.senha = senha;
         this.nomeUser = nomeUser;
     }
+    public Usuario(String nomeUser){
+        this.nomeUser = nomeUser;
+    }
     //
     // para perfil
-    public Usuario(int id, String nomeUser, String profissao, String tempoTrablho, String telefone, String fotoPerfil) {
+    public Usuario(int id, String nomeUser, String profissao, String tempoTrampo, String telefone, String fotoPerfil) {
         this.id = id;
         this.nomeUser = nomeUser;
         this.profissao = profissao;
-        this.tempoTrablho = tempoTrablho;
+        this.tempoTrampo = tempoTrampo;
         this.telefone = telefone;
         this.fotoPerfil = fotoPerfil;
     }
@@ -84,12 +87,12 @@ public class Usuario {
         this.profissao = profissao;
     }
 
-    public String getTempoTrablho() {
-        return tempoTrablho;
+    public String getTempoTrampo() {
+        return tempoTrampo;
     }
 
-    public void setTempoTrablho(String tempoTrablho) {
-        this.tempoTrablho = tempoTrablho;
+    public void setTempoTrampo(String tempoTrampo) {
+        this.tempoTrampo = tempoTrampo;
     }
 
     public String getTelefone() {

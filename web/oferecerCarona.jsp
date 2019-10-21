@@ -20,7 +20,7 @@
      <%@include file="NavBarLogado.jsp" %>
      <!-- -------- Oferecer Carona ------------ --> 
     <div class="centro">
-        <form action="Oferecer" method="post" class="form">
+        <form action="Oferecer" class="form" method="post" >
             <h1 class="textos">De onde você vai sair ?</h1>
             <input type="search" class="form-field" id="pSair" name="pSair" placeholder="Bairro / Empresa / Escritório"/>${requestScope.erroPsair}
             <h1 class="textos">Para onde deseja ir ?</h1>
@@ -32,10 +32,10 @@
             <h1 class="textos">Quantos assentos disponíveis ?</h1>
             <input type="number" id="assentos" name="assentos" min="1" max="6" value="1" class="form-field" placeholder="Assento"/>${requestScope.erroAssentos}
             <h1 class="textos">Taxa(opcional) ?</h1>
-            <input type="number" id="taxa" name="taxa" value="0" class="form-field" placeholder="Taxa"/>
-            <input type="submit" class="form-button" onclick="" name="ENVIAR" value="ADICIONAR CARONA"/>
+            <input type="text" id="taxa" name="taxa" value="0" class="form-field" placeholder="Taxa"/>
+            <input type="submit" class="form-button" name="ENVIAR" value="ADICIONAR"/>
         </form>
     </div>
 </body>
-<script src="js/Verificacao.js"></script>
+<!--<script src="js/Verificacao.js"></script>-->
 </html>

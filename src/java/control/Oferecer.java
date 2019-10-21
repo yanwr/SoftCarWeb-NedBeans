@@ -1,9 +1,9 @@
 
 package control;
 
-import DAO.BairroDAO;
-import DAO.EmpresaDAO;
-import DAO.PostarCorridaDAO;
+
+import DAO.LocalDAO;
+import DAO.OferecerCorridaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Bairro;
-import model.Empresa;
-import model.PostarCorrida;
+import model.OferecerCorrida;
 import model.Usuario;
 
 public class Oferecer extends HttpServlet {
@@ -31,7 +29,7 @@ public class Oferecer extends HttpServlet {
             throws ServletException, IOException {
        String envio = request.getParameter("ENVIAR");
        switch(envio){
-           case "ADICIONAR CARONA": this.addCarona(request, response);
+           case "ADICIONAR": this.addCarona(request, response);
        }
     }
     
@@ -57,11 +55,11 @@ public class Oferecer extends HttpServlet {
               
               //fazer data e hora que a corrida foi postada
                 LocalDateTime minhaData = LocalDateTime.now();
-                DateTimeFormatter minhaDataFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                DateTimeFormatter minhaDataFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 String dt = minhaData.format(minhaDataFormatter);
 
                 LocalDateTime minhaHora = LocalDateTime.now();
-                DateTimeFormatter minhaHoraFormatter = DateTimeFormatter.ofPattern("HH:mm");
+                DateTimeFormatter minhaHoraFormatter = DateTimeFormatter.ofPattern("HH:MM");
                 String hr = minhaHora.format(minhaHoraFormatter);
                     
               //
@@ -84,46 +82,31 @@ public class Oferecer extends HttpServlet {
               //
               
               // obj das sua devida classe para mandar para o banco
-                PostarCorrida pc;
-                Bairro br;
-                Empresa em;
-                EmpresaDAO empresa = new EmpresaDAO();
-                BairroDAO bairro = new BairroDAO();
+                OferecerCorrida pc;
+                LocalDAO saida = new LocalDAO();
+                LocalDAO destino = new LocalDAO();
                //
-               
-               
-                // verificar se as variaveis sao obj Empresa
-                if(pSair.equals("SoftPlan") || pSair.equals("Escritorio")){
-                    
-                    // empresa
-                        empresa.pegarIdEmpresa(pSair);
-                    //
-                    
-                    //bairros
-                        bairro.pegarIdBairro(pVai);
-                    //
-                    
-                    // mandar para o banco o dados se a SAIDA for de EMPRESA
-                        pc = new PostarCorrida(user.getId(), dt, hr, hora, dia, bairro.getId(), empresa.getId(), assentos, taxa);
-                        PostarCorridaDAO pcDAO = new PostarCorridaDAO();
-                        pcDAO.addCorridaSaidandoEmpresa(pc);
 
-                    //
-                }else{
-                    
-                    // empresa
-                        empresa.pegarIdEmpresa(pVai);
-                    //
-                    
-                    //bairros
-                        bairro.pegarIdBairro(pSair);
-                    //
-                    
-                    // mandar para o banco o dados se a SAIDA for de BAIRRO
-                        pc = new PostarCorrida(user.getId(), dt, hr, hora, dia, empresa.getId(), bairro.getId(), assentos, taxa);
-                        PostarCorridaDAO pcDAO = new PostarCorridaDAO();
-                        pcDAO.addCorridaSaidandoBairro(pc);
-                }
+            //saida
+                saida.pegarIdLocal(pSair);
+           
+            //
+            //destino
+                destino.pegarIdLocal(pVai);
+              
+            //
+
+            // mandar para add ao banco 
+                pc = new OferecerCorrida(user.getId(), dt, hr, hora, dia, destino.getId(), saida.getId(), assentos, taxa);
+                OferecerCorridaDAO pcDAO = new OferecerCorridaDAO();
+                pcDAO.addCorrida(pc);
+                out.println("<script type=\"text/javascript\">");
+                out.println("alert(' Sua carona agora está no mural de horários, fique ligado no seu chat ! ')");
+                out.println("location='/SoftCarWeb/oferecerCarona.jsp';");
+                out.println("</script>");
+
+            //
+     
           }
      }
     

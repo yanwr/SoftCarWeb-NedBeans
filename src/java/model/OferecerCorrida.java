@@ -1,7 +1,7 @@
 
 package model;
 
-public class PostarCorrida {
+public class OferecerCorrida {
     private int motorista;
     private String dataCorrida;
     private String horaCorrida;
@@ -12,10 +12,10 @@ public class PostarCorrida {
     private int assentos;
     private float taxa;
 
-    public PostarCorrida() {
+    public OferecerCorrida() {
     }
 
-    public PostarCorrida(int motorista, String dataCorrida, String horaCorrida, String hrSaida, String dtSaida, int destino, int saida, int assentos, float taxa) {
+    public OferecerCorrida(int motorista, String dataCorrida, String horaCorrida, String hrSaida, String dtSaida, int destino, int saida, int assentos, float taxa) {
         this.motorista = motorista;
         this.dataCorrida = dataCorrida;
         this.horaCorrida = horaCorrida;
@@ -98,4 +98,10 @@ public class PostarCorrida {
     public void setTaxa(float taxa) {
         this.taxa = taxa;
     } 
+
+    @Override
+    public String toString() {
+        return "PostarCorrida{" + "motorista=" + motorista + ", dataCorrida=" + dataCorrida + ", horaCorrida=" + horaCorrida + ", hrSaida=" + hrSaida + ", dtSaida=" + dtSaida + ", destino=" + destino + ", saida=" + saida + ", assentos=" + assentos + ", taxa=" + taxa + '}';
+    }
+    
 }

@@ -5,7 +5,7 @@
     margin: 0;
   }
   
-  .wrap {
+   .wrap {
     width: 100%;
     border: 1px solid #ccc;
     height: 100%;
@@ -115,9 +115,9 @@
   }
   .dadosCorrida{
       padding-top: 10px;
-      display: inline-block;
+      display: grid;
       color: #069;
-      background-color: #eee
+      background-color: #eee;
   }
   
   .dCorrida{
@@ -134,15 +134,26 @@
   }
   .dCorrida2{
       list-style: none;
+      padding-left: 5px;
+  }
+  .dCorrida3{
+      list-style: none;
+      padding-left: 5px;
+      float: center;
   }
   .dCorrida2 li{
-      float: left;
-      padding: 10px 20px 5px 10px;
+      padding: 10px 25px 0px 5px;
+      display: inline-flex;
   }
-  #nomeSaida, #nomePara, #dataCorrida, #horaCorrida, #assentosCorrida{
-      font-size: 17px;
+  .dCorrida3 li{
+    padding: 10px 68px 5px 5px;
+    display: inline-flex;
+}
+  #nomeSaida, #nomePara, #dataCorrida, #horaCorrida, #assentosCorrida, #taxaCorrida{
+      font-size: 15px;
+      padding-left: 3px;
       font-weight: normal;
   }
   .saida, .para, .data, .hora, .assentos{
-      font-size: 18px;
+      font-size: 15px;
   }

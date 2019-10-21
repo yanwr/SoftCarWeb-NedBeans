@@ -12,6 +12,10 @@
         <servlet-name>Cadastro</servlet-name>
         <servlet-class>control.Cadastro</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Solicitar</servlet-name>
+        <servlet-class>control.Solicitar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Oferecer</servlet-name>
         <url-pattern>/Oferecer</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>Cadastro</servlet-name>
         <url-pattern>/Cadastro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Solicitar</servlet-name>
+        <url-pattern>/Solicitar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

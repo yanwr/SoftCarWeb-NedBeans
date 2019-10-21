@@ -7,35 +7,32 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class EmpresaDAO {
-    Connection com;
-     private int id;
+public class LocalDAO {
+    Connection con;
+    private int id;
     
-    public EmpresaDAO() {
-         com = connectionDB.getConnection();
-}
+    public LocalDAO(){
+        con = connectionDB.getConnection();
+    }
     
-    public int pegarIdEmpresa(String pe){
+    public int pegarIdLocal(String pe){
         try{
             
-            String sql = "select cod_empresa from empresa where nome ='"+pe+"'";
-            PreparedStatement ps = com.prepareStatement(sql);
+            String sql = "select cod_local from local where nome ='"+pe+"'";
+            PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);
           
             while(rs.next()){
-                id = rs.getInt("cod_empresa");
+                id = rs.getInt("cod_local");
             }
             
             ps.close();
             rs.close();
-            com.close();
+            con.close();
         }catch(SQLException ex){
-                    System.out.println(ex);
+               System.out.println(ex);
         }
-          
-         return id;
-         
-         
+         return id; 
     }
 
     public int getId() {
@@ -48,8 +45,9 @@ public class EmpresaDAO {
 
     @Override
     public String toString() {
-        return "EmpresaDAO{" + "id=" + id + '}';
+        return "LocalDAO{" + "id=" + id + '}';
     }
+    
     
     
 }

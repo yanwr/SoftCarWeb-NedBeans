@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Usuario;
 
 public class Cadastro extends HttpServlet {
@@ -29,6 +30,9 @@ public class Cadastro extends HttpServlet {
 
      private void cadastroUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
           try (PrintWriter out = response.getWriter()) {
+              // Session 
+                     HttpSession session = request.getSession();
+                   //
               
             // pegando dados que o usuario digitar no site
             String email = request.getParameter("email");
@@ -63,8 +67,12 @@ public class Cadastro extends HttpServlet {
             if(senha.equals(confsenha)){
                 // obj das suas devidas classes para mandar ao banco 
                 Usuario user = new Usuario(email, senha, nomeUser);
+                Usuario soNome = new Usuario(nomeUser);
                 cadastroDAO c = new cadastroDAO();
                 c.inserirUser(user);
+                //
+                //mandar para session o nome de user 
+                    session.setAttribute("usuario", soNome);
                 //
                 // aviso se foi realizado ou nao com sucesss
                 out.println("<script type=\"text/javascript\">");

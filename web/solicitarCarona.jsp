@@ -22,12 +22,12 @@
      <!-- -------- Solicitar Carona ------------ --> 
     <div class="wrap" id="wrap">
         
-        <div class="search">
+        <form action="" method="post" class="search">
             <h1 class="textos">Para onde você vai ?</h1>
-            <input type="search" placeholder="Bairro / Empresa / Escritório" />
+            <input type="search" name="Pvai" placeholder="Bairro / Empresa / Escritório" />
             <h1 class="textos">De onde você sai ?</h1>
-            <input type="search" placeholder="Bairro / Empresa / Escritório" />
-        </div>
+            <input type="search" name="Psai" placeholder="Bairro / Empresa / Escritório" />
+        </form>
         
         <div class="top">
           
@@ -58,9 +58,14 @@
                         <li class="hora">
                             Hora: <p id="horaCorrida">21:22</p>
                         </li>
+                    </ul>
+                    <ul class="dCorrida3">
                         <li class="assentos">
                             Assentos: <p id="assentosCorrida">6</p>
                         </li>    
+                        <li class="assentos">
+                                Taxa: <p id="taxaCorrida">6</p>
+                        </li>  
                     </ul>
                 </div>
             </div>

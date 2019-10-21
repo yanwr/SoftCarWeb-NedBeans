@@ -34,7 +34,7 @@
                   <p id="nomeUser" class="textosSeg" name="nom">${sessionScope.usuario.nomeUser}</p>
               </div>
                 <div id="btnEditUser" class="btns">
-                    <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
+                    <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
       
               <div class="dadosProf">
@@ -42,7 +42,7 @@
                   <p id="nomeProf" class="textosSeg">${sessionScope.usuario.profissao}</p>
               </div>
               <div id="btnEditProf" class="btns">
-                      <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
+                      <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
       
               <div class="dadosTempo">
@@ -50,15 +50,15 @@
                       <p id="nomeTempo" class="textosSeg">${sessionScope.usuario.tempoTrampo}</p>
               </div>
               <div id="btnEditTemp" class="btns">
-                      <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
+                      <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
       
               <div class="dadosCont">
                   <h1 class="textosMain">Contato</h1>
-                  <p id="nomeCont" class="textosSeg">${sessionScope.usuario.tel}</p>
+                  <p id="nomeCont" class="textosSeg">${sessionScope.usuario.telefone}</p>
               </div>
               <div id="btnEditCont" class="btns">
-                 <a onclick="lala()"><i class="fas fa-edit" style="color:coral;"></i></a>
+                 <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
             </div>
         </form>
