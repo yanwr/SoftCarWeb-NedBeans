@@ -12,32 +12,32 @@ public class SolicitarCaronaDAO {
     
    Connection con;
    private SolicitarCarona sc = new SolicitarCarona();
-   private SolicitarCarona sc2 = new SolicitarCarona();
-   
+    
    public SolicitarCaronaDAO(){
        con = connectionDB.getConnection();
    }
    // para ter sempre todas as caronas amostrar sem procurar nenhuma especifica 
     public SolicitarCarona pegarTodasCaronas(){
         try{
-            String sql = "select cod_motorista, destino, saida, data_postagem, hora_postagem, data_saida, "
-                    + "hora_saida, assentos, taxa from viagem";
+            String sql = "select u.nome as cod_motorista, s.foto_perfil as ft_Perfil, ld.nome as destino, ls.nome as saida,"
+                    + " v.data_postagem, v.hora_postagem, v.data_saida, v.hora_saida, v.assentos, v.taxa from viagem v "
+                    + "INNER JOIN usuario u ON u.cod_user = v.cod_motorista INNER JOIN local ld ON ld.cod_local = v.destino "
+                    + "INNER JOIN local ls ON ls.cod_local = v.saida INNER JOIN usuario s ON s.cod_user = v.cod_motorista;";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);
-            // obj das caronas 
-             
-            //
+           
             while(rs.next()){
                 
-                sc2.setMotorista(rs.getInt("cod_motorista"));
-                sc2.setDestino(rs.getInt("destino"));
-                sc2.setSaida(rs.getInt("saida"));
-                sc2.setDataPostagem(rs.getString("data_postagem"));
-                sc2.setHoraPostagem(rs.getString("hora_postagem"));
-                sc2.setDataSaida(rs.getString("data_saida"));
-                sc2.setHoraSaida(rs.getString("hora_saida"));
-                sc2.setAssentos(rs.getInt("assentos"));
-                sc2.setTaxa(rs.getFloat("taxa"));            
+                sc.setMotorista(rs.getString("cod_motorista"));
+                sc.setDestino(rs.getString("destino"));
+                sc.setSaida(rs.getString("saida"));
+                sc.setFtPerfil(rs.getString("ft_Perfil"));
+                sc.setDataPostagem(rs.getString("data_postagem"));
+                sc.setHoraPostagem(rs.getString("hora_postagem"));
+                sc.setDataSaida(rs.getString("data_saida"));
+                sc.setHoraSaida(rs.getString("hora_saida"));
+                sc.setAssentos(rs.getInt("assentos"));
+                sc.setTaxa(rs.getFloat("taxa"));            
             }
             
             ps.close();
@@ -47,16 +47,19 @@ public class SolicitarCaronaDAO {
         }catch(SQLException ex){
             System.out.println(ex);
         }
-        return sc2;
+        return sc;
    }
-   //
+  
    
    // para pegar as carona especificas da procura
     public SolicitarCarona pegarTodasCaronasEspecificas(int destino, int saida){
        
         try{
-            String sql = "select cod_motorista, destino, saida, data_postagem, hora_postagem, data_saida, "
-                    + "hora_saida, assentos, taxa from viagem where destino = '"+destino+"' and saida = '"+saida+"'";
+            String sql = "select u.nome as cod_motorista, s.foto_perfil as ft_Perfil, ld.nome as destino, ls.nome as saida,"
+                    + " v.data_postagem, v.hora_postagem, v.data_saida, v.hora_saida, v.assentos, v.taxa from viagem v "
+                    + "INNER JOIN usuario u ON u.cod_user = v.cod_motorista INNER JOIN local ld ON ld.cod_local = v.destino "
+                    + "INNER JOIN local ls ON ls.cod_local = v.saida INNER JOIN usuario s ON s.cod_user = v.cod_motorista"
+                    + " where destino = '"+destino+"' and saida = '"+saida+"'";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);
             // obj das caronas 
@@ -64,9 +67,10 @@ public class SolicitarCaronaDAO {
             //
             while(rs.next()){
                 
-                sc.setMotorista(rs.getInt("cod_motorista"));
-                sc.setDestino(rs.getInt("destino"));
-                sc.setSaida(rs.getInt("saida"));
+                sc.setMotorista(rs.getString("cod_motorista"));
+                sc.setDestino(rs.getString("destino"));
+                sc.setSaida(rs.getString("saida"));
+                sc.setFtPerfil(rs.getString("ft_Perfil"));
                 sc.setDataPostagem(rs.getString("data_postagem"));
                 sc.setHoraPostagem(rs.getString("hora_postagem"));
                 sc.setDataSaida(rs.getString("data_saida"));
@@ -84,5 +88,4 @@ public class SolicitarCaronaDAO {
         }
        return sc;
     }
-   //
 }

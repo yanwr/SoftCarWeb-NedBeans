@@ -3,9 +3,10 @@ package model;
 
 public class SolicitarCarona {
     
-    private int motorista;
-    private int destino;
-    private int saida;
+    private String motorista;
+    private String destino;
+    private String saida;
+    private String ftPerfil;
     private String dataPostagem;
     private String horaPostagem;
     private String dataSaida;
@@ -14,13 +15,13 @@ public class SolicitarCarona {
     private float taxa;
 
     public SolicitarCarona() {
-        
     }
 
-    public SolicitarCarona(int motorista, int destino, int saida, String dataPostagem, String horaPostagem, String dataSaida, String horaSaida, int assentos, float taxa) {
+    public SolicitarCarona(String motorista, String destino, String saida, String ftPerfil, String dataPostagem, String horaPostagem, String dataSaida, String horaSaida, int assentos, float taxa) {
         this.motorista = motorista;
         this.destino = destino;
         this.saida = saida;
+        this.ftPerfil = ftPerfil;
         this.dataPostagem = dataPostagem;
         this.horaPostagem = horaPostagem;
         this.dataSaida = dataSaida;
@@ -29,28 +30,36 @@ public class SolicitarCarona {
         this.taxa = taxa;
     }
 
-    public int getMotorista() {
+    public String getMotorista() {
         return motorista;
     }
 
-    public void setMotorista(int motorista) {
+    public void setMotorista(String motorista) {
         this.motorista = motorista;
     }
 
-    public int getDestino() {
+    public String getDestino() {
         return destino;
     }
 
-    public void setDestino(int destino) {
+    public void setDestino(String destino) {
         this.destino = destino;
     }
 
-    public int getSaida() {
+    public String getSaida() {
         return saida;
     }
 
-    public void setSaida(int saida) {
+    public void setSaida(String saida) {
         this.saida = saida;
+    }
+
+    public String getFtPerfil() {
+        return ftPerfil;
+    }
+
+    public void setFtPerfil(String ftPerfil) {
+        this.ftPerfil = ftPerfil;
     }
 
     public String getDataPostagem() {
@@ -103,6 +112,8 @@ public class SolicitarCarona {
 
     @Override
     public String toString() {
-        return "SolicitarCarona{" + "motorista=" + motorista + ", destino=" + destino + ", saida=" + saida + ", dataPostagem=" + dataPostagem + ", horaPostagem=" + horaPostagem + ", dataSaida=" + dataSaida + ", horaSaida=" + horaSaida + ", assentos=" + assentos + ", taxa=" + taxa + '}';
+        return "SolicitarCarona{" + "motorista=" + motorista + ", destino=" + destino + ", saida=" + saida + ", ftPerfil=" + ftPerfil + ", dataPostagem=" + dataPostagem + ", horaPostagem=" + horaPostagem + ", dataSaida=" + dataSaida + ", horaSaida=" + horaSaida + ", assentos=" + assentos + ", taxa=" + taxa + '}';
     }
-}
+
+    
+  }
