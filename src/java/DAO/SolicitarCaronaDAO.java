@@ -13,7 +13,7 @@ import model.SolicitarCarona;
 public class SolicitarCaronaDAO {
     
    Connection con;
-   private SolicitarCarona sc = new SolicitarCarona();
+   private SolicitarCarona sc;
    private List<SolicitarCarona> list = new ArrayList();
     
    public SolicitarCaronaDAO(){
@@ -30,6 +30,7 @@ public class SolicitarCaronaDAO {
             ResultSet rs = ps.executeQuery(sql);
            
             while(rs.next()){
+                sc = new SolicitarCarona();
                 
                 sc.setMotorista(rs.getString("cod_motorista"));
                 sc.setDestino(rs.getString("destino"));
@@ -57,7 +58,7 @@ public class SolicitarCaronaDAO {
   
    
    // para pegar as carona especificas da procura
-    public SolicitarCarona pegarTodasCaronasEspecificas(int destino, int saida){
+    public List<SolicitarCarona> pegarTodasCaronasEspecificas(int destino, int saida){
        
         try{
             String sql = "select u.nome as cod_motorista, s.foto_perfil as ft_Perfil, ld.nome as destino, ls.nome as saida,"
@@ -72,6 +73,8 @@ public class SolicitarCaronaDAO {
             //
             while(rs.next()){
                 
+                sc = new SolicitarCarona();
+                
                 sc.setMotorista(rs.getString("cod_motorista"));
                 sc.setDestino(rs.getString("destino"));
                 sc.setSaida(rs.getString("saida"));
@@ -81,7 +84,9 @@ public class SolicitarCaronaDAO {
                 sc.setDataSaida(rs.getString("data_saida"));
                 sc.setHoraSaida(rs.getString("hora_saida"));
                 sc.setAssentos(rs.getInt("assentos"));
-                sc.setTaxa(rs.getFloat("taxa"));            
+                sc.setTaxa(rs.getFloat("taxa"));  
+                
+                list.add(sc);
             }
             
             ps.close();
@@ -91,7 +96,7 @@ public class SolicitarCaronaDAO {
         }catch(SQLException ex){
             System.out.println(ex);
         }
-       return sc;
+       return list;
     }
 
     @Override

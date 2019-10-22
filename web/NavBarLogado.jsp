@@ -282,7 +282,7 @@
                         </ul>
                     </li>
                     
-                    <li class="liNav"><a href="solicitarCarona.jsp" class="aNav"><i class="fas fa-search"></i>Solicitar Carona</a></li>
+                    <li class="liNav"><a href="Solicitar?ENVIAR=Solicitar" class="aNav" name="ENVIAR" value="Solicitar"><i class="fas fa-search"></i>Solicitar Carona</a></li>
                     <li class="liNav"><a href="oferecerCarona.jsp" class="aNav"><i class="fas fa-plus-circle"></i>Oferecer Carona</a></li>
                 </ul>
             </nav>

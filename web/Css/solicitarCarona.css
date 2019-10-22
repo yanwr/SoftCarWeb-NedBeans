@@ -47,7 +47,7 @@
     border-color: #564a4a;
     border-radius: 12px;
     outline: 0;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
   }
 
@@ -77,10 +77,19 @@
     display: inline-block;
     width: 300px;
     background: #eee;
-    margin: 25px 0 20px 0;
+    margin: 70px 0 20px 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
   .card:hover{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+  .btnBuscar{
+    background-color: #203364;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    width:300px;
+  }
+  .btnBuscar:hover{
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   }
   /* ---------- Img User ----------*/

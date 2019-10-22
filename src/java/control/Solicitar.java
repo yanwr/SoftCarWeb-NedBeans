@@ -19,25 +19,43 @@ public class Solicitar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+       String envio = request.getParameter("ENVIAR");
+       switch(envio){
+           case "Solicitar": this.buscarTodas(request, response);
+       }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String envio = request.getParameter("ENVIAR");
+        String envio = request.getParameter("ENVIAR");
        switch(envio){
-           case "BUSCAR": this.buscar(request, response);
+           case "Buscar": this.buscarEspecifica(request, response);
        }
     }
 
-   private void buscar(HttpServletRequest request, HttpServletResponse response) throws IOException{
+   private void buscarTodas(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
           try (PrintWriter out = response.getWriter()) {
-              
-              // Session 
-                HttpSession session = request.getSession();
+
+              // pegar dados do banco de TODAS caronas
+                SolicitarCaronaDAO scTodos = new SolicitarCaronaDAO();
               //
-            
+              
+              //criar o obj de todas caronas como uma lista
+                List<SolicitarCarona> lista = new ArrayList();
+                lista = scTodos.pegarTodasCaronas();
+              //
+                
+              // madar para session
+                request.setAttribute("TC", lista);
+                request.getRequestDispatcher("/solicitarCarona.jsp").forward(request, response);
+              //
+          }
+   }
+   
+   private void buscarEspecifica(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+          try (PrintWriter out = response.getWriter()) {
+               
               //pegando dados da pagina
                 String Pvai = request.getParameter("Pvai");
                 String Psai = request.getParameter("Psai");
@@ -52,23 +70,21 @@ public class Solicitar extends HttpServlet {
               //
               
               // pegar dados do banco de TODAS caronas
-                SolicitarCaronaDAO scTodos = new SolicitarCaronaDAO();
-                scTodos.pegarTodasCaronas();
-                
-                // madar para session
-                session.setAttribute("TC", scTodos.pegarTodasCaronas());
-                //
-                List<SolicitarCarona> lista = new ArrayList();
-                lista = scTodos.pegarTodasCaronas();
-                
-                 out.println("<script type=\"text/javascript\">");
-                out.println("console.log("+scTodos.toString()+")");
-                out.println("location='/SoftCarWeb/socilitarCarona.jsp';");
-                out.println("</script>");
-                
+                SolicitarCaronaDAO scTodosE = new SolicitarCaronaDAO();
               //
+              
+              //criar o obj de todas caronas como uma lista
+                List<SolicitarCarona> listaE = new ArrayList();
+                listaE = scTodosE.pegarTodasCaronasEspecificas(destino.getId(), saida.getId());
+              //
+                
+              // madar para pg por request
+                request.setAttribute("TCEspecifica", listaE);
+                request.getRequestDispatcher("/solicitarCarona.jsp").forward(request, response);
+              //    
           }
-   }
+    }
+   
     @Override
     public String getServletInfo() {
         return "Short description";
