@@ -6,18 +6,21 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.SolicitarCarona;
 
 public class SolicitarCaronaDAO {
     
    Connection con;
    private SolicitarCarona sc = new SolicitarCarona();
+   private List<SolicitarCarona> list = new ArrayList();
     
    public SolicitarCaronaDAO(){
        con = connectionDB.getConnection();
    }
    // para ter sempre todas as caronas amostrar sem procurar nenhuma especifica 
-    public SolicitarCarona pegarTodasCaronas(){
+    public List<SolicitarCarona> pegarTodasCaronas(){
         try{
             String sql = "select u.nome as cod_motorista, s.foto_perfil as ft_Perfil, ld.nome as destino, ls.nome as saida,"
                     + " v.data_postagem, v.hora_postagem, v.data_saida, v.hora_saida, v.assentos, v.taxa from viagem v "
@@ -37,9 +40,11 @@ public class SolicitarCaronaDAO {
                 sc.setDataSaida(rs.getString("data_saida"));
                 sc.setHoraSaida(rs.getString("hora_saida"));
                 sc.setAssentos(rs.getInt("assentos"));
-                sc.setTaxa(rs.getFloat("taxa"));            
+                sc.setTaxa(rs.getFloat("taxa")); 
+                
+                list.add(sc);
             }
-            
+           
             ps.close();
             rs.close();
             con.close();
@@ -47,7 +52,7 @@ public class SolicitarCaronaDAO {
         }catch(SQLException ex){
             System.out.println(ex);
         }
-        return sc;
+        return list;
    }
   
    
@@ -88,4 +93,10 @@ public class SolicitarCaronaDAO {
         }
        return sc;
     }
+
+    @Override
+    public String toString() {
+        return "SolicitarCaronaDAO{" + "sc=" + sc + ", list=" + list + '}';
+    }
+    
 }
