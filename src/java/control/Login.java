@@ -1,6 +1,7 @@
 
 package control;
 
+import DAO.LoginDAO;
 import DB.connectionDB;
 
 
@@ -46,65 +47,34 @@ public class Login extends HttpServlet {
                    // pegar dados da pagina 
                    String email = request.getParameter("login");
                    String senhaLogin = request.getParameter("senhaLogin");
- 
+                  //
+                    
+                  // mandar para o banco de dados 
+                     Usuario user = new Usuario(email, senhaLogin);
+                     LoginDAO l = new LoginDAO();
+                     Usuario u = l.logar(user);
                    //
                    
-                   // conexao banco
-                   Connection con;
-                   con = connectionDB.getConnection();
-                 
-                   String sql = "select*from usuario where email='"+email+"'";
-                   PreparedStatement ps = con.prepareStatement(sql);
-                   ResultSet rs = ps.executeQuery(sql);
                    //
-                   
-                   // variaveis para pegar os dados do banco
-                   String s = null;
-                   int id = 0;
-                   String nomeUser = null;
-                   String profissao = null;
-                   String tempoTrampo = null;
-                   String tel = null;
-                   String fotoPerfil = null;
-                   //
-                   
-                   while(rs.next()){
-                       
-                    id = rs.getInt("cod_user");
-                    s = rs.getString("senha");
-                    nomeUser = rs.getString("nome");
-                    profissao = rs.getString("profissao");
-                    tempoTrampo = rs.getString("tempo_trabalho");
-                    tel = rs.getString("numero_cel");
-                    fotoPerfil = rs.getString("foto_perfil");
-                     
-                   if(s.equals(senhaLogin)){
-                       // Mandar usuario para session 
-                       Usuario user = new Usuario(id, nomeUser, profissao, tempoTrampo, tel, fotoPerfil);
-                        session.setAttribute("usuario", user);
+                   if(u.isLogado()){
+                      // Mandar usuario para session 
+                        session.setAttribute("usuario", u);
 
-                        // mandar para homeLogado 
-                       request.getRequestDispatcher("/homeDepoisDeLogar.jsp").forward(request, response);
-                       
-                        
+                      // mandar para homeLogado 
+                       request.getRequestDispatcher("/homeDepoisDeLogar.jsp").forward(request, response);   
                    }else{
                             out.println("<script type=\"text/javascript\">");
                             out.println("alert('Senha incorreta ou Softplayer não cadastrado !! ')");
                             out.println("location='/SoftCarWeb/login.jsp';");
                             out.println("</script>");
                      }
-                  }
-                   // fechando connection 
-                   ps.close();
-                   rs.close();
-                   con.close();
-                   //
+                 
                } catch (SQLException ex) {
                    System.out.println(ex);
                }
-        }
-        
+        }     
     }
+     
     @Override
     public String getServletInfo() {
         return "Short description";
