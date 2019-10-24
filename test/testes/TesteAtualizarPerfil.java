@@ -6,7 +6,7 @@
 package testes;
 
 import DAO.LoginDAO;
-import DAO.cadastroDAO;
+import DAO.PerfilDAO;
 import DB.connectionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,31 +20,31 @@ import static org.junit.Assert.*;
  *
  * @author Aluno
  */
-public class TesteCadastroLogin {   
+public class TesteAtualizarPerfil {
     
     Usuario user = new Usuario("nicolas@gmail.com", "coxinha123", "Nicolas Ouriques");
     
     @Test
-    public void TesteCadastro() {
+    public void TesteAtualizarPerfil() throws SQLException {
         
-        cadastroDAO c = new cadastroDAO();
-        c.inserirUser(user);
-        
-        System.out.println("Cadastrado com Sucesso");    
-        
-    }
-    
-    @Test
-    public void TesteLogin() throws SQLException{
-
         Usuario logando = new Usuario(user.getEmail(), user.getSenha());
         
         LoginDAO l = new LoginDAO();
-        Usuario u = l.logar(logando);
-
-        if(u.isLogado()){
-          System.out.println("Logado com sucesso senhor(a) "+u.getNomeUser());     
-        }
+        Usuario userP = l.logar(logando);
+        
+        userP.setProfissao("Programador");
+        userP.setTelefone("8-8888-8888");
+        userP.setFotoPerfil("fotoPerfil");
+        userP.setTempoTrampo("2009-09-09");
+        userP.setNomeUser("João Victor Dutra");
+        
+        PerfilDAO p = new PerfilDAO();
+        p.setPerfilDados(userP);
+        
+        userP = p.getDadosAtualizados(userP);
+        
+        System.out.println(userP.toString());  
         
     }
+    
 }
