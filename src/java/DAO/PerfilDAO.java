@@ -24,7 +24,7 @@ public class PerfilDAO {
     
     }
     //Atualizar os dados da session
-    public Usuario getDadosAtualizados(Usuario user) throws SQLException{
+    public Usuario getDados(Usuario user) throws SQLException{
     
         String sql = "select*from usuario where cod_user='"+user.getId()+"'";
         PreparedStatement ps = con.prepareStatement(sql);
@@ -61,7 +61,7 @@ public class PerfilDAO {
         return usuario;
     }
     
-    public void setPerfilDados(Usuario user){
+    public void setDados(Usuario user){
         try {
             
             String sql = "update usuario set profissao ='"+user.getProfissao()+"', tempo_trabalho ='"+user.getTempoTrampo()+"'"

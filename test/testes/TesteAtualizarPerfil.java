@@ -39,9 +39,9 @@ public class TesteAtualizarPerfil {
         userP.setNomeUser("João Victor Dutra");
         
         PerfilDAO p = new PerfilDAO();
-        p.setPerfilDados(userP);
+        p.setDados(userP);
         
-        userP = p.getDadosAtualizados(userP);
+        userP = p.getDados(userP);
         
         System.out.println(userP.toString());  
         

@@ -29,9 +29,9 @@ public class TesteDadosPerfil {
         Usuario userP = l.logar(logando);
         
         PerfilDAO p = new PerfilDAO();
-        p.setPerfilDados(userP);
+        p.setDados(userP);
         
-        userP = p.getDadosAtualizados(userP);
+        userP = p.getDados(userP);
         
         System.out.println(userP.toString());  
         
