@@ -14,7 +14,7 @@ public class cadastroDAO {
          con = connectionDB.getConnection();
     }
     
-    public void inserirUser(Usuario user){
+    public boolean inserirUser(Usuario user){
         try {
             
             String sql = "insert into usuario(email, senha, nome)" + " values(?,?,?)";
@@ -29,6 +29,8 @@ public class cadastroDAO {
             
         } catch (SQLException e) {
             System.out.println(e);
+            return false;
         }
+        return true;
     }
 }

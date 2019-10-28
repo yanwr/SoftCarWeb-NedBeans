@@ -28,9 +28,11 @@ public class TesteCadastro {
     public void TesteCadastro() {
         
         cadastroDAO c = new cadastroDAO();
-        c.inserirUser(user);
-        
-        System.out.println("Cadastrado com Sucesso");    
+        boolean e = c.inserirUser(user);
+        if(e)
+            System.out.println("Sucesso !");
+        else
+            System.out.println("Erro !");
         
     }
 
