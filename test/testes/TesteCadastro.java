@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
  */
 public class TesteCadastro {   
     
-    Usuario user = new Usuario("nicolas@gmail.com", "coxinha123", "Nicolas Ouriques");
+    Usuario user = new Usuario("teste@gmail.com", "123345", "Paulo Testando");
     
     @Test
     public void TesteCadastro() {
