@@ -164,11 +164,11 @@
                     </ul>
                 </div>
                 <!-- parte para escrever a mensagem -->
-                <div class="areaSendMensagem">
+                <form class="areaSendMensagem">
                     <textarea name="textArea" id="textArea"  placeholder="Escreva a Mensagem: "></textarea>
                     <!-- Colocar algum icon para arquivos -->
-                    <button class="btnSend">ENVIAR</button>
-                </div>
+                    <input type="submit" name="ENVIAR" value="ENVIAR" class="btnSend"/>
+                </from>
             </div>      
     </div>
 </body>

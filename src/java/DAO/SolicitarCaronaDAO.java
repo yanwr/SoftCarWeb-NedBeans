@@ -22,10 +22,10 @@ public class SolicitarCaronaDAO {
    // para ter sempre todas as caronas amostrar sem procurar nenhuma especifica 
     public List<SolicitarCarona> pegarTodasCaronas(){
         try{
-            String sql = "select u.nome as cod_motorista, s.foto_perfil as ft_Perfil, ld.nome as destino, ls.nome as saida,"
-                    + " v.data_postagem, v.hora_postagem, v.data_saida, v.hora_saida, v.assentos, v.taxa from viagem v "
-                    + "INNER JOIN usuario u ON u.cod_user = v.cod_motorista INNER JOIN local ld ON ld.cod_local = v.destino "
-                    + "INNER JOIN local ls ON ls.cod_local = v.saida INNER JOIN usuario s ON s.cod_user = v.cod_motorista;";
+            String sql = "select u.nome as cod_motorista, u.foto_perfil as ft_Perfil, ld.nome as destino, ls.nome as saida, v.data_postagem, "
+                    + "v.hora_postagem, v.data_saida, v.hora_saida, v.assentos, v.taxa from viagem v "
+                    + "INNER JOIN usuario u ON u.cod_user = v.cod_motorista INNER JOIN local ld ON ld.cod_local = v.destino"
+                    + " INNER JOIN local ls ON ls.cod_local = v.saida";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);
            
@@ -61,10 +61,10 @@ public class SolicitarCaronaDAO {
     public List<SolicitarCarona> pegarTodasCaronasEspecificas(int destino, int saida){
        
         try{
-            String sql = "select u.nome as cod_motorista, s.foto_perfil as ft_Perfil, ld.nome as destino, ls.nome as saida,"
-                    + " v.data_postagem, v.hora_postagem, v.data_saida, v.hora_saida, v.assentos, v.taxa from viagem v "
+            String sql = "select u.nome as cod_motorista, u.foto_perfil as ft_Perfil, ld.nome as destino, ls.nome as saida, "
+                    + "v.data_postagem, v.hora_postagem, v.data_saida, v.hora_saida, v.assentos, v.taxa from viagem v "
                     + "INNER JOIN usuario u ON u.cod_user = v.cod_motorista INNER JOIN local ld ON ld.cod_local = v.destino "
-                    + "INNER JOIN local ls ON ls.cod_local = v.saida INNER JOIN usuario s ON s.cod_user = v.cod_motorista"
+                    + "INNER JOIN local ls ON ls.cod_local = v.saida"
                     + " where destino = '"+destino+"' and saida = '"+saida+"'";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);

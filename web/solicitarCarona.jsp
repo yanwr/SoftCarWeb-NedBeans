@@ -37,8 +37,9 @@
         
         <div class="top">
           
-        </div>        
-
+        </div>      
+        
+        <main>
             <%
              List<SolicitarCarona> listE = (List) request.getAttribute("TCEspecifica");
              

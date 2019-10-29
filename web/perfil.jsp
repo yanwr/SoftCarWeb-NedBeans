@@ -12,6 +12,25 @@
         <link rel="shortcut icon" href="img/softcar-blue-icon.png" type="image/x-png">
         <link rel='stylesheet' type='text/css' media='screen' href='Css/perfil.css'>
         <title>SoftCar - Perfil</title>
+        <script>
+            
+            function readURL(input) {
+                var avatar = document.getElementById("avatar");
+                
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        avatar.src = e.target.result;
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            
+            
+            
+        </script>
     </head>
     <body>
         
@@ -20,11 +39,11 @@
     <div id="modal-wrapper" class="modal">
         <form class="modal-content animate" action="">
             <div class="imgcontainer">
-             
-              <div  class="avatar" id="" style="background-image: url(img/1.png)"></div>
+                    
+              <div class="avatar" ><img id="avatar" src="img/1.png"></div>
               <div id="btnEditImg" class="btnEditImg">
                   <label id="fotoUser" for="trocaFoto"><i class="fas fa-edit" style="color:coral;"></i></label>
-                  <input type="file" id="trocaFoto">
+                  <input type='file' id="trocaFoto" onchange="readURL(this);">
               </div>
              </div>
       
