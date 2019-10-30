@@ -16,6 +16,10 @@
         <servlet-name>Solicitar</servlet-name>
         <servlet-class>control.Solicitar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Mensagem</servlet-name>
+        <servlet-class>control.Mensagem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Oferecer</servlet-name>
         <url-pattern>/Oferecer</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>Solicitar</servlet-name>
         <url-pattern>/Solicitar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Mensagem</servlet-name>
+        <url-pattern>/Mensagem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -33,6 +33,7 @@
             <h1 class="textos">De onde você sai ?</h1>
             <input type="search"  name="Psai" placeholder="Bairro / Empresa / Escritório" />
             <input type="submit" class="btnBuscar" value="Buscar" name="ENVIAR"/>
+           
         </form>
         
         <div class="top">
@@ -46,7 +47,9 @@
              if(listE != null && !listE.isEmpty()){
                  
                  for( SolicitarCarona w : listE){
-                        out.println("<a class='card'>");
+                    
+                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM & Cod="+w.getCodViagem()+"' class='card'>");
+                          out.println("<input type='hidden' name='codViagem' value="+w.getCodViagem()+" />");
                           out.println("<div class='hrPost'>"+w.getDataPostagem()+""+w.getHoraPostagem()+"</div>");
 
                           out.println("<div class='perfilUser'>");
@@ -92,8 +95,9 @@
                 List<SolicitarCarona> list = (List) request.getAttribute("TC");
               
                 for( SolicitarCarona w : list){
-                        out.println("<a href='Mensagem?cod="+w.getCodViagem()+"' class='card'>");
-                          out.println("<div class='hrPost'>"+w.getDataPostagem()+""+w.getHoraPostagem()+"</div>");
+                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+w.getCodViagem()+"' class='card'>");
+                          out.println("<input type='hidden' name='codViagem' value="+w.getCodViagem()+" />");
+                          out.println("<div class='hrPost'>"+w.getDataPostagem()+" "+w.getHoraPostagem()+"</div>");
 
                           out.println("<div class='perfilUser'>");
                               out.println("<div class='nomeUser'>");
