@@ -3,6 +3,7 @@ package model;
 
 public class SolicitarCarona {
     
+    private int codViagem;
     private String motorista;
     private String destino;
     private String saida;
@@ -17,7 +18,8 @@ public class SolicitarCarona {
     public SolicitarCarona() {
     }
 
-    public SolicitarCarona(String motorista, String destino, String saida, String ftPerfil, String dataPostagem, String horaPostagem, String dataSaida, String horaSaida, int assentos, float taxa) {
+    public SolicitarCarona(int codViagem,String motorista, String destino, String saida, String ftPerfil, String dataPostagem, String horaPostagem, String dataSaida, String horaSaida, int assentos, float taxa) {
+        this.codViagem = codViagem;
         this.motorista = motorista;
         this.destino = destino;
         this.saida = saida;
@@ -29,6 +31,15 @@ public class SolicitarCarona {
         this.assentos = assentos;
         this.taxa = taxa;
     }
+
+    public int getCodViagem() {
+        return codViagem;
+    }
+
+    public void setCodViagem(int codViagem) {
+        this.codViagem = codViagem;
+    }
+    
 
     public String getMotorista() {
         return motorista;
@@ -112,8 +123,10 @@ public class SolicitarCarona {
 
     @Override
     public String toString() {
-        return "SolicitarCarona{" + "motorista=" + motorista + ", destino=" + destino + ", saida=" + saida + ", ftPerfil=" + ftPerfil + ", dataPostagem=" + dataPostagem + ", horaPostagem=" + horaPostagem + ", dataSaida=" + dataSaida + ", horaSaida=" + horaSaida + ", assentos=" + assentos + ", taxa=" + taxa + '}';
+        return "SolicitarCarona{" + "codViagem=" + codViagem + ", motorista=" + motorista + ", destino=" + destino + ", saida=" + saida + ", ftPerfil=" + ftPerfil + ", dataPostagem=" + dataPostagem + ", horaPostagem=" + horaPostagem + ", dataSaida=" + dataSaida + ", horaSaida=" + horaSaida + ", assentos=" + assentos + ", taxa=" + taxa + '}';
     }
+
+   
 
     
   }

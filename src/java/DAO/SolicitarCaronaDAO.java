@@ -22,7 +22,7 @@ public class SolicitarCaronaDAO {
    // para ter sempre todas as caronas amostrar sem procurar nenhuma especifica 
     public List<SolicitarCarona> pegarTodasCaronas(){
         try{
-            String sql = "select u.nome as cod_motorista, u.foto_perfil as ft_Perfil, ld.nome as destino, ls.nome as saida, v.data_postagem, "
+            String sql = "select v.cod_viagem, u.nome as cod_motorista, u.foto_perfil as ft_Perfil, ld.nome as destino, ls.nome as saida, v.data_postagem, "
                     + "v.hora_postagem, v.data_saida, v.hora_saida, v.assentos, v.taxa from viagem v "
                     + "INNER JOIN usuario u ON u.cod_user = v.cod_motorista INNER JOIN local ld ON ld.cod_local = v.destino"
                     + " INNER JOIN local ls ON ls.cod_local = v.saida";
@@ -32,6 +32,7 @@ public class SolicitarCaronaDAO {
             while(rs.next()){
                 sc = new SolicitarCarona();
                 
+                sc.setCodViagem(rs.getInt("cod_viagem"));
                 sc.setMotorista(rs.getString("cod_motorista"));
                 sc.setDestino(rs.getString("destino"));
                 sc.setSaida(rs.getString("saida"));
@@ -61,7 +62,7 @@ public class SolicitarCaronaDAO {
     public List<SolicitarCarona> pegarTodasCaronasEspecificas(int destino, int saida){
        
         try{
-            String sql = "select u.nome as cod_motorista, u.foto_perfil as ft_Perfil, ld.nome as destino, ls.nome as saida, "
+            String sql = "select v.cod_viagem, u.nome as cod_motorista, u.foto_perfil as ft_Perfil, ld.nome as destino, ls.nome as saida, "
                     + "v.data_postagem, v.hora_postagem, v.data_saida, v.hora_saida, v.assentos, v.taxa from viagem v "
                     + "INNER JOIN usuario u ON u.cod_user = v.cod_motorista INNER JOIN local ld ON ld.cod_local = v.destino "
                     + "INNER JOIN local ls ON ls.cod_local = v.saida"
@@ -75,6 +76,7 @@ public class SolicitarCaronaDAO {
                 
                 sc = new SolicitarCarona();
                 
+                sc.setCodViagem(rs.getInt("cod_viagem"));
                 sc.setMotorista(rs.getString("cod_motorista"));
                 sc.setDestino(rs.getString("destino"));
                 sc.setSaida(rs.getString("saida"));

@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class TesteClassSolicitar {
     
-    private final SolicitarCarona sc = new SolicitarCarona("Paulo", "Vargem", "SoftPlan", "local.pdf", "2000-09-09", "23:33", "2000-09-09", "23:40", 3, (float) 12.50);
+    private final SolicitarCarona sc = new SolicitarCarona(1,"Paulo", "Vargem", "SoftPlan", "local.pdf", "2000-09-09", "23:33", "2000-09-09", "23:40", 3, (float) 12.50);
     
     @Test
     public void TesteClassSolicitar() {
@@ -41,7 +41,7 @@ public class TesteClassSolicitar {
             sc.setAssentos(nvAssento);
             sc.setTaxa(nvTaxa);
             
-            System.out.println("SolicitarCarona novo: "+"motorista = "+sc.getMotorista()+", "+"destino = "+sc.getDestino()+", "+"saida = "+sc.getSaida()+", "+" FtPerfil = "+sc.getFtPerfil()+", "
+            System.out.println("SolicitarCarona novo: "+"Cod_viagem =  "+sc.getCodViagem()+"motorista = "+sc.getMotorista()+", "+"destino = "+sc.getDestino()+", "+"saida = "+sc.getSaida()+", "+" FtPerfil = "+sc.getFtPerfil()+", "
             +"dataPostagem = "+sc.getDataPostagem()+", "+"horaPostagem = "+sc.getHoraPostagem()+", "+"dataSaida = "+sc.getDataSaida()+", "+"horaSaida = "+sc.getHoraSaida()+", "+"assentos = "+sc.getAssentos()+", "+"taxa = "+sc.getTaxa());
         //
     }

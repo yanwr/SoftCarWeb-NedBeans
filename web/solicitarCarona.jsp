@@ -46,7 +46,7 @@
              if(listE != null && !listE.isEmpty()){
                  
                  for( SolicitarCarona w : listE){
-                        out.println("<div class='card'>");
+                        out.println("<a class='card'>");
                           out.println("<div class='hrPost'>"+w.getDataPostagem()+""+w.getHoraPostagem()+"</div>");
 
                           out.println("<div class='perfilUser'>");
@@ -85,14 +85,14 @@
                               out.println("</ul>");
 
                           out.println("</div>");
-                      out.println("</div>");
+                      out.println("</a");
                  }  
              }else{
                 
                 List<SolicitarCarona> list = (List) request.getAttribute("TC");
               
                 for( SolicitarCarona w : list){
-                        out.println("<div class='card'>");
+                        out.println("<a href='Mensagem?cod="+w.getCodViagem()+"' class='card'>");
                           out.println("<div class='hrPost'>"+w.getDataPostagem()+""+w.getHoraPostagem()+"</div>");
 
                           out.println("<div class='perfilUser'>");
@@ -131,7 +131,7 @@
                               out.println("</ul>");
 
                           out.println("</div>");
-                      out.println("</div>");
+                      out.println("</a>");
                  }  
              }
 
