@@ -45,9 +45,27 @@ public class Mensagem extends HttpServlet {
                 dbp.setCodViagem(codViagem);
                 dbpDAO.setMsg(dbp);
                 
+                request.setAttribute("codViagem", codViagem);
+                
                 request.getRequestDispatcher("/chat.jsp").forward(request, response);
                 
                 
+          }
+    }
+    
+    private void mandarMensagem(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+          try (PrintWriter out = response.getWriter()) {
+              
+              // pegar codViagem do request
+                int codViagem = (int) request.getAttribute("codViagem");
+              //
+              // dar select para pegar a mesma carona 
+                DadosBatePapoDAO dbpDAO = new DadosBatePapoDAO();
+                dbpDAO.getMsg(codViagem);
+              //
+              // 
+                String mensagem = request.getParameter("textArea");
+              //
           }
     }      
 

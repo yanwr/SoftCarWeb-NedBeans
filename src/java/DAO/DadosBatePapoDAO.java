@@ -43,42 +43,58 @@ public class DadosBatePapoDAO {
     }
 
     // ficar sempre pegando os dados do banco para ficar atualizando o batepapo com as mensagens recem envia/recebidas 
-    public DadosBatePapo getMsg(){
+    public DadosBatePapo getMsg(int codViagem){
         try{
         
-            String sql = "";
+            String sql = " select cod_mensagem, cod_viagem, mensagem, user_que_enviou from mensagem where cod_viagem = '"+codViagem+"'";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);
             
             // variaveis para pegar do banco 
                 int codMensagem = 0;
-                int codViagem = 0;
                 String msg = null;
                 int userQueEnviou = 0;
             //
             
             while(rs.next()){
-                
-               
-                
+
                 codMensagem = rs.getInt("cod_mensagem");
-                codViagem = rs.getInt("cod_viagem");
                 msg = rs.getString("mensagem");
                 userQueEnviou = rs.getInt("user_que_enviou");
                 
             }
             
+            ps.close();
+            rs.close();
+            con.close();
+            
             mens  = new DadosBatePapo(codMensagem, codViagem, msg, userQueEnviou);
-            
-            
+ 
         }catch(SQLException e){
             
             System.out.println(e);
         }
         return mens;
     }
+    public boolean updMsg(DadosBatePapo dbp){
+        try{
+        
+            String sql = "update mensagem  set mensagem = "+dbp.getMsg()+" where cod_mensagem = '"+dbp.getCodChat()+"'";
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setString(1, dbp.getMsg());
+            
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        
+        }catch(SQLException e){
+            System.out.println(e);
+            return false;
+        }
+        return true;
+    }
     // pegar nome e fotoPerfil do userMotorista para mandar para a tela Chat e add nos contatos com os dados necessario
-    // para realmente fazer as mensagens de motorista e caroneiro
 //    public DadosBatePapo getDadosMotorista(int cod){
 //            try{
 //                String sql = "select v.cod_motorista, u.nome as nomeUser, u.foto_perfil as foto_perfil from viagem v "
