@@ -21,16 +21,17 @@ public class DadosBatePapoDAO {
     }
     
     // add no banco as novas mensagens minhas e do usuario
-    public boolean setMsg(DadosBatePapo msg){
+    public boolean setMsg(DadosBatePapo dbp){
         
         try{
             
-            String sql = "insert into mensagem(cod_viagem)" + " values(?)";
+            String sql = "insert into mensagem(cod_viagem, mensagem, user_que_enviou)" + " values(?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             
-            ps.setInt(1, msg.getCodViagem());
-        
-
+            ps.setInt(1, dbp.getCodViagem());
+            ps.setString(2, dbp.getMsg());
+            ps.setInt(3, dbp.getUserQueEnviou());
+            
             ps.executeUpdate();
             ps.close();
             con.close();
@@ -75,24 +76,6 @@ public class DadosBatePapoDAO {
             System.out.println(e);
         }
         return mens;
-    }
-    public boolean updMsg(DadosBatePapo dbp){
-        try{
-        
-            String sql = "update mensagem  set mensagem = "+dbp.getMsg()+" where cod_mensagem = '"+dbp.getCodChat()+"'";
-            PreparedStatement ps = con.prepareStatement(sql);
-            
-            ps.setString(1, dbp.getMsg());
-            
-            ps.executeUpdate();
-            ps.close();
-            con.close();
-        
-        }catch(SQLException e){
-            System.out.println(e);
-            return false;
-        }
-        return true;
     }
     // pegar nome e fotoPerfil do userMotorista para mandar para a tela Chat e add nos contatos com os dados necessario
 //    public DadosBatePapo getDadosMotorista(int cod){
