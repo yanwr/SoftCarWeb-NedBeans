@@ -6,13 +6,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.DadosBatePapo;
 
 public class DadosBatePapoDAO {
     
     Connection con;
        
-    private DadosBatePapo mens;
+    private List<DadosBatePapo> listMsg = new ArrayList();
+    private DadosBatePapo msg;
     private DadosBatePapo dbp;
     
 
@@ -44,39 +47,37 @@ public class DadosBatePapoDAO {
     }
 
     // ficar sempre pegando os dados do banco para ficar atualizando o batepapo com as mensagens recem envia/recebidas 
-    public DadosBatePapo getMsg(int codViagem){
+    public List<DadosBatePapo> getMsg(int codViagem){
         try{
         
-            String sql = " select cod_mensagem, cod_viagem, mensagem, user_que_enviou from mensagem where cod_viagem = '"+codViagem+"'";
+            String sql = " select cod_mensagem, mensagem, user_que_enviou from mensagem where cod_viagem = '"+codViagem+"'";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);
-            
-            // variaveis para pegar do banco 
-                int codMensagem = 0;
-                String msg = null;
-                int userQueEnviou = 0;
-            //
-            
-            while(rs.next()){
 
-                codMensagem = rs.getInt("cod_mensagem");
-                msg = rs.getString("mensagem");
-                userQueEnviou = rs.getInt("user_que_enviou");
+            while(rs.next()){
                 
+                msg = new DadosBatePapo();
+                
+                msg.setCodChat(rs.getInt("cod_mensagem"));
+                msg.setMsg(rs.getString("mensagem"));
+                msg.setUserQueEnviou(rs.getInt("user_que_enviou"));
+                
+                listMsg.add(msg);
             }
             
             ps.close();
             rs.close();
             con.close();
             
-            mens  = new DadosBatePapo(codMensagem, codViagem, msg, userQueEnviou);
+           
  
         }catch(SQLException e){
             
             System.out.println(e);
         }
-        return mens;
+        return listMsg;
     }
+}
     // pegar nome e fotoPerfil do userMotorista para mandar para a tela Chat e add nos contatos com os dados necessario
 //    public DadosBatePapo getDadosMotorista(int cod){
 //            try{
@@ -115,4 +116,4 @@ public class DadosBatePapoDAO {
 //    }
     
     
-}
+

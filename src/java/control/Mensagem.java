@@ -4,6 +4,8 @@ package control;
 import DAO.DadosBatePapoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,11 +14,8 @@ import javax.servlet.http.HttpSession;
 import model.DadosBatePapo;
 import model.Usuario;
 
-
 public class Mensagem extends HttpServlet {
 
-   
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,38 +45,50 @@ public class Mensagem extends HttpServlet {
               
                 session.setAttribute("codViagem", codViagem);
                 
-                request.getRequestDispatcher("/chat.jsp").forward(request, response);
-                
-                
+                request.getRequestDispatcher("/chat.jsp").forward(request, response);  
           }
     }
+    
      private void mandarMensagem(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
           try (PrintWriter out = response.getWriter()) {
-              // session 
-                HttpSession session = request.getSession();
-              //
-              // pegar codViagem do request
-                
-                int codViagem = (int) session.getAttribute("codViagem");
-              //  
-              // pegar cod do user que esta logado  
-                Usuario user = new Usuario();
-                user = (Usuario) session.getAttribute("usuario");
-              //
-              // dar insert com as mensagem 
-                String mensagem = request.getParameter("textArea");
-                
-                DadosBatePapo dbp = new DadosBatePapo(codViagem, mensagem, user.getId());
+              
+              //////////// mandando mensagem ////////////////
+                // session 
+                  HttpSession session = request.getSession();
+                //
+                // pegar codViagem do request
 
-                DadosBatePapoDAO dbpDAO = new DadosBatePapoDAO();
-                dbpDAO.setMsg(dbp);
+                  int codViagem = (int) session.getAttribute("codViagem");
+                //  
+                // pegar cod do user que esta logado  
+                  Usuario user = new Usuario();
+                  user = (Usuario) session.getAttribute("usuario");
+                //
+                // dar insert com as mensagem 
+                  String mensagem = request.getParameter("textArea");
+
+                  DadosBatePapo dbp = new DadosBatePapo(codViagem, mensagem, user.getId());
+
+                  DadosBatePapoDAO dbpDAO = new DadosBatePapoDAO();
+                  dbpDAO.setMsg(dbp);
+                  //
+              //  
+              
+              /////////// pegando mensagens ////////////// 
+                // dar select nas mensagens pelo codViagem 
+                DadosBatePapoDAO dbDAO = new DadosBatePapoDAO();
+                 List<DadosBatePapo> msg = new ArrayList();
+                 msg = dbDAO.getMsg(codViagem);
+                //
+                // mandar para request e manipular na pag chat.
+                  request.setAttribute("msg", msg);
+                //
               //
-             
+             // mandar para pag chat
                 request.getRequestDispatcher("/chat.jsp").forward(request, response);
           }
     } 
-        
-
+     
     @Override
     public String getServletInfo() {
         return "Short description";

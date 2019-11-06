@@ -1,4 +1,8 @@
 
+<%@page import="model.Usuario"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="model.DadosBatePapo"%>
 <%-- 
     Document   : chat
     Created on : 24/09/2019, 14:28:20
@@ -130,37 +134,37 @@
                 <!-- Mensagens do chat -->
                 <div class="chatPapo">
                    <ul>
-                        <li class="batePapoLeft">
-                            <div class="mensagemDele"><!-- Float left -->
-                                Oi tudo bem  asdahiasydfasdfyuasd fyasdgfasduyf asdyfgauisd yasbnn dijoa udauis jknkasd ydgasd jiasd kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk? 
-                            </div>
-                        </li>
-                        <li class="batePapoRight">
-                            <div class="mensagemMinha"><!-- Float right -->
-                                Sim, Sr, estou otimo d
-                            </div>
-                        </li>
-                        <li class="batePapoLeft">
-                            <div class="mensagemDele"><!-- Float left -->
-                                Oi tudo bem ? 
-                            </div>
-                        </li>
-                        <li class="batePapoRight">
-                            <div class="mensagemMinha"><!-- Float right -->
-                                Sim, Sr, estou otimo ! 
-                            </div>
-                        </li>
-                        <li class="batePapoRight">
-                            <div class="mensagemMinha"><!-- Float right -->
-                                Sim, Sr, estou otimo ! 
-                            </div>
-                        </li>
-                        <li class="batePapoRight">
-                            <div class="mensagemMinha"><!-- Float right -->
-                                Sim, Sr, estou otimo, top né, weschenfelder Rodrigues, lalallala, asdauisdas
-                                    
-                            </div>
-                        </li>
+                       <%
+                       // pegar cod do user que esta logado  
+                        Usuario user = new Usuario();
+                        user = (Usuario) session.getAttribute("usuario");
+                       //
+                       List<DadosBatePapo> msg = new ArrayList();
+                       msg = (List) request.getAttribute("msg");
+                     if(msg != null && !msg.isEmpty() ){  
+                       for(DadosBatePapo w : msg){
+                           if(w.getUserQueEnviou() == user.getId() ){
+                               out.println("<li class='batePapoRight'>");
+                                out.println("<div class='mensagemMinha'>");
+                                 out.println("'"+w.getMsg()+"'");
+                                out.println("</div>");
+                               out.println("</li>");
+                           }else{
+                               out.println("<li class='batePapoLeft'>");
+                                out.println("<div class='mensagemDele'>");
+                                 out.println("'"+w.getMsg()+"'");
+                                out.println("</div>");
+                               out.println("</li>");
+                           }
+                       }
+                     }else{
+                         out.println("<li class='batePapoRight'>");
+                            out.println("<div class='mensagemMinha'>");
+                                 out.println("Não há mensagens");
+                            out.println("</div>");
+                         out.println("</li>");
+                     }
+                         %>
                     </ul>
                 </div>
                 <!-- parte para escrever a mensagem -->
