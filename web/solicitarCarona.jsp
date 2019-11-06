@@ -48,7 +48,7 @@
                  
                  for( SolicitarCarona w : listE){
                     
-                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM & Cod="+w.getCodViagem()+"' class='card'>");
+                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM & Cod="+w.getCodUser()+"' class='card'>");
                           out.println("<input type='hidden' name='codViagem' value="+w.getCodViagem()+" />");
                           out.println("<div class='hrPost'>"+w.getDataPostagem()+""+w.getHoraPostagem()+"</div>");
 
@@ -95,7 +95,7 @@
                 List<SolicitarCarona> list = (List) request.getAttribute("TC");
               
                 for( SolicitarCarona w : list){
-                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+w.getCodViagem()+"' class='card'>");
+                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+w.getCodUser()+"' class='card'>");
                           out.println("<input type='hidden' name='codViagem' value="+w.getCodViagem()+" />");
                           out.println("<div class='hrPost'>"+w.getDataPostagem()+" "+w.getHoraPostagem()+"</div>");
 

@@ -40,11 +40,34 @@ public class Mensagem extends HttpServlet {
                 HttpSession session = request.getSession();
               //
                 // pegar codViagem do get vindo da pag solicitarCarona
-                    int codViagem = Integer.parseInt(request.getParameter("Cod"));
+                    int codUser = Integer.parseInt(request.getParameter("Cod"));
+                    session.setAttribute("codUser", codUser);
                 //
               
-                session.setAttribute("codViagem", codViagem);
+                 // pegar cod do user que esta logado  
+                  Usuario user = new Usuario();
+                  user = (Usuario) session.getAttribute("usuario");
+                //
                 
+                // criar contatos 
+                    DadosBatePapoDAO cont = new  DadosBatePapoDAO();
+                    List<Usuario> listCont = new ArrayList(); 
+                    listCont = cont.contatos(codUser, user.getId());
+                    
+                    request.setAttribute("contatos", listCont);
+                //
+                  
+              /////////// pegando mensagens ////////////// 
+                // dar select nas mensagens pelo codViagem 
+                DadosBatePapoDAO dbDAO = new DadosBatePapoDAO();
+                 List<DadosBatePapo> msg = new ArrayList();
+                 msg = dbDAO.getMsg(codUser);
+                //
+                // mandar para request e manipular na pag chat.
+                  request.setAttribute("msg", msg);
+                //
+              //
+             // mandar para pag chat
                 request.getRequestDispatcher("/chat.jsp").forward(request, response);  
           }
     }
@@ -58,7 +81,7 @@ public class Mensagem extends HttpServlet {
                 //
                 // pegar codViagem do request
 
-                  int codViagem = (int) session.getAttribute("codViagem");
+                  int codUser = (int) session.getAttribute("codUser");
                 //  
                 // pegar cod do user que esta logado  
                   Usuario user = new Usuario();
@@ -67,7 +90,7 @@ public class Mensagem extends HttpServlet {
                 // dar insert com as mensagem 
                   String mensagem = request.getParameter("textArea");
 
-                  DadosBatePapo dbp = new DadosBatePapo(codViagem, mensagem, user.getId());
+                  DadosBatePapo dbp = new DadosBatePapo(codUser, mensagem, user.getId());
 
                   DadosBatePapoDAO dbpDAO = new DadosBatePapoDAO();
                   dbpDAO.setMsg(dbp);
@@ -78,7 +101,7 @@ public class Mensagem extends HttpServlet {
                 // dar select nas mensagens pelo codViagem 
                 DadosBatePapoDAO dbDAO = new DadosBatePapoDAO();
                  List<DadosBatePapo> msg = new ArrayList();
-                 msg = dbDAO.getMsg(codViagem);
+                 msg = dbDAO.getMsg(codUser);
                 //
                 // mandar para request e manipular na pag chat.
                   request.setAttribute("msg", msg);

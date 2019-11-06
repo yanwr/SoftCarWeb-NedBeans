@@ -4,6 +4,7 @@ package model;
 public class SolicitarCarona {
     
     private int codViagem;
+    private int codUser;
     private String motorista;
     private String destino;
     private String saida;
@@ -18,8 +19,9 @@ public class SolicitarCarona {
     public SolicitarCarona() {
     }
 
-    public SolicitarCarona(int codViagem,String motorista, String destino, String saida, String ftPerfil, String dataPostagem, String horaPostagem, String dataSaida, String horaSaida, int assentos, float taxa) {
+    public SolicitarCarona(int codViagem, int codUser, String motorista, String destino, String saida, String ftPerfil, String dataPostagem, String horaPostagem, String dataSaida, String horaSaida, int assentos, float taxa) {
         this.codViagem = codViagem;
+        this.codUser = codUser;
         this.motorista = motorista;
         this.destino = destino;
         this.saida = saida;
@@ -32,6 +34,12 @@ public class SolicitarCarona {
         this.taxa = taxa;
     }
 
+   
+    @Override
+    public String toString() {
+        return "SolicitarCarona{" + "codViagem=" + codViagem + ", codUser=" + codUser + ", motorista=" + motorista + ", destino=" + destino + ", saida=" + saida + ", ftPerfil=" + ftPerfil + ", dataPostagem=" + dataPostagem + ", horaPostagem=" + horaPostagem + ", dataSaida=" + dataSaida + ", horaSaida=" + horaSaida + ", assentos=" + assentos + ", taxa=" + taxa + '}';
+    }
+
     public int getCodViagem() {
         return codViagem;
     }
@@ -39,7 +47,14 @@ public class SolicitarCarona {
     public void setCodViagem(int codViagem) {
         this.codViagem = codViagem;
     }
-    
+
+    public int getCodUser() {
+        return codUser;
+    }
+
+    public void setCodUser(int codUser) {
+        this.codUser = codUser;
+    }
 
     public String getMotorista() {
         return motorista;
@@ -120,11 +135,8 @@ public class SolicitarCarona {
     public void setTaxa(float taxa) {
         this.taxa = taxa;
     }
+    
 
-    @Override
-    public String toString() {
-        return "SolicitarCarona{" + "codViagem=" + codViagem + ", motorista=" + motorista + ", destino=" + destino + ", saida=" + saida + ", ftPerfil=" + ftPerfil + ", dataPostagem=" + dataPostagem + ", horaPostagem=" + horaPostagem + ", dataSaida=" + dataSaida + ", horaSaida=" + horaSaida + ", assentos=" + assentos + ", taxa=" + taxa + '}';
-    }
 
    
 

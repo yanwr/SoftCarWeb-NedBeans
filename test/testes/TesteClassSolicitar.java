@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class TesteClassSolicitar {
     
-    private final SolicitarCarona sc = new SolicitarCarona(1,"Paulo", "Vargem", "SoftPlan", "local.pdf", "2000-09-09", "23:33", "2000-09-09", "23:40", 3, (float) 12.50);
+    private final SolicitarCarona sc = new SolicitarCarona(1,1,"Paulo", "Vargem", "SoftPlan", "local.pdf", "2000-09-09", "23:33", "2000-09-09", "23:40", 3, (float) 12.50);
     
     @Test
     public void TesteClassSolicitar() {

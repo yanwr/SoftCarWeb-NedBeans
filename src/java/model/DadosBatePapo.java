@@ -4,7 +4,7 @@ package model;
 public class DadosBatePapo {
     // para chat 
         private int codChat; 
-        private int codViagem;
+        private int codUser;
         private String msg;
         private int userQueEnviou;
     //
@@ -17,30 +17,30 @@ public class DadosBatePapo {
         public DadosBatePapo() {}
 
     // chat    
-        public DadosBatePapo(int codChat, int codViagem, String msg, int userQueEnviou) {
+        public DadosBatePapo(int codChat, int codUser, String msg, int userQueEnviou) {
             this.codChat = codChat;
-            this.codViagem = codViagem;
+            this.codUser = codUser;
             this.msg = msg;
             this.userQueEnviou = userQueEnviou;
         }
 
-        public DadosBatePapo(int codViagem, String msg, int userQueEnviou) {
-            this.codViagem = codViagem;
+        public DadosBatePapo(int codUser, String msg, int userQueEnviou) {
+            this.codUser = codUser;
             this.msg = msg;
             this.userQueEnviou = userQueEnviou;
         }
     //
     
     // contatos 
-        public DadosBatePapo(int codChat, int codViagem, String nomeMotorista, String fotoPerfil) {
+        public DadosBatePapo(int codChat, int codUser, String nomeMotorista, String fotoPerfil) {
             this.codChat = codChat;
-            this.codViagem = codViagem;
+            this.codUser = codUser;
             this.nomeMotorista = nomeMotorista;
             this.fotoPerfil = fotoPerfil;
         }
 
-    public DadosBatePapo(int codViagem, String nomeMotorista, String fotoPerfil, int codMotorista) {
-        this.codViagem = codViagem;
+    public DadosBatePapo(int codUser, String nomeMotorista, String fotoPerfil, int codMotorista) {
+        this.codUser = codUser;
         this.nomeMotorista = nomeMotorista;
         this.fotoPerfil = fotoPerfil;
         this.codMotorista = codMotorista;
@@ -81,12 +81,12 @@ public class DadosBatePapo {
         this.codChat = codChat;
     }
 
-    public int getCodViagem() {
-        return codViagem;
+    public int getCodUser() {
+        return codUser;
     }
 
-    public void setCodViagem(int codViagem) {
-        this.codViagem = codViagem;
+    public void setCodUser(int codUser) {
+        this.codUser = codUser;
     }
 
     public String getMsg() {
@@ -107,7 +107,7 @@ public class DadosBatePapo {
 
     @Override
     public String toString() {
-        return "DadosBatePapo{" + "codChat=" + codChat + ", codViagem=" + codViagem + ", msg=" + msg + ", userQueEnviou=" + userQueEnviou + ", nomeMotorista=" + nomeMotorista + ", fotoPerfil=" + fotoPerfil + ", codMotorista=" + codMotorista + '}';
+        return "DadosBatePapo{" + "codChat=" + codChat + ", codUser=" + codUser + ", msg=" + msg + ", userQueEnviou=" + userQueEnviou + ", nomeMotorista=" + nomeMotorista + ", fotoPerfil=" + fotoPerfil + ", codMotorista=" + codMotorista + '}';
     }
 
     

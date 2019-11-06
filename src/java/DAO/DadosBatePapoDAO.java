@@ -8,13 +8,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.DadosBatePapo;
+import model.Usuario;
 
 public class DadosBatePapoDAO {
     
     Connection con;
        
     private List<DadosBatePapo> listMsg = new ArrayList();
+    private List<Usuario> listContato = new ArrayList();
+   
+    private Usuario us;
     private DadosBatePapo msg;
     private DadosBatePapo dbp;
     
@@ -28,10 +34,10 @@ public class DadosBatePapoDAO {
         
         try{
             
-            String sql = "insert into mensagem(cod_viagem, mensagem, user_que_enviou)" + " values(?,?,?)";
+            String sql = "insert into mensagem(cod_user, mensagem, user_que_enviou)" + " values(?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             
-            ps.setInt(1, dbp.getCodViagem());
+            ps.setInt(1, dbp.getCodUser());
             ps.setString(2, dbp.getMsg());
             ps.setInt(3, dbp.getUserQueEnviou());
             
@@ -47,10 +53,12 @@ public class DadosBatePapoDAO {
     }
 
     // ficar sempre pegando os dados do banco para ficar atualizando o batepapo com as mensagens recem envia/recebidas 
-    public List<DadosBatePapo> getMsg(int codViagem){
+    public List<DadosBatePapo> getMsg(int codUser){
         try{
         
-            String sql = " select cod_mensagem, mensagem, user_que_enviou from mensagem where cod_viagem = '"+codViagem+"'";
+            //String sql = " select cod_mensagem, mensagem, user_que_enviou from mensagem where cod_user = '"+codUser+"'";
+            String sql = " select cod_mensagem, mensagem, user_que_enviou from mensagem where (cod_user = '"+1+"' and user_que_enviou = '"+codUser+"') or (user_que_enviou = '"+1+"' and cod_user = '"+codUser+"' ) ";
+          
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);
 
@@ -68,52 +76,40 @@ public class DadosBatePapoDAO {
             ps.close();
             rs.close();
             con.close();
-            
-           
- 
+
         }catch(SQLException e){
             
             System.out.println(e);
         }
         return listMsg;
     }
+    
+    public List<Usuario> contatos(int codUser, int codMeu){
+        
+        try {
+            String sql = "SELECT * FROM usuario where cod_user = (SELECT DISTINCT cod_user FROM mensagem where "
+                    + "user_que_enviou = '"+codMeu+"' and cod_user = '"+codUser+"') or cod_user = (SELECT DISTINCT user_que_enviou"
+                    + " FROM mensagem where cod_user = '"+codMeu+"' and user_que_enviou = '"+codUser+"')";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(sql);
+            
+            while(rs.next()){
+                us = new Usuario();
+                
+                us.setId(rs.getInt("cod_user"));
+                us.setNomeUser(rs.getString("nome"));
+                us.setFotoPerfil(rs.getString("foto_perfil"));
+                listContato.add(us);
+            }
+            
+            rs.close();
+            ps.close();
+            con.close();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return listContato;
+    }
 }
-    // pegar nome e fotoPerfil do userMotorista para mandar para a tela Chat e add nos contatos com os dados necessario
-//    public DadosBatePapo getDadosMotorista(int cod){
-//            try{
-//                String sql = "select v.cod_motorista, u.nome as nomeUser, u.foto_perfil as foto_perfil from viagem v "
-//                        + "inner join usuario u on u.cod_user = v.cod_motorista where cod_viagem = "+cod+"";
-//
-//                PreparedStatement ps = con.prepareStatement(sql);
-//                ResultSet rs = ps.executeQuery(sql);
-//                
-//                // variaveis para receber valor do banco
-//                    String nomeMotorista = null;
-//                    String ftPerfil = null;
-//                    int codMotorista = 0;
-//                //
-//                
-//                while(rs.next()){
-//                    
-//                    codMotorista = rs.getInt("cod_motorista");
-//                    nomeMotorista = rs.getString("nomeUser");
-//                    ftPerfil = rs.getString("foto_perfil");
-//                   
-//                }
-//                
-//                dbp = new DadosBatePapo(cod, nomeMotorista, ftPerfil, codMotorista);
-//                
-//                rs.close();
-//                ps.close();
-//                con.close();
-//                
-//                
-//                
-//            }catch(SQLException e){
-//                System.out.println(e);
-//            }
-//        return dbp;
-//    }
-    
-    
 

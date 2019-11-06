@@ -29,96 +29,33 @@
                 <!--Icon de procura -->
             </div>
             <ul class="lista">
-                <li class="contato" id="contato">
-                    <div class="userPerfil"><!-- Perfil --></div>
-                    <div class="nome" id="nome">
-                        Yan Weschenfelder
-                    </div>
-                </li>
-                <li class="contato" id="contato">
-                    <div class="userPerfil"></div>
-                    <div class="nome" id="nome">
-                        Nicolas Ouriques
-                    </div>
-                </li>
-                <li class="contato" id="contato">
-                    <div class="userPerfil"></div>
-                    <div class="nome" id="nome">
-                        Max Junior
-                    </div>
-                </li>
-                <li class="contato" id="contato">
-                    <div class="userPerfil"></div>
-                    <div class="nome" id="nome">
-                        Amanda Top
-                    </div>
-                </li>
-                <li class="contato" id="contato">
-                    <div class="userPerfil"></div>
-                    <div class="nome" id="nome">
-                        Luana Top Tambem
-                    </div>
-                </li>   
-                <li class="contato" id="contato">
-                    <div class="userPerfil"><!-- Perfil --></div>
-                    <div class="nome" id="nome">
-                        Yan Weschenfelder
-                    </div>
-                </li>
-                <li class="contato" id="contato">
-                    <div class="userPerfil"></div>
-                    <div class="nome" id="nome">
-                        Nicolas Ouriques
-                    </div>
-                </li>
-                <li class="contato" id="contato">
-                    <div class="userPerfil"></div>
-                    <div class="nome" id="nome">
-                        Max Junior
-                    </div>
-                </li>
-                <li class="contato" id="contato">
-                    <div class="userPerfil"></div>
-                    <div class="nome" id="nome">
-                        Amanda Top
-                    </div>
-                </li>
-                <li class="contato" id="contato">
-                    <div class="userPerfil"></div>
-                    <div class="nome" id="nome">
-                        Luana Top Tambem
-                    </div>
-                </li> 
-                <li class="contato" id="contato">
-                    <div class="userPerfil"><!-- Perfil --></div>
-                    <div class="nome" id="nome">
-                        Yan Weschenfelder
-                    </div>
-                </li>
-                <li class="contato" id="contato">
-                    <div class="userPerfil"></div>
-                    <div class="nome" id="nome">
-                        Nicolas Ouriques
-                    </div>
-                </li>
-                <li class="contato" id="contato">
-                    <div class="userPerfil"></div>
-                    <div class="nome" id="nome">
-                        Max Junior
-                    </div>
-                </li>
-                <li class="contato" id="contato">
-                    <div class="userPerfil"></div>
-                    <div class="nome" id="nome">
-                        Amanda Top
-                    </div>
-                </li>
-                <li class="contato" id="contato">
-                    <div class="userPerfil"></div>
-                    <div class="nome" id="nome">
-                        Luana Top Tambem
-                    </div>
-                </li>     
+                <a href="">
+                    <li class="contato" id="contato">
+                        <div class="userPerfil"><!-- Perfil --></div>
+                        <div class="nome" id="nome">
+                            Yan Weschenfelder
+                        </div>
+                    </li>
+                </a>
+                <%
+                    List<Usuario> listCont = new ArrayList();
+                    listCont = (List) request.getAttribute("contatos");
+                    
+                    for(Usuario u : listCont){
+                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+u.getId()+"'>");
+                            out.println("<li class='contato' id='contato' >");
+                                out.println("<div class='userPerfil'>");
+                                    out.println(""+u.getFotoPerfil()+"");
+                                out.println("</div>");
+      
+                                out.println("<div class='nome' id='nome'>");
+                                    out.println(""+u.getNomeUser()+"");
+                                out.println("</div>");
+                            out.println("</li>");
+                        out.println("</a>");
+                    }
+                %>
+                
             </ul>
         </div>
 
@@ -146,13 +83,13 @@
                            if(w.getUserQueEnviou() == user.getId() ){
                                out.println("<li class='batePapoRight'>");
                                 out.println("<div class='mensagemMinha'>");
-                                 out.println("'"+w.getMsg()+"'");
+                                 out.println(""+w.getMsg()+"");
                                 out.println("</div>");
                                out.println("</li>");
                            }else{
                                out.println("<li class='batePapoLeft'>");
                                 out.println("<div class='mensagemDele'>");
-                                 out.println("'"+w.getMsg()+"'");
+                                 out.println(""+w.getMsg()+"");
                                 out.println("</div>");
                                out.println("</li>");
                            }

@@ -111,7 +111,7 @@ html{
     float: center;
     background-color: #e8eaf0;
     overflow-y: scroll;
-    overflow: hidden; 
+    overflow: auto; 
     list-style: none;
 }
 .batePapoLeft{

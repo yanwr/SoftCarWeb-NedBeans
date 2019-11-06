@@ -46,7 +46,7 @@ public class Solicitar extends HttpServlet {
                 lista = scTodos.pegarTodasCaronas();
               //
                 
-              // madar para session
+              // madar para request
                 request.setAttribute("TC", lista);
                 request.getRequestDispatcher("/solicitarCarona.jsp").forward(request, response);
               //
