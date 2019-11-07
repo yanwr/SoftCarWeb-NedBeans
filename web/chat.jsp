@@ -29,20 +29,12 @@
                 <!--Icon de procura -->
             </div>
             <ul class="lista">
-                <a href="">
-                    <li class="contato" id="contato">
-                        <div class="userPerfil"><!-- Perfil --></div>
-                        <div class="nome" id="nome">
-                            Yan Weschenfelder
-                        </div>
-                    </li>
-                </a>
                 <%
                     List<Usuario> listCont = new ArrayList();
                     listCont = (List) request.getAttribute("contatos");
                     
                     for(Usuario u : listCont){
-                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+u.getId()+"'>");
+                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+u.getId()+"' style='text-decoration: none;'>");
                             out.println("<li class='contato' id='contato' >");
                                 out.println("<div class='userPerfil'>");
                                     out.println(""+u.getFotoPerfil()+"");

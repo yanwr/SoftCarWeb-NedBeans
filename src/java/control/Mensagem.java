@@ -87,6 +87,13 @@ public class Mensagem extends HttpServlet {
                   Usuario user = new Usuario();
                   user = (Usuario) session.getAttribute("usuario");
                 //
+                 // criar contatos 
+                    DadosBatePapoDAO cont = new  DadosBatePapoDAO();
+                    List<Usuario> listCont = new ArrayList(); 
+                    listCont = cont.contatos(codUser, user.getId());
+                    
+                    request.setAttribute("contatos", listCont);
+                //
                 // dar insert com as mensagem 
                   String mensagem = request.getParameter("textArea");
 
