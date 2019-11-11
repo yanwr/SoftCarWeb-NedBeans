@@ -1,4 +1,5 @@
 
+<%@page import="model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,7 +13,17 @@
 </head>
 <body>
     
-   <%@include file="NavBar.jsp" %>
+        <%//menu
+           Usuario user = new Usuario();
+           user = (Usuario) session.getAttribute("usuario");
+     
+   
+           if (user != null && user.isLogado()) {%>
+               <%@include file="NavBarLogado.jsp"%>
+         <%  } else {%>
+               <%@include file="NavBar.jsp"%><%
+           }
+        %>
 
     <!-- Banners aparecendo -->
     <section class="first-section" id="first-section">

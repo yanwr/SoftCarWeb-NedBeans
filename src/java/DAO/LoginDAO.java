@@ -53,12 +53,13 @@ public class LoginDAO {
          fotoPerfil = rs.getString("foto_perfil");
          
         }
-        
+        Usuario usuario = new Usuario();
+                
         if(user.getSenha().equals(s)){
-            entrar = true;
-        }
-        
-        Usuario usuario = new Usuario(id, nomeUser, entrar, profissao, tempoTrampo, tel, fotoPerfil);
+            usuario = new Usuario(id, nomeUser, true, profissao, tempoTrampo, tel, fotoPerfil);
+        }else{
+            usuario.setLogado(false);
+        } 
         
         ps.close();
         con.close();

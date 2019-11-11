@@ -28,6 +28,48 @@
                 }
             }
             
+            window.onload = function() {
+
+            document.getElementById('container').onclick = function(event) {
+              var p, input, text;
+
+              // Pegando o evento
+              event = event || window.event;
+
+              // Get the root element of the event (handle MS difference)
+              p = event.target || event.srcElement;
+
+              // Se e um <P>
+              if (p && p.tagName.toUpperCase() === "P") {
+                // Esconder
+                p.style.display = "none";
+
+                // Pegando o texto
+                text = p.innerHTML;
+
+                // Criando o input
+                input = document.createElement("input");
+                input.type = "text";
+                input.value = text;
+                input.size = Math.max(text.length / 4 * 3, 4);
+                p.parentNode.insertBefore(input, p);
+
+                // Dar o foco, e quando clicar fora sumir
+                input.focus();
+                input.onblur = function() {
+                  // Removendo o input
+                  p.parentNode.removeChild(input);
+
+                  // Update no texto
+                  p.innerHTML = input.value;
+
+                  // Mostrando o texto dnv
+                  p.style.display = "";
+                };
+              }
+            };
+          };
+            
             
             
         </script>
@@ -47,7 +89,7 @@
               </div>
              </div>
       
-            <div class="container">
+            <div id="container" class="container">
               <div class="dadosUser">
                   <h1 class="textosMain">SoftPlayer</h1>
                   <p id="nomeUser" class="textosSeg" name="nom">${sessionScope.usuario.nomeUser}</p>
@@ -82,6 +124,6 @@
             </div>
         </form>
     </div>
-  
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
 </html>
