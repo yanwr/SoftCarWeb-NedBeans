@@ -33,18 +33,18 @@ public class DadosBatePapoDAO {
     public boolean setMsg(DadosBatePapo dbp){
         
         try{
-            
-            String sql = "insert into mensagem(cod_user, mensagem, user_que_enviou)" + " values(?,?,?)";
-            PreparedStatement ps = con.prepareStatement(sql);
-            
-            ps.setInt(1, dbp.getCodUser());
-            ps.setString(2, dbp.getMsg());
-            ps.setInt(3, dbp.getUserQueEnviou());
-            
-            ps.executeUpdate();
-            ps.close();
-            con.close();
-            
+            if(dbp.getMsg() != null && dbp.getMsg() != "" && dbp.getMsg() != " " ){
+                String sql = "insert into mensagem(cod_user, mensagem, user_que_enviou)" + " values(?,?,?)";
+                PreparedStatement ps = con.prepareStatement(sql);
+
+                ps.setInt(1, dbp.getCodUser());
+                ps.setString(2, dbp.getMsg());
+                ps.setInt(3, dbp.getUserQueEnviou());
+
+                ps.executeUpdate();
+                ps.close();
+                con.close();
+            }
         }catch(SQLException e){
             System.out.println(e);
             return false;
