@@ -61,8 +61,7 @@
                     </div>
                 </div>
                 <!-- Mensagens do chat -->
-                <div class="chatPapo">
-                   <ul>
+        
                        <%
                        // pegar cod do user que esta logado  
                         Usuario user = new Usuario();
@@ -73,17 +72,37 @@
                      if(msg != null && !msg.isEmpty() ){  
                        for(DadosBatePapo w : msg){
                            if(w.getUserQueEnviou() == user.getId() ){
+                             
+                             out.println("<div class='chatHeader'>");  
+                              out.println("<div class='headerConf'>");
+                               out.println("<div class='imgUser'>");
+                                out.println("<img class'imgUser' id='imgUser'>");
+                               out.println("/<div>");
+                               out.println("<div class='chatCom'>");
+                                out.println("<p id='pChatCom'>"+w.getNomeMotorista()+"</p>");
+                               out.println("</div>");
+                              out.println("</div>");
+                             out.println("</div>");
+                             
+                             out.println("div class='chatPapo'");
+                              out.println("<ul>");
                                out.println("<li class='batePapoRight'>");
                                 out.println("<div class='mensagemMinha'>");
                                  out.println(""+w.getMsg()+"");
                                 out.println("</div>");
                                out.println("</li>");
+                              out.println("</ul>");
+                             out.println("</div>");
                            }else{
+                             out.println("div class='chatPapo'");
+                              out.println("<ul>");
                                out.println("<li class='batePapoLeft'>");
                                 out.println("<div class='mensagemDele'>");
                                  out.println(""+w.getMsg()+"");
                                 out.println("</div>");
                                out.println("</li>");
+                              out.println("</ul>");
+                             out.println("</div>");
                            }
                        }
                      }else{
@@ -92,10 +111,10 @@
                                  out.println("Não há mensagens");
                             out.println("</div>");
                          out.println("</li>");
+                        
                      }
                          %>
-                    </ul>
-                </div>
+
                 <!-- parte para escrever a mensagem -->
                 <form action="Mensagem" method="post" class="areaSendMensagem">
                     <textarea name="textArea" id="textArea"  placeholder="Escreva a Mensagem: "></textarea>
