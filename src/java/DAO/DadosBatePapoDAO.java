@@ -53,11 +53,11 @@ public class DadosBatePapoDAO {
     }
 
     // ficar sempre pegando os dados do banco para ficar atualizando o batepapo com as mensagens recem envia/recebidas 
-    public List<DadosBatePapo> getMsg(int codUser){
+    public List<DadosBatePapo> getMsg(int codUser, int codMeu){
         try{
         
             //String sql = " select cod_mensagem, mensagem, user_que_enviou from mensagem where cod_user = '"+codUser+"'";
-            String sql = " select cod_mensagem, mensagem, user_que_enviou from mensagem where (cod_user = '"+1+"' and user_que_enviou = '"+codUser+"') or (user_que_enviou = '"+1+"' and cod_user = '"+codUser+"' ) ";
+            String sql = " select cod_mensagem, mensagem, user_que_enviou from mensagem where (cod_user = '"+codMeu+"' and user_que_enviou = '"+codUser+"') or (user_que_enviou = '"+codMeu+"' and cod_user = '"+codUser+"' ) ";
           
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);
@@ -84,12 +84,12 @@ public class DadosBatePapoDAO {
         return listMsg;
     }
     
-    public List<Usuario> contatos(int codUser, int codMeu){
+    public List<Usuario> contatos(int codMeu){
         
         try {
-            String sql = "SELECT * FROM usuario where cod_user = (SELECT DISTINCT cod_user FROM mensagem where "
-                    + "user_que_enviou = '"+codMeu+"' and cod_user = '"+codUser+"') or cod_user = (SELECT DISTINCT user_que_enviou"
-                    + " FROM mensagem where cod_user = '"+codMeu+"' and user_que_enviou = '"+codUser+"')";
+            String sql = "SELECT * FROM usuario where cod_user IN (SELECT DISTINCT cod_user FROM mensagem where "
+                    + "user_que_enviou = '"+codMeu+"' and cod_user != '"+codMeu+"') or cod_user IN (SELECT DISTINCT user_que_enviou"
+                    + " FROM mensagem where cod_user = '"+codMeu+"' and user_que_enviou != '"+codMeu+"')";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);
             
@@ -112,4 +112,3 @@ public class DadosBatePapoDAO {
         return listContato;
     }
 }
-

@@ -49,19 +49,19 @@ public class Mensagem extends HttpServlet {
                   user = (Usuario) session.getAttribute("usuario");
                 //
                 
-                // criar contatos 
-                    DadosBatePapoDAO cont = new  DadosBatePapoDAO();
-                    List<Usuario> listCont = new ArrayList(); 
-                    listCont = cont.contatos(codUser, user.getId());
-                    
+                    // criar contatos 
+                        DadosBatePapoDAO cont = new  DadosBatePapoDAO();
+                        List<Usuario> listCont = new ArrayList(); 
+                        listCont = cont.contatos(user.getId());
+
                     request.setAttribute("contatos", listCont);
-                //
+                    //
                   
               /////////// pegando mensagens ////////////// 
                 // dar select nas mensagens pelo codViagem 
                 DadosBatePapoDAO dbDAO = new DadosBatePapoDAO();
                  List<DadosBatePapo> msg = new ArrayList();
-                 msg = dbDAO.getMsg(codUser);
+                 msg = dbDAO.getMsg(codUser, user.getId());
                 //
                 // mandar para request e manipular na pag chat.
                   request.setAttribute("msg", msg);
@@ -83,17 +83,17 @@ public class Mensagem extends HttpServlet {
 
                   int codUser = (int) session.getAttribute("codUser");
                 //  
-                // pegar cod do user que esta logado  
-                  Usuario user = new Usuario();
-                  user = (Usuario) session.getAttribute("usuario");
-                //
-                 // criar contatos 
+               // pegar cod do user que esta logado  
+                 Usuario user = new Usuario();
+                 user = (Usuario) session.getAttribute("usuario");
+               //
+                // criar contatos 
                     DadosBatePapoDAO cont = new  DadosBatePapoDAO();
-                    List<Usuario> listCont = new ArrayList(); 
-                    listCont = cont.contatos(codUser, user.getId());
+                   List<Usuario> listCont = new ArrayList(); 
+                   listCont = cont.contatos(user.getId());
                     
-                    request.setAttribute("contatos", listCont);
-                //
+                   request.setAttribute("contatos", listCont);
+               //
                 // dar insert com as mensagem 
                   String mensagem = request.getParameter("textArea");
 
@@ -108,7 +108,7 @@ public class Mensagem extends HttpServlet {
                 // dar select nas mensagens pelo codViagem 
                 DadosBatePapoDAO dbDAO = new DadosBatePapoDAO();
                  List<DadosBatePapo> msg = new ArrayList();
-                 msg = dbDAO.getMsg(codUser);
+                 msg = dbDAO.getMsg(codUser, user.getId());
                 //
                 // mandar para request e manipular na pag chat.
                   request.setAttribute("msg", msg);
