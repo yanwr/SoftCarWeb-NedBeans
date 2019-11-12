@@ -36,7 +36,6 @@
               // Pegando o evento
               event = event || window.event;
 
-              // Get the root element of the event (handle MS difference)
               p = event.target || event.srcElement;
 
               // Se e um <P>
@@ -51,11 +50,26 @@
                 input = document.createElement("input");
                 input.type = "text";
                 input.value = text;
+                input.id = 'input';
                 input.size = Math.max(text.length / 4 * 3, 4);
                 p.parentNode.insertBefore(input, p);
 
                 // Dar o foco, e quando clicar fora sumir
                 input.focus();
+                
+                var enter = document.getElementById('input');
+                enter.onkeyup = function(e){
+                    if(e.keyCode == 13){
+                        // Removendo o input
+                        p.parentNode.removeChild(input);
+
+                        // Update no texto
+                        p.innerHTML = input.value;
+
+                        // Mostrando o texto dnv
+                        p.style.display = "";     
+                    }   
+                }
                 input.onblur = function() {
                   // Removendo o input
                   p.parentNode.removeChild(input);
@@ -79,7 +93,7 @@
          <%@include file="NavBarLogado.jsp" %>
 <!-- ----------- Perfil -------------- -->
     <div id="modal-wrapper" class="modal">
-        <form class="modal-content animate" action="">
+        <div class="modal-content animate">
             <div class="imgcontainer">
                     
               <div class="avatar" ><img id="avatar" src="img/1.png"></div>
@@ -122,7 +136,7 @@
                  <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
             </div>
-        </form>
+        </div>
     </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
