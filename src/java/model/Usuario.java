@@ -25,6 +25,9 @@ public class Usuario {
         this.senha = senha;
         this.nomeUser = nomeUser;
     }
+    public Usuario(int id){
+        this.id = id;
+    }
     public Usuario(String nomeUser){
         this.nomeUser = nomeUser;
     }

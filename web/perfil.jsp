@@ -34,28 +34,30 @@
                 var prof=$('#prof').val();
                 var desde=$('#desde').val();
                 var contato=$('#contato').val();
-                var enviar = "ATUALIZAR";
+                var id =$('#id').val();
 
                 alert("Ta indo confia 1");
-                var arr = {
-                    "nome": nome,
-                    "prof": prof,
-                    "desde": desde,
-                    "contato": contato,
-                    "enviar": enviar
-                };
+                var jsonDataObject=new Object();
+                alert(" JSON call");
+                jsonDataObject.nome=nome;
+                jsonDataObject.prof=prof;
+                jsonDataObject.desde=desde;
+                jsonDataObject.contato=contato;
+                jsonDataObject.id=id;
+
+                var jsonString= JSON.stringify(jsonDataObject);
 
 
                 alert("Ta indo confia 3");
 
                 $.ajax({
 
-                             type:"POST",
+                    type:"POST",
 
-                             url:"rest/Perfil",
+                    url:"http://localhost:8088/SoftCarWeb/webresources/softcarweb/set",
 
-                             dataType:"json",
-                             data:arr
+                    dataType:"json",
+                    data:jsonDataObject
 
                 });
 
@@ -138,6 +140,7 @@
       
             <div id="container" class="container">
               <div class="dadosUser">
+                  <input type="hidden" id="id" value="${sessionScope.usuario.id}">
                   <h1 class="textosMain">SoftPlayer</h1>
                   <p id="nomeUser" class="textosSeg" id="nome">${sessionScope.usuario.nomeUser}</p>
               </div>

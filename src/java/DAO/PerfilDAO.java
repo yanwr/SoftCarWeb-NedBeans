@@ -61,20 +61,26 @@ public class PerfilDAO {
         return usuario;
     }
     
-    public void setDados(Usuario user){
+    public String setDados(Usuario user){
         try {
             
-            String sql = "update usuario set profissao ='"+user.getProfissao()+"', tempo_trabalho ='"+user.getTempoTrampo()+"'"
-                    + ", numero_cel ='"+user.getTelefone()+"', foto_perfil ='"+user.getFotoPerfil()+"'"
+            String sql = "update usuario set nome = '"+user.getNomeUser()+"', profissao = '"+user.getProfissao()+"', tempo_trabalho = '"+user.getTempoTrampo()+"'"
+                    + ", numero_cel = '"+user.getTelefone()+"', foto_perfil = '"+user.getFotoPerfil()+"'"
                     + " where cod_user = '"+user.getId()+"'";
+            
+            
             PreparedStatement ps = con.prepareStatement(sql);
             
-            ps.executeUpdate();
-//            ps.close();
-//            con.close();
             
-        } catch (SQLException e) {
+            
+            ps.executeUpdate();
+            //ps.close();
+            //con.close();
+            return user.toString();
+            
+        } catch (Exception e) {
             System.out.println(e);
+            return e.getMessage();
         }
     }
 }
