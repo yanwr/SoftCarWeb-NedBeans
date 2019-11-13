@@ -20,6 +20,10 @@
         <servlet-name>Mensagem</servlet-name>
         <servlet-class>control.Mensagem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Perfil</servlet-name>
+        <servlet-class>control.Perfil</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Oferecer</servlet-name>
         <url-pattern>/Oferecer</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>Mensagem</servlet-name>
         <url-pattern>/Mensagem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Perfil</servlet-name>
+        <url-pattern>/Perfil</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
