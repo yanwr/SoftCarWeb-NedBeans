@@ -29,39 +29,35 @@
             }
             
             function atualizarDados(){
-                alert("Executando");
-                var nome=$('#nome').val();
-                var prof=$('#prof').val();
-                var desde=$('#desde').val();
-                var contato=$('#contato').val();
+                var nome=$('#nome').text();
+                var prof=$('#prof').text();
+                var desde=$('#desde').text();
+                var contato=$('#contato').text();
                 var id =$('#id').val();
 
-                alert("Ta indo confia 1");
                 var jsonDataObject=new Object();
-                alert(" JSON call");
                 jsonDataObject.nome=nome;
                 jsonDataObject.prof=prof;
                 jsonDataObject.desde=desde;
                 jsonDataObject.contato=contato;
                 jsonDataObject.id=id;
-
+                
                 var jsonString= JSON.stringify(jsonDataObject);
 
 
-                alert("Ta indo confia 3");
 
                 $.ajax({
 
                     type:"POST",
 
-                    url:"http://localhost:8088/SoftCarWeb/webresources/softcarweb/set",
+                    url:"http://localhost:8088/SoftCarWeb/webresources/softcarweb/perfil",
 
                     dataType:"json",
                     data:jsonDataObject
-
+                    
+                    
                 });
 
-                alert("Ta indo confia 4");
 
             }      
             
@@ -79,7 +75,7 @@
               if (p && p.tagName.toUpperCase() === "P") {
                 // Esconder
                 p.style.display = "none";
-
+                
                 // Pegando o texto
                 text = p.innerHTML;
 
@@ -102,7 +98,7 @@
 
                         // Update no texto
                         p.innerHTML = input.value;
-
+                        
                         // Mostrando o texto dnv
                         p.style.display = "";     
                     }   
@@ -142,7 +138,7 @@
               <div class="dadosUser">
                   <input type="hidden" id="id" value="${sessionScope.usuario.id}">
                   <h1 class="textosMain">SoftPlayer</h1>
-                  <p id="nomeUser" class="textosSeg" id="nome">${sessionScope.usuario.nomeUser}</p>
+                  <p class="textosSeg" id="nome">${sessionScope.usuario.nomeUser}</p>
               </div>
                 <div id="btnEditUser" class="btns">
                     <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
@@ -150,7 +146,7 @@
       
               <div class="dadosProf">
                   <h1 class="textosMain">Profissão</h1>
-                  <p id="nomeProf" class="textosSeg" id="prof">${sessionScope.usuario.profissao}</p>
+                  <p class="textosSeg" id="prof">${sessionScope.usuario.profissao}</p>
               </div>
               <div id="btnEditProf" class="btns">
                       <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
@@ -158,7 +154,7 @@
       
               <div class="dadosTempo">
                       <h1 class="textosMain">SoftPlayer desde:</h1>
-                      <p id="nomeTempo" class="textosSeg" id="desde">${sessionScope.usuario.tempoTrampo}</p>
+                      <p class="textosSeg" id="desde">${sessionScope.usuario.tempoTrampo}</p>
               </div>
               <div id="btnEditTemp" class="btns">
                       <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
@@ -166,7 +162,7 @@
       
               <div class="dadosCont">
                   <h1 class="textosMain">Contato</h1>
-                  <p id="nomeCont" class="textosSeg" id="contato">${sessionScope.usuario.telefone}</p>
+                  <p class="textosSeg" id="contato">${sessionScope.usuario.telefone}</p>
               </div>
               <div id="btnEditCont" class="btns">
                  <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
