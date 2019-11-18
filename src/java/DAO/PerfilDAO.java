@@ -74,8 +74,8 @@ public class PerfilDAO {
             
             
             ps.executeUpdate();
-            //ps.close();
-            //con.close();
+            ps.close();
+            con.close();
             return user.toString();
             
         } catch (Exception e) {

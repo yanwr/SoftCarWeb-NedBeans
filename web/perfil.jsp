@@ -36,15 +36,16 @@
                 var id =$('#id').val();
 
                 var jsonDataObject=new Object();
-                jsonDataObject.nome=nome;
-                jsonDataObject.prof=prof;
-                jsonDataObject.desde=desde;
-                jsonDataObject.contato=contato;
+                jsonDataObject.nomeUser=nome;
+                jsonDataObject.profissao=prof;
+                jsonDataObject.tempoTrampo=desde;
+                jsonDataObject.telefone=contato;
+                jsonDataObject.fotoPerfil="TESTE";                
                 jsonDataObject.id=id;
                 
                 var jsonString= JSON.stringify(jsonDataObject);
 
-
+                
 
                 $.ajax({
 
@@ -57,8 +58,6 @@
                     
                     
                 });
-
-
             }      
             
             window.onload = function() {

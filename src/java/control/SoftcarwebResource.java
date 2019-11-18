@@ -55,18 +55,15 @@ public class SoftcarwebResource {
     }
     
     @POST
-
     @Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
     //@Produces(MediaType.APPLICATION_XML)
-
     @Path("perfil")
     public String setDetails(String content) 
         {   
-            
+            System.out.println("String que veio: " + content);
             Gson g = new Gson();
                         
             Usuario u = g.fromJson(content, Usuario.class);
-            u.setFotoPerfil("yanpaunocu.jpg");
             
             PerfilDAO p = new PerfilDAO();
             String str = p.setDados(u);
