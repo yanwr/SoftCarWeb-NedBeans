@@ -19,6 +19,8 @@
     <link href="Css/chat.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/softcar-blue-icon.png" type="image/x-png">
     <title>SoftCar - Chat</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="js/pegarMsg.js"></script>
 </head>
 <body>
     <%@include file="NavBarLogado.jsp" %>
@@ -60,66 +62,19 @@
                         </div>
                     </div>
                 </div>
+            
+            
                 <!-- Mensagens do chat -->
-        
-                       <%
-                       // pegar cod do user que esta logado  
-                        Usuario user = new Usuario();
-                        user = (Usuario) session.getAttribute("usuario");
-                       //
-                       List<DadosBatePapo> msg = new ArrayList();
-                       msg = (List) request.getAttribute("msg");
-                     if(msg != null && !msg.isEmpty() ){  
-                       for(DadosBatePapo w : msg){
-                           if(w.getUserQueEnviou() == user.getId() ){
-                             
-                             out.println("<div class='chatHeader'>");  
-                              out.println("<div class='headerConf'>");
-                               out.println("<div class='imgUser'>");
-                                out.println("<img class'imgUser' id='imgUser'>");
-                               out.println("/<div>");
-                               out.println("<div class='chatCom'>");
-                                out.println("<p id='pChatCom'>"+w.getNomeMotorista()+"</p>");
-                               out.println("</div>");
-                              out.println("</div>");
-                             out.println("</div>");
-                             
-                             out.println("div class='chatPapo'");
-                              out.println("<ul>");
-                               out.println("<li class='batePapoRight'>");
-                                out.println("<div class='mensagemMinha'>");
-                                 out.println(""+w.getMsg()+"");
-                                out.println("</div>");
-                               out.println("</li>");
-                              out.println("</ul>");
-                             out.println("</div>");
-                           }else{
-                             out.println("div class='chatPapo'");
-                              out.println("<ul>");
-                               out.println("<li class='batePapoLeft'>");
-                                out.println("<div class='mensagemDele'>");
-                                 out.println(""+w.getMsg()+"");
-                                out.println("</div>");
-                               out.println("</li>");
-                              out.println("</ul>");
-                             out.println("</div>");
-                           }
-                       }
-                     }else{
-                         out.println("<li class='batePapoRight'>");
-                            out.println("<div class='mensagemMinha'>");
-                                 out.println("Não há mensagens");
-                            out.println("</div>");
-                         out.println("</li>");
-                        
-                     }
-                         %>
-
+                <div class="chatPapo" id="chatPapo">
+                  
+                </div>
+                
+                
                 <!-- parte para escrever a mensagem -->
-                <form action="Mensagem" method="post" class="areaSendMensagem">
-                    <textarea name="textArea" id="textArea"  placeholder="Escreva a Mensagem: "></textarea>
+                <form action="Mensagem" method="post" class="areaSendMensagem" id="form1"> 
+                    <textarea type="text" name="textArea" id="textArea"  placeholder="Escreva a Mensagem: "></textarea>
                     <!-- Colocar algum icon para arquivos -->
-                    <input type="submit" class="btnSend" name="ENVIAR" value="ENVIAR" />
+                    <input type="submit" class="btnSend" name="ENVIAR" value="ENVIAR" id="enviar"/>
                 </from>
             </div>      
     </div>

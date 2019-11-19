@@ -12,6 +12,8 @@
         <link rel="shortcut icon" href="img/softcar-blue-icon.png" type="image/x-png">
         <link rel='stylesheet' type='text/css' media='screen' href='Css/perfil.css'>
         <title>SoftCar - Perfil</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script type="text/javascript" src="js/atualizarDados.js"></script>
         <script>
             
             function readURL(input) {
@@ -28,37 +30,37 @@
                 }
             }
             
-            function atualizarDados(){
-                var nome=$('#nome').text();
-                var prof=$('#prof').text();
-                var desde=$('#desde').text();
-                var contato=$('#contato').text();
-                var id =$('#id').val();
-
-                var jsonDataObject=new Object();
-                jsonDataObject.nomeUser=nome;
-                jsonDataObject.profissao=prof;
-                jsonDataObject.tempoTrampo=desde;
-                jsonDataObject.telefone=contato;
-                jsonDataObject.fotoPerfil="TESTE";                
-                jsonDataObject.id=id;
-                
-                var jsonString= JSON.stringify(jsonDataObject);
-
-                
-
-                $.ajax({
-
-                    type:"POST",
-
-                    url:"http://localhost:8088/SoftCarWeb/webresources/softcarweb/perfil",
-
-                    dataType:"json",
-                    data:jsonDataObject
-                    
-                    
-                });
-            }      
+//            function atualizarDados(){
+//                var nome=$('#nome').text();
+//                var prof=$('#prof').text();
+//                var desde=$('#desde').text();
+//                var contato=$('#contato').text();
+//                var id =$('#id').val();
+//
+//                var jsonDataObject=new Object();
+//                jsonDataObject.nomeUser=nome;
+//                jsonDataObject.profissao=prof;
+//                jsonDataObject.tempoTrampo=desde;
+//                jsonDataObject.telefone=contato;
+//                jsonDataObject.fotoPerfil="TESTE";                
+//                jsonDataObject.id=id;
+//                
+//                var jsonString= JSON.stringify(jsonDataObject);
+//
+//                
+//
+//                $.ajax({
+//
+//                    type:"POST",
+//
+//                    url:"http://localhost:8088/SoftCarWeb/webresources/softcarweb/perfil",
+//
+//                    dataType:"json",
+//                    data:jsonDataObject
+//                    
+//                    
+//                });
+//            }      
             
             window.onload = function() {
 
@@ -166,11 +168,11 @@
               <div id="btnEditCont" class="btns">
                  <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
-              <button onclick="atualizarDados()">Atualizar</button>
+              <input type="submit" id="btnA" name="ENVIAR" value="Atualizar"  onclick="comeca()"/>
             </div>
         </div>
    
     </div>
     </body>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!--   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
 </html>

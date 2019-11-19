@@ -91,6 +91,11 @@
                 color: red;
                 cursor: pointer;
             }
+            #btnA{
+                width: 100px;
+                height: 30px;
+                background-color: blue;
+            }
 
             @media(max-width: 1200px){
                 .avatar{

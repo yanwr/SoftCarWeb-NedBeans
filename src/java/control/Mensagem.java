@@ -30,7 +30,7 @@ public class Mensagem extends HttpServlet {
             throws ServletException, IOException {
         String envio = request.getParameter("ENVIAR");   
         switch(envio){
-            case "ENVIAR": this.mandarMensagem(request, response);      
+            case "ENVIAR": this.mandarMensagem(request, response);           
         }
     }
     
@@ -74,7 +74,7 @@ public class Mensagem extends HttpServlet {
     
      private void mandarMensagem(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
           try (PrintWriter out = response.getWriter()) {
-              
+               response.setContentType("text/plain"); response.setCharacterEncoding("UTF-8");
               //////////// mandando mensagem ////////////////
                 // session 
                   HttpSession session = request.getSession();
@@ -115,11 +115,45 @@ public class Mensagem extends HttpServlet {
                   request.setAttribute("msg", msg);
                 //
               //
+              
              // mandar para pag chat
-                request.getRequestDispatcher("/chat.jsp").forward(request, response);
+             
+                    out.println("<ul>");
+                     if(msg != null && !msg.isEmpty() ){ 
+                         
+                       for(DadosBatePapo w : msg){
+                           if(w.getUserQueEnviou() == user.getId() ){
+                            
+                               out.println("<li class='batePapoRight'>");
+                                out.println("<div class='mensagemMinha'>");
+                                 out.println(""+w.getMsg()+"");
+                                out.println("</div>");
+                               out.println("</li>");
+                              
+                           }else{
+                             
+                               out.println("<li class='batePapoLeft'>");
+                                out.println("<div class='mensagemDele'>");
+                                 out.println(""+w.getMsg()+"");
+                                out.println("</div>");
+                               out.println("</li>");
+                             
+                           }
+                       }
+                     }else{
+                         out.println("<li class='batePapoRight'>");
+                            out.println("<div class='mensagemMinha'>");
+                                 out.println("Não há mensagens");
+                            out.println("</div>");
+                         out.println("</li>");
+                        
+                     }
+                      out.println("</ul>");
+//                request.getRequestDispatcher("/chat.jsp").forward(request, response);
           }
     } 
-     
+   
+      
     @Override
     public String getServletInfo() {
         return "Short description";
