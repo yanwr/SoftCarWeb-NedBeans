@@ -19,8 +19,7 @@
     <link href="Css/chat.css" rel="stylesheet">
     <link rel="shortcut icon" href="img/softcar-blue-icon.png" type="image/x-png">
     <title>SoftCar - Chat</title>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script type="text/javascript" src="js/pegarMsg.js"></script>
+    
 </head>
 <body>
     <%@include file="NavBarLogado.jsp" %>
@@ -66,17 +65,59 @@
             
                 <!-- Mensagens do chat -->
                 <div class="chatPapo" id="chatPapo">
-                  
+                    <%
+                     List<DadosBatePapo> msg = new ArrayList();   
+                     msg = (List) request.getAttribute("msg");
+                     
+                     Usuario user = new Usuario();
+                     user = (Usuario) session.getAttribute("usuario");
+                    
+                     
+                  out.println("<ul>");
+                     if(msg != null && !msg.isEmpty() ){ 
+                         
+                       for(DadosBatePapo w : msg){
+                           if(w.getUserQueEnviou() == user.getId() ){
+                            
+                               out.println("<li class='batePapoRight'>");
+                                out.println("<div class='mensagemMinha'>");
+                                 out.println(""+w.getMsg()+"");
+                                out.println("</div>");
+                               out.println("</li>");
+                              
+                           }else{
+                             
+                               out.println("<li class='batePapoLeft'>");
+                                out.println("<div class='mensagemDele'>");
+                                 out.println(""+w.getMsg()+"");
+                                out.println("</div>");
+                               out.println("</li>");
+                             
+                           }
+                       }
+                     }else{
+                         out.println("<li class='batePapoRight'>");
+                            out.println("<div class='mensagemMinha'>");
+                                 out.println("Não há mensagens");
+                            out.println("</div>");
+                         out.println("</li>");
+                        
+                     }
+                      out.println("</ul>");
+                      
+                    %>  
                 </div>
                 
                 
                 <!-- parte para escrever a mensagem -->
-                <form action="Mensagem" method="post" class="areaSendMensagem" id="form1"> 
+                <div class="areaSendMensagem" id="form1"> 
                     <textarea type="text" name="textArea" id="textArea"  placeholder="Escreva a Mensagem: "></textarea>
                     <!-- Colocar algum icon para arquivos -->
-                    <input type="submit" class="btnSend" name="ENVIAR" value="ENVIAR" id="enviar"/>
-                </from>
+                    <input type="button" class="btnSend" onclick="enviar()" name="ENVIAR" value="ENVIAR" id="enviar"/>
+                </div>
             </div>      
     </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+                <script type="text/javascript" src="js/pegarMsg.js"></script>
 </body>
 </html>

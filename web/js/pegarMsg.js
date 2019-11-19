@@ -17,19 +17,29 @@
     }
     
     var txt;
-    $('#enviar').on('click', function(){
+    function enviar(){
         txt = document.getElementById("textArea").value;
-    })
-       
-    function lista(){
         $.ajax({
             url:'Mensagem?ENVIAR=ENVIAR',
             type: 'POST',
-            data:{textArea: txt},
+            data: {texto: txt},
             success: function(textStatus){
+                //alert(textStatus)
                 $('#chatPapo').html(textStatus); 
             } 
         });
-        timeI = setTimeout("lista()", 2000); // tempo de espera para atualizar
+    }
+       
+    function lista(){
+        //$('#chatPapo').html("");
+        $.ajax({
+            url:'Mensagem?ENVIAR=Atualizar',
+            type: 'POST',
+            success: function(textStatus){
+                //alert(textStatus)
+                $('#chatPapo').html(textStatus); 
+            } 
+        });
+        timeI = setTimeout("lista()", 10000); // tempo de espera para atualizar
         timeR = true; 
     }
