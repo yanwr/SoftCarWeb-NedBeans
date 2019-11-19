@@ -1,9 +1,4 @@
-var nome;
-var prof;
-var desde;
-var contato;
-var id;
-var fotoPerfil;
+var nome, prof, desde, contato, id, fotoPerfil, file;
 
 function comeca(){
     mandaDados();
@@ -14,8 +9,12 @@ function mandaDados(){
     prof =$('#prof').text();
     desde =$('#desde').text();
     contato = $('#contato').text();
-    fotoPerfil = "nicolasFazAsFotos.jsg" ;
+    fotoPerfil = document.getElementById('file');
+    file = fotoPerfil.files[0];
     id = $('#id').val();
+    
+    formData = new FormData();
+    formData.append("image", file);
     
     $.ajax({
           url:'Perfil?ENVIAR=Atualizar',
@@ -25,9 +24,11 @@ function mandaDados(){
               prof: prof,
               desde: desde,
               tel: contato,
-              foto: fotoPerfil,
+              foto: formData,
               idUser: id
           },
+          processData: false,
+          contentType: false,
           success: function(){
               alert("Deu boa");
           }

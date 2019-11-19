@@ -131,7 +131,7 @@
               <div class="avatar" ><img id="avatar" src="img/1.png"></div>
               <div id="btnEditImg" class="btnEditImg">
                   <label id="fotoUser" for="trocaFoto"><i class="fas fa-edit" style="color:coral;"></i></label>
-                  <input type='file' id="trocaFoto" onchange="readURL(this);">
+                  <input type='file' name="file" id="trocaFoto" onchange="readURL(this);">
               </div>
              </div>
       
