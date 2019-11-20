@@ -3,6 +3,7 @@ package control;
 
 import DAO.LoginDAO;
 import DAO.PerfilDAO;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -50,6 +51,15 @@ public class Perfil extends HttpServlet {
                 String foto = request.getParameter("foto");
                 int idUser = Integer.parseInt(request.getParameter("idUser"));
                 
+                Part img = request.getPart("foto");
+                String nomeft = extractFileName(img);
+                String local = "C:\\Users\\Aluno\\Documents\\Nicolas Ouriques\\SoftCarWeb-NedBeans\\web\\img\\" + File.separator + nomeft;
+                File salvarft = new File(local);
+                
+                
+                
+                
+                
               //
               // criar objeto de user e dar update no banco com os novos dados
                 Usuario newUser = new Usuario(idUser, nome, prof, tempoTrampo, tel, foto);
@@ -77,6 +87,17 @@ public class Perfil extends HttpServlet {
                   System.out.println(e);
               }
           }
+    }
+    
+    private String extractFileName(Part part){
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for(String s : items){
+            if(!s.trim().startsWith("filename")){
+                return s.substring(s.indexOf("-") + 2, s.length() - 1);
+            }
+        }
+        return "";
     }
 
     @Override

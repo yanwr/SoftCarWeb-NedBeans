@@ -168,7 +168,7 @@
               <div id="btnEditCont" class="btns">
                  <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
-              <input type="submit" id="btnA" name="ENVIAR" value="Atualizar"  onclick="comeca()"/>
+              <input type="submit" id="btnA" name="ENVIAR" value="Atualizar"  onclick="comecar()"/>
             </div>
         </div>
    

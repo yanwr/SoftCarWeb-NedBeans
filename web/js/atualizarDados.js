@@ -1,6 +1,6 @@
 var nome, prof, desde, contato, id, fotoPerfil, file;
 
-function comeca(){
+function comecar(){
     mandaDados();
 }
 
@@ -9,9 +9,12 @@ function mandaDados(){
     prof =$('#prof').text();
     desde =$('#desde').text();
     contato = $('#contato').text();
-    fotoPerfil = document.getElementById('file');
-    file = fotoPerfil.files[0];
     id = $('#id').val();
+    alert(id);
+    
+    
+    fotoPerfil = document.getElementById('trocaFoto');
+    file = fotoPerfil.files[0];
     
     formData = new FormData();
     formData.append("image", file);
@@ -29,6 +32,7 @@ function mandaDados(){
           },
           processData: false,
           contentType: false,
+          enctype: 'multipart/form-data',
           success: function(){
               alert("Deu boa");
           }
