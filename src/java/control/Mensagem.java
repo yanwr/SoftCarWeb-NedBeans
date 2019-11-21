@@ -114,12 +114,7 @@ public class Mensagem extends HttpServlet {
        // request.getRequestDispatcher("/chat.jsp").forward(request, response);
 
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+    
     private void getMessage(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session = request.getSession();
@@ -139,9 +134,9 @@ public class Mensagem extends HttpServlet {
         // mandar para request e manipular na pag chat.
         request.setAttribute("msg", msg);
         //
-
-        ////             // mandar para pag chat
-////             
+        
+        // mandar para pag chat
+            
         try (PrintWriter out = response.getWriter()) {
             out.println("<ul>");
             if (msg != null && !msg.isEmpty()) {
@@ -174,9 +169,16 @@ public class Mensagem extends HttpServlet {
 
             }
             out.println("</ul>");
+            
         } catch (IOException ex) {
             Logger.getLogger(Mensagem.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //
     }
+    
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+    
 }

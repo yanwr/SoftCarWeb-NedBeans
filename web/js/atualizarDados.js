@@ -1,4 +1,4 @@
-var nome, prof, desde, contato, id, fotoPerfil, file;
+var nome, prof, desde, contato, id, fotoPerfil, file, formData;
 
 function comecar(){
     mandaDados();

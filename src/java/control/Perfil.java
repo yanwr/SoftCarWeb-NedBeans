@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Usuario;
-
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
-        maxFileSize = 1024 * 1024 * 10,
-        maxRequestSize = 1024 * 1024 * 50)
+//(fileSizeThreshold = 1024 * 1024 * 2,
+//        maxFileSize = 1024 * 1024 * 10,
+//        maxRequestSize = 1024 * 1024 * 50)
+@MultipartConfig()
 
 public class Perfil extends HttpServlet {
 
@@ -55,7 +55,7 @@ public class Perfil extends HttpServlet {
                 String nomeft = extractFileName(img);
                 String local = "C:\\Users\\Aluno\\Documents\\Nicolas Ouriques\\SoftCarWeb-NedBeans\\web\\img\\" + File.separator + nomeft;
                 File salvarft = new File(local);
-                
+               
                 
                 
                 

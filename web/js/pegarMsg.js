@@ -17,7 +17,7 @@
     }
     
     var txt;
-    function enviar(){
+    function enviarMsg(){
         txt = document.getElementById("textArea").value;
         $.ajax({
             url:'Mensagem?ENVIAR=ENVIAR',
@@ -28,10 +28,11 @@
                 $('#chatPapo').html(textStatus); 
             } 
         });
+        // limpar campo da textarea
+      txt = document.getElementById("textArea").value = "";
     }
        
     function lista(){
-        //$('#chatPapo').html("");
         $.ajax({
             url:'Mensagem?ENVIAR=Atualizar',
             type: 'POST',
@@ -43,3 +44,5 @@
         timeI = setTimeout("lista()", 10000); // tempo de espera para atualizar
         timeR = true; 
     }
+
+    

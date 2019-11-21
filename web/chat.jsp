@@ -55,10 +55,20 @@
         <div class="containerPrincipal">
                 <div class="chatHeader">
                     <div class="headerConf">
-                        <div class="imgUser"></div>
-                        <div class="chatCom">
-                            <p id="pChatCom">Yan Weschenfelder</p>    
-                        </div>
+                        <%
+                            List<Usuario> list = new ArrayList();
+                            list = (List) request.getAttribute("contatos");
+                            int codUser = (int) session.getAttribute("codUser");
+                            
+                            for(Usuario w : list){
+                                if(w.getId() == codUser){
+                                    out.println("<div class='imgUser'></div>");
+                                    out.println("<div class='chatCom'>");
+                                        out.println("<p class='pChatCom'>"+w.getNomeUser()+"</p>");
+                                    out.println("</div>");
+                                }
+                            }
+                        %>
                     </div>
                 </div>
             
@@ -113,7 +123,7 @@
                 <div class="areaSendMensagem" id="form1"> 
                     <textarea type="text" name="textArea" id="textArea"  placeholder="Escreva a Mensagem: "></textarea>
                     <!-- Colocar algum icon para arquivos -->
-                    <input type="button" class="btnSend" onclick="enviar()" name="ENVIAR" value="ENVIAR" id="enviar"/>
+                    <input type="button" class="btnSend" onclick="enviarMsg()" name="ENVIAR" value="ENVIAR" id="enviar"/>
                 </div>
             </div>      
     </div>
