@@ -48,7 +48,6 @@ public class Perfil extends HttpServlet {
                 String prof = request.getParameter("prof");
                 String tempoTrampo = request.getParameter("desde");
                 String tel = request.getParameter("tel");
-                String foto = request.getParameter("foto");
                 int idUser = Integer.parseInt(request.getParameter("idUser"));
                 
                 Part img = request.getPart("foto");
@@ -62,7 +61,7 @@ public class Perfil extends HttpServlet {
                 
               //
               // criar objeto de user e dar update no banco com os novos dados
-                Usuario newUser = new Usuario(idUser, nome, prof, tempoTrampo, tel, foto);
+                Usuario newUser = new Usuario(idUser, nome, prof, tempoTrampo, tel, nomeft);
                 
                 PerfilDAO pfDao = new PerfilDAO();
                 pfDao.setDados(newUser);
@@ -76,7 +75,7 @@ public class Perfil extends HttpServlet {
                 attSession = (Usuario) session.getAttribute("usuario");
                 
                 attSession.setNomeUser(nome);
-                attSession.setFotoPerfil(foto);
+                attSession.setFotoPerfil(nomeft);
                 attSession.setProfissao(prof);
                 attSession.setTelefone(tel);
                 attSession.setTempoTrampo(tempoTrampo);

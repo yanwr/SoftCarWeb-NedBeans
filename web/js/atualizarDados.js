@@ -12,9 +12,7 @@ function mandaDados(){
     id = $('#id').val();
     
     fotoPerfil = document.getElementById('trocaFoto');
-    console.log(fotoPerfil);
     file = fotoPerfil.files[0];
-    console.log(file);
     
     formData = new FormData();
     formData.append("foto", file);
@@ -23,8 +21,6 @@ function mandaDados(){
     formData.append("desde", desde);
     formData.append("tel", contato);
     formData.append("idUser", id);
-    
-    console.log(formData);
     
     $.ajax({
           url:'Perfil?ENVIAR=Atualizar',
@@ -43,7 +39,7 @@ function mandaDados(){
           contentType: false,
           enctype: 'multipart/form-data',
           success: function(){
-              alert("Deu boa");
+              console.log("DADOS ENVIADOS COM SUCESSO");
           }
        });
 }

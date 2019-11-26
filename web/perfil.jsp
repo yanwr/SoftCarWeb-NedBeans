@@ -28,39 +28,7 @@
 
                     reader.readAsDataURL(input.files[0]);
                 }
-            }
-            
-//            function atualizarDados(){
-//                var nome=$('#nome').text();
-//                var prof=$('#prof').text();
-//                var desde=$('#desde').text();
-//                var contato=$('#contato').text();
-//                var id =$('#id').val();
-//
-//                var jsonDataObject=new Object();
-//                jsonDataObject.nomeUser=nome;
-//                jsonDataObject.profissao=prof;
-//                jsonDataObject.tempoTrampo=desde;
-//                jsonDataObject.telefone=contato;
-//                jsonDataObject.fotoPerfil="TESTE";                
-//                jsonDataObject.id=id;
-//                
-//                var jsonString= JSON.stringify(jsonDataObject);
-//
-//                
-//
-//                $.ajax({
-//
-//                    type:"POST",
-//
-//                    url:"http://localhost:8088/SoftCarWeb/webresources/softcarweb/perfil",
-//
-//                    dataType:"json",
-//                    data:jsonDataObject
-//                    
-//                    
-//                });
-//            }      
+            }    
             
             window.onload = function() {
 
@@ -117,6 +85,51 @@
               }
             };
           };
+          
+          
+          function teste(){
+              var p, input, text;
+              
+              p = document.getElementById('nome');
+              
+              text = p.innerHTML;
+              
+              p.style.visibility = 'hidden';
+              p.style.display = 'none';
+              
+              input = document.createElement('input');
+              input.type = 'text';
+              input.value = text;
+              input.id = 'input';
+              input.size = Math.max(text.length / 4 * 3, 4);
+              p.parentNode.insertBefore(input, p);
+              
+              var enter = document.getElementById('input');
+                enter.onkeyup = function(e){
+                    if(e.keyCode == 13){
+                        // Removendo o input
+                        p.parentNode.removeChild(input);
+
+                        // Update no texto
+                        p.innerHTML = input.value;
+                        
+                        // Mostrando o texto dnv
+                        p.style.display = "";
+                        p.style.visibility = "";
+                    }   
+                }
+                input.onblur = function() {
+                  // Removendo o input
+                  p.parentNode.removeChild(input);
+
+                  // Update no texto
+                  p.innerHTML = input.value;
+
+                  // Mostrando o texto dnv
+                  p.style.display = "";
+                  p.style.visibility = "";
+                };
+          }
             
         </script>
     </head>
@@ -142,7 +155,7 @@
                   <p class="textosSeg" id="nome">${sessionScope.usuario.nomeUser}</p>
               </div>
                 <div id="btnEditUser" class="btns">
-                    <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
+                    <a onclick="teste()"><i class="fas fa-edit" style="color:coral;"></i></a>
               </div>
       
               <div class="dadosProf">
