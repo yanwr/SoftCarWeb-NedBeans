@@ -59,7 +59,7 @@ public class Oferecer extends HttpServlet {
                 String dt = minhaData.format(minhaDataFormatter);
 
                 LocalDateTime minhaHora = LocalDateTime.now();
-                DateTimeFormatter minhaHoraFormatter = DateTimeFormatter.ofPattern("HH:MM");
+                DateTimeFormatter minhaHoraFormatter = DateTimeFormatter.ofPattern("HH:mm");
                 String hr = minhaHora.format(minhaHoraFormatter);
                     
               //

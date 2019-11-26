@@ -2,17 +2,9 @@
 package control;
 
 import DAO.LoginDAO;
-import DB.connectionDB;
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-
-import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,20 +17,22 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
+     String envio = request.getParameter("Deslogar");
+        switch(envio){
+            case "Sair": this.loginOut(request, response);
+        }
     }
 
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
         String envio = request.getParameter("ENVIAR");
         switch(envio){
-            case "LOGAR": this.verificacao(request, response);
+            case "LOGAR": this.login(request, response);
         }
     }  
-     private void verificacao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try (PrintWriter out = response.getWriter()) {
             try {
                    // Session 
@@ -74,7 +68,18 @@ public class Login extends HttpServlet {
                }
         }     
     }
-     
+     private void loginOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        try (PrintWriter out = response.getWriter()) {
+            //Session
+                HttpSession session = request.getSession();
+            //
+            // deslogar invalidando a session do usuario  
+                session.invalidate();
+                request.getRequestDispatcher("/home.jsp").forward(request, response);
+            //
+            
+        }
+     }
     @Override
     public String getServletInfo() {
         return "Short description";

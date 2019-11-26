@@ -278,7 +278,7 @@
                             <li><a href="perfil.jsp" class="aMenu"><i class="fas fa-user-cog"></i>Perfil</a></li>
                             <li><a href="chat.jsp" class="aMenu" ><i class="far fa-comment-dots"></i>Chat</a></li>
                             <li><a href="teste.jsp" class="aMenu" ><i class="fas fa-question-circle"></i></i>Ajuda</a></li>
-                            <li><a href="#" class="aMenu" ><i class="fas fa-power-off"></i>Sair</a></li>
+                            <li><a href="Login?Deslogar=Sair" class="aMenu" ><i class="fas fa-power-off"></i>Sair</a></li>
                         </ul>
                     </li>
                     
