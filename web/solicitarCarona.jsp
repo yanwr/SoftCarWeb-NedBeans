@@ -95,18 +95,20 @@
                 List<SolicitarCarona> list = (List) request.getAttribute("TC");
               
                 for( SolicitarCarona w : list){
-                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+w.getCodUser()+"' class='card'>");
-                          out.println("<input type='hidden' name='codViagem' value="+w.getCodViagem()+" />");
+                       
+                        out.println("<div  class='card'>");
+                          out.println("<input type='hidden' id='idUser' name='codViagem' value="+w.getCodViagem()+" />");
                           out.println("<div class='hrPost'>"+w.getDataPostagem()+" "+w.getHoraPostagem()+"</div>");
+
 
                           out.println("<div class='perfilUser'>");
                               out.println("<div class='nomeUser'>");
-                                 out.println("<div class='imgPerfil' id='imgPerfil' style=' background-image: url(img/1.png);margin-top: -25px;'>"+w.getFtPerfil()+"</div>");
+                                 out.println("<div class='imgPerfil' onclick='comeca()' id='imgPerfil' style=' background-image: url(img/1.png);margin-top: -25px;'>"+w.getFtPerfil()+"</div>");
                                  out.println("<p id='nameUser'>"+w.getMotorista()+"</p>");
                               out.println("</div>");
                           out.println("</div>");
 
-                          out.println("<div class='dadosCorrida'>");
+                          out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+w.getCodUser()+"' class='dadosCorrida'>");
                               out.println("<ul class='dCorrida'>");
                                   out.println("<li class='saida'>");
                                       out.println("Saida: <p id='nomeSaida'>"+w.getSaida()+"</p>");
@@ -134,16 +136,22 @@
                                   out.println("</li>");
                               out.println("</ul>");
 
-                          out.println("</div>");
-                      out.println("</a>");
+                          out.println("</a>");
+                      out.println("</div>");
                  }  
              }
 
                 
     
-    %>
+    %>      
         </main>
+      </div>
+      
+      <div id="modal-wrapper" class="modal" style="display: none;">
         
       </div>
+    
 </body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/visualizarPerfil.js"></script>
 </html>

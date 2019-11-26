@@ -34,6 +34,7 @@ public class Perfil extends HttpServlet {
        String envio = request.getParameter("ENVIAR");
        switch(envio){
            case "Atualizar": this.trocaDados(request, response);
+           case "teste": this.teste(request, response);
        }
     }
     
@@ -99,6 +100,12 @@ public class Perfil extends HttpServlet {
         }
         return "";
     }
+    private void teste(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+          try (PrintWriter out = response.getWriter()) {
+              
+          }
+    }     
+          
 
     @Override
     public String getServletInfo() {
