@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Usuario;
-//(fileSizeThreshold = 1024 * 1024 * 2,
-//        maxFileSize = 1024 * 1024 * 10,
-//        maxRequestSize = 1024 * 1024 * 50)
-@MultipartConfig()
+
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
+        maxFileSize = 1024 * 1024 * 10,
+        maxRequestSize = 1024 * 1024 * 50)
 
 public class Perfil extends HttpServlet {
 
@@ -53,10 +53,10 @@ public class Perfil extends HttpServlet {
                 
                 Part img = request.getPart("foto");
                 String nomeft = extractFileName(img);
-                String local = "C:\\Users\\Aluno\\Documents\\Nicolas Ouriques\\SoftCarWeb-NedBeans\\web\\img\\" + File.separator + nomeft;
+                String local = request.getServletContext().getRealPath("img") + File.separator + nomeft;
                 File salvarft = new File(local);
                
-                
+                img.write(local);
                 
                 
                 
@@ -93,9 +93,10 @@ public class Perfil extends HttpServlet {
         String contentDisp = part.getHeader("content-disposition");
         String[] items = contentDisp.split(";");
         for(String s : items){
-            if(!s.trim().startsWith("filename")){
-                return s.substring(s.indexOf("-") + 2, s.length() - 1);
-            }
+            System.out.println("file img  " + s);
+            if(s.trim().startsWith("filename")){
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            } 
         }
         return "";
     }

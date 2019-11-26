@@ -10,26 +10,35 @@ function mandaDados(){
     desde =$('#desde').text();
     contato = $('#contato').text();
     id = $('#id').val();
-    alert(id);
-    
     
     fotoPerfil = document.getElementById('trocaFoto');
+    console.log(fotoPerfil);
     file = fotoPerfil.files[0];
+    console.log(file);
     
     formData = new FormData();
-    formData.append("image", file);
+    formData.append("foto", file);
+    formData.append("prof", prof);
+    formData.append("nome", nome);
+    formData.append("desde", desde);
+    formData.append("tel", contato);
+    formData.append("idUser", id);
+    
+    console.log(formData);
     
     $.ajax({
           url:'Perfil?ENVIAR=Atualizar',
           type: 'POST',
-          data:{
-              nome: nome,
-              prof: prof,
-              desde: desde,
-              tel: contato,
-              foto: formData,
-              idUser: id
-          },
+//          data:{
+//              nome: nome,
+//              prof: prof,
+//              desde: desde,
+//              tel: contato,
+//              foto: file,
+//              idUser: id
+//          },
+          data: formData,
+          cache:false,
           processData: false,
           contentType: false,
           enctype: 'multipart/form-data',
