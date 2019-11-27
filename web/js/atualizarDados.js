@@ -39,7 +39,7 @@ function mandaDados(){
           contentType: false,
           enctype: 'multipart/form-data',
           success: function(){
-              console.log("DADOS ENVIADOS COM SUCESSO");
+//              console.log("DADOS ENVIADOS COM SUCESSO");
           }
        });
 }

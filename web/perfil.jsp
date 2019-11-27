@@ -28,7 +28,56 @@
 
                     reader.readAsDataURL(input.files[0]);
                 }
-            }    
+            }
+            
+            function atualizar(Campo){
+              var p, input, text;
+              
+              if(Campo == 'nome'){
+                  p = document.getElementById('nome');
+              }else if(Campo == 'prof'){
+                  p = document.getElementById('prof');
+              }else if(Campo == 'desde'){
+                  p = document.getElementById('desde');
+              }else if(Campo == 'contato'){
+                  p = document.getElementById('contato');
+              }
+              
+              text = p.innerHTML;
+              
+              p.style.display = 'none';
+              
+              input = document.createElement('input');
+              input.type = 'text';
+              input.value = text;
+              input.id = 'input';
+              input.size = Math.max(text.length / 4 * 3, 4);
+              p.parentNode.insertBefore(input, p);
+              
+              var enter = document.getElementById('input');
+                enter.onkeyup = function(e){
+                    if(e.keyCode == 13){
+                        // Removendo o input
+                        p.parentNode.removeChild(input);
+
+                        // Update no texto
+                        p.innerHTML = input.value;
+                        
+                        // Mostrando o texto dnv
+                        p.style.display = "";
+                    }   
+                }
+                input.onblur = function() {
+                  // Removendo o input
+                  p.parentNode.removeChild(input);
+
+                  // Update no texto
+                  p.innerHTML = input.value;
+
+                  // Mostrando o texto dnv
+                  p.style.display = "";
+                };
+            }
             
             window.onload = function() {
 
@@ -53,7 +102,7 @@
                 input.type = "text";
                 input.value = text;
                 input.id = 'input';
-                input.size = Math.max(text.length / 4 * 3, 4);
+                input.size = Math.max(text.length / 3 * 3, 4);
                 p.parentNode.insertBefore(input, p);
 
                 // Dar o foco, e quando clicar fora sumir
@@ -85,51 +134,6 @@
               }
             };
           };
-          
-          
-          function teste(){
-              var p, input, text;
-              
-              p = document.getElementById('nome');
-              
-              text = p.innerHTML;
-              
-              p.style.visibility = 'hidden';
-              p.style.display = 'none';
-              
-              input = document.createElement('input');
-              input.type = 'text';
-              input.value = text;
-              input.id = 'input';
-              input.size = Math.max(text.length / 4 * 3, 4);
-              p.parentNode.insertBefore(input, p);
-              
-              var enter = document.getElementById('input');
-                enter.onkeyup = function(e){
-                    if(e.keyCode == 13){
-                        // Removendo o input
-                        p.parentNode.removeChild(input);
-
-                        // Update no texto
-                        p.innerHTML = input.value;
-                        
-                        // Mostrando o texto dnv
-                        p.style.display = "";
-                        p.style.visibility = "";
-                    }   
-                }
-                input.onblur = function() {
-                  // Removendo o input
-                  p.parentNode.removeChild(input);
-
-                  // Update no texto
-                  p.innerHTML = input.value;
-
-                  // Mostrando o texto dnv
-                  p.style.display = "";
-                  p.style.visibility = "";
-                };
-          }
             
         </script>
     </head>
@@ -155,7 +159,7 @@
                   <p class="textosSeg" id="nome">${sessionScope.usuario.nomeUser}</p>
               </div>
                 <div id="btnEditUser" class="btns">
-                    <a onclick="teste()"><i class="fas fa-edit" style="color:coral;"></i></a>
+                    <button class="btnIcon" value="nome" onclick="atualizar('nome')"><i class="fas fa-edit" style="color:coral;"></i></button>
               </div>
       
               <div class="dadosProf">
@@ -163,15 +167,15 @@
                   <p class="textosSeg" id="prof">${sessionScope.usuario.profissao}</p>
               </div>
               <div id="btnEditProf" class="btns">
-                      <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
+                      <button class="btnIcon" onclick="atualizar('prof')"><i class="fas fa-edit" style="color:coral;"></i></button>
               </div>
       
               <div class="dadosTempo">
-                      <h1 class="textosMain">SoftPlayer desde:</h1>
+                      <h1 class="textosMain">SoftPlayer desde</h1>
                       <p class="textosSeg" id="desde">${sessionScope.usuario.tempoTrampo}</p>
               </div>
               <div id="btnEditTemp" class="btns">
-                      <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
+                      <button class="btnIcon" onclick="atualizar('desde')"><i class="fas fa-edit" style="color:coral;"></i></button>
               </div>
       
               <div class="dadosCont">
@@ -179,7 +183,7 @@
                   <p class="textosSeg" id="contato">${sessionScope.usuario.telefone}</p>
               </div>
               <div id="btnEditCont" class="btns">
-                 <a onclick=""><i class="fas fa-edit" style="color:coral;"></i></a>
+                 <button class="btnIcon" onclick="atualizar('contato')"><i class="fas fa-edit" style="color:coral;"></i></button>
               </div>
               <input type="submit" id="btnA" name="ENVIAR" value="Atualizar"  onclick="comecar()"/>
             </div>
