@@ -47,22 +47,42 @@ public class Perfil extends HttpServlet {
               //pegando dados do request 
                 String nome = request.getParameter("nome");
                 String prof = request.getParameter("prof");
-                String tempoTrampo = request.getParameter("desde");
+                String tempoTrampo = arrumarData(request.getParameter("desde"));
                 String tel = request.getParameter("tel");
                 int idUser = Integer.parseInt(request.getParameter("idUser"));
+                
+                
                 
                 Part img = request.getPart("foto");
                 String nomeft = extractFileName(img);
                 String local = request.getServletContext().getRealPath("img") + File.separator + nomeft;
                 File salvarft = new File(local);
-               
-                img.write(local);
+                if(!nomeft.isEmpty() ){
+                    img.write(local);
+                }
+                Usuario attSession = new Usuario();
+                attSession = (Usuario) session.getAttribute("usuario");
+                String fotoAtual = attSession.getFotoPerfil();
                 
+                attSession.setNomeUser(nome);
+                if(!nomeft.isEmpty()){
+                    attSession.setFotoPerfil(nomeft);
+                }
+                attSession.setProfissao(prof);
+                attSession.setTelefone(tel);
+                attSession.setTempoTrampo(tempoTrampo);
                 
-                
+                session.setAttribute("usuario", attSession);
               //
               // criar objeto de user e dar update no banco com os novos dados
-                Usuario newUser = new Usuario(idUser, nome, prof, tempoTrampo, tel, nomeft);
+                Usuario newUser;
+                if(nomeft == null || nomeft.isEmpty()){
+                    newUser = new Usuario(idUser, nome, prof, tempoTrampo, tel, fotoAtual);
+                }else{
+                    newUser = new Usuario(idUser, nome, prof, tempoTrampo, tel, nomeft);
+                }
+                
+                
                 
                 PerfilDAO pfDao = new PerfilDAO();
                 pfDao.setDados(newUser);
@@ -72,16 +92,7 @@ public class Perfil extends HttpServlet {
                 Usuario novao = new Usuario();
                 novao = l.logar(newUser);
                 
-                Usuario attSession;
-                attSession = (Usuario) session.getAttribute("usuario");
-                
-                attSession.setNomeUser(nome);
-                attSession.setFotoPerfil(nomeft);
-                attSession.setProfissao(prof);
-                attSession.setTelefone(tel);
-                attSession.setTempoTrampo(tempoTrampo);
-                
-                session.setAttribute("usuario", attSession);
+               
               
               } catch(SQLException e){
                   System.out.println(e);
@@ -103,6 +114,8 @@ public class Perfil extends HttpServlet {
     
     private void teste(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
           try (PrintWriter out = response.getWriter()) {
+              response.setContentType("text/html;charset=UTF-8");
+              request.setCharacterEncoding("UTF-8");
               // pegar idUser e fazer um obj Usuario
               int idUser = Integer.parseInt(request.getParameter("codV"));
               //
@@ -113,52 +126,56 @@ public class Perfil extends HttpServlet {
               //
               // fazer o popUp e mandar para pagina de solicitarCarona para visualizacao
               out.println("<div class='modal-content animate'>");
-              out.println("<div class='imgcontainer'>");
-              out.println("<span onclick=\"document.getElementById('modal-wrapper').style.display='none'\" class=\"close\" title=\"Close PopUp\">&times;</span>");
-              out.println("<div class='avatar' ><img id='avatar' src='img/"+novoU.getFotoPerfil()+"'></div>");
-              out.println("<div id='btnEditImg' class='btnEditImg'>");
-              out.println("<label id='fotoUser' for='trocaFoto'><i class='fas fa-edit' style='color:coral;'></i></label>");
-              out.println("<input type='file' name=\"file\" id=\"trocaFoto\" onchange=\"readURL(this);\">");
-              out.println("</div>");
-              out.println("</div>");
-              out.println("<div id=\"container\" class=\"container\">");
-              out.println("<div class=\"dadosUser\">");
-              out.println("<input type=\"hidden\" id=\"id\" value='"+novoU.getId()+"'>");
-              out.println("<h1 class=\"textosMain\">SoftPlayer</h1>");
-              out.println("<p class=\"textosSeg\" id=\"nome\">"+novoU.getNomeUser()+"</p>");
-              out.println("</div>");
-              out.println("<div id=\"btnEditUser\" class=\"btns\">");
-              out.println("<a><i class=\"fas fa-edit\" style=\"color:coral;\"></i></a>");
-              out.println("</div>");
-              out.println("<div class=\"dadosProf\">");
-              out.println("<h1 class=\"textosMain\">Profissão</h1>");
-              out.println("<p class=\"textosSeg\" id=\"prof\">"+novoU.getProfissao()+"</p>");
-              out.println("</div>");
-              out.println("<div id=\"btnEditProf\" class=\"btns\">");
-              out.println("<a><i class=\"fas fa-edit\" style=\"color:coral;\"></i></a>");
-              out.println("</div>");
-              out.println(" <div class=\"dadosTempo\">");
-              out.println("<h1 class=\"textosMain\">SoftPlayer desde:</h1>");
-              out.println("<p class=\"textosSeg\" id=\"desde\">"+novoU.getTempoTrampo()+"</p>");
-              out.println("</div>");
-              out.println("<div id=\"btnEditTemp\" class=\"btns\">");
-              out.println(" <a><i class=\"fas fa-edit\" style=\"color:coral;\"></i></a>");
-              out.println("</div>");
-              out.println("<div class=\"dadosCont\">");
-              out.println("<h1 class=\"textosMain\">Contato</h1>");
-              out.println("<p class=\"textosSeg\" id=\"contato\">"+novoU.getTelefone()+"</p>");
-              out.println("</div>");
-              out.println("<div id=\"btnEditCont\" class=\"btns\">");
-              out.println(" <a><i class=\"fas fa-edit\" style=\"color:coral;\"></i></a>");
-              out.println("</div>");
-              out.println("</div>");
+                out.println("<div class='imgcontainer'>");
+                    out.println("<span onclick=\"document.getElementById('modal-wrapper').style.display='none'\" class=\"close\" title=\"Close PopUp\">&times;</span>");
+                    if(novoU.getFotoPerfil().isEmpty() || novoU.getFotoPerfil() == null){
+                        out.println("<div class='avatar' ><img id='avatar' style='background-size:cover;' src='img/1.png'></div>");
+                    }else{
+                         out.println("<div class='avatar' ><img id='avatar' style='background-size:cover;' src='img/"+novoU.getFotoPerfil()+"'></div>");
+                    }
+                out.println("</div>");
+                
+                out.println("<div id=\"container\" class=\"container\">");
+                    out.println("<div class=\"dadosUser\">");
+                        out.println("<input type=\"hidden\" id=\"id\" value='"+novoU.getId()+"'>");
+                        out.println("<h1 class=\"textosMain\">SoftPlayer</h1>");
+                        out.println("<p class=\"textosSeg\" id=\"nome\">"+novoU.getNomeUser()+"</p>");
+                    out.println("</div>");
+                    
+                    out.println("<div class=\"dadosProf\">");
+                        out.println("<h1 class=\"textosMain\">Profissão</h1>");
+                        out.println("<p class=\"textosSeg\" id=\"prof\">"+novoU.getProfissao()+"</p>");
+                    out.println("</div>");
+                    
+                    out.println(" <div class=\"dadosTempo\">");
+                        out.println("<h1 class=\"textosMain\">SoftPlayer desde</h1>");
+                        out.println("<p class=\"textosSeg\" id=\"desde\">"+novoU.getTempoTrampo()+"</p>");
+                    out.println("</div>");
+                    
+                    out.println("<div class=\"dadosCont\">");
+                        out.println("<h1 class=\"textosMain\">Contato</h1>");
+                        out.println("<p class=\"textosSeg\" id=\"contato\">"+novoU.getTelefone()+"</p>");
+                    out.println("</div>");
+                    
+                out.println("</div>");
               out.println("</div>");
               
               
               //
           }
     }     
-          
+    private String arrumarData(String string){
+       String[] items = string.split("-");
+       String data = "";
+       for(int i = items.length - 1; i >= 0; i--){
+           if(i == 0){
+               data += items[i];
+           }else{
+               data += items[i]+"-";
+           }
+       }
+       return data;
+   }
 
     @Override
     public String getServletInfo() {

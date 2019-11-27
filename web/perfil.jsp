@@ -145,7 +145,7 @@
         <div class="modal-content animate">
             <div class="imgcontainer">
                     
-              <div class="avatar" ><img id="avatar" src="img/1.png"></div>
+              <div class="avatar" ><img id="avatar" src="img/${sessionScope.usuario.fotoPerfil}"></div>
               <div id="btnEditImg" class="btnEditImg">
                   <label id="fotoUser" for="trocaFoto"><i class="fas fa-edit" style="color:coral;"></i></label>
                   <input type='file' name="file" id="trocaFoto" onchange="readURL(this);">

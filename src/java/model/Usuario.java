@@ -20,6 +20,12 @@ public class Usuario {
     }
     
     // para cadastro
+    public Usuario(String email, String senha, String nomeUser, String fotoPerfil) {
+        this.email = email;
+        this.senha = senha;
+        this.nomeUser = nomeUser;
+        this.fotoPerfil = fotoPerfil;
+    }
     public Usuario(String email, String senha, String nomeUser) {
         this.email = email;
         this.senha = senha;
@@ -41,7 +47,13 @@ public class Usuario {
         this.telefone = telefone;
         this.fotoPerfil = fotoPerfil;
     }
-    
+    public Usuario(int id, String nomeUser, String profissao, String tempoTrampo, String telefone) {
+        this.id = id;
+        this.nomeUser = nomeUser;
+        this.profissao = profissao;
+        this.tempoTrampo = tempoTrampo;
+        this.telefone = telefone;
+    }
     public Usuario(String nomeUser, String profissao, String tempoTrampo, String telefone, String fotoPerfil) {
         this.nomeUser = nomeUser;
         this.profissao = profissao;

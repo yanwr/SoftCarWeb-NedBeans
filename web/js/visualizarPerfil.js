@@ -1,17 +1,10 @@
-var idUser, d;
-function comeca(){
-    idUser = $('#idUser').val();
-    mostrarPerfil();
-}
 
-function mostrarPerfil(){
-     //alert('teste');
-    $.ajax({
+function comeca(codViagem){
+     $.ajax({
             url:'Perfil?ENVIAR=teste',
             type: 'POST',
-            data: {codV: idUser},
+            data: {codV: codViagem},
             success: function(textS){
-                alert(textS);
                 $('#modal-wrapper').html(textS); 
                 d = document.getElementById("modal-wrapper").style.display = "block";
             } 

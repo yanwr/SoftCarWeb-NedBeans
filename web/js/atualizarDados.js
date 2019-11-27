@@ -40,6 +40,9 @@ function mandaDados(){
           enctype: 'multipart/form-data',
           success: function(){
 //              console.log("DADOS ENVIADOS COM SUCESSO");
+          },
+          error: function(sla){
+             alert(sla+"EITA");
           }
        });
 }

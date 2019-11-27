@@ -17,11 +17,12 @@ public class cadastroDAO {
     public boolean inserirUser(Usuario user){
         try {
             
-            String sql = "insert into usuario(email, senha, nome)" + " values(?,?,?)";
+            String sql = "insert into usuario(email, senha, nome, foto_perfil)" + " values(?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getSenha());
             ps.setString(3, user.getNomeUser());
+            ps.setString(4, user.getFotoPerfil());
             
             ps.executeUpdate();
             ps.close();

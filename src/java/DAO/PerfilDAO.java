@@ -90,7 +90,7 @@ public class PerfilDAO {
     public Usuario verOutroUser(int idViagem) {
         try {
             String sql = "select u.nome as nome, u.profissao as profissao, u.tempo_trabalho as tempo_trabalho, "
-                    + "u.numero_cel as numero_tel, u.foto_perfil as foto_perfil from viagem v INNER JOIN usuario u ON "
+                    + "u.numero_cel as numero_cel, u.foto_perfil as foto_perfil from viagem v INNER JOIN usuario u ON "
                     + "u.cod_user = v.cod_motorista where cod_viagem = '"+idViagem+"'";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);

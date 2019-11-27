@@ -101,7 +101,6 @@ public class DadosBatePapoDAO {
                 us.setFotoPerfil(rs.getString("foto_perfil"));
                 listContato.add(us);
             }
-            
             rs.close();
             ps.close();
             con.close();

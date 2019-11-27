@@ -62,8 +62,9 @@ public class Cadastro extends HttpServlet {
             //
             // se a senha é igual o confsenha
             if(senha.equals(confsenha)){
-                // obj das suas devidas classes para mandar ao banco 
-                Usuario user = new Usuario(email, senha, nomeUser);
+                // obj das suas devidas classes para mandar ao banco
+                String foto = "1.png";
+                Usuario user = new Usuario(email, senha, nomeUser, foto);
                 cadastroDAO c = new cadastroDAO();
                 c.inserirUser(user);
                 //
