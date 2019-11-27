@@ -100,9 +100,62 @@ public class Perfil extends HttpServlet {
         }
         return "";
     }
+    
     private void teste(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
           try (PrintWriter out = response.getWriter()) {
+              // pegar idUser e fazer um obj Usuario
+              int idUser = Integer.parseInt(request.getParameter("codV"));
+              //
+              // realizando select dos dados do user
+              Usuario novoU;
+              PerfilDAO pfDAO = new PerfilDAO();
+              novoU = pfDAO.verOutroUser(idUser);
+              //
+              // fazer o popUp e mandar para pagina de solicitarCarona para visualizacao
+              out.println("<div class='modal-content animate'>");
+              out.println("<div class='imgcontainer'>");
+              out.println("<span onclick=\"document.getElementById('modal-wrapper').style.display='none'\" class=\"close\" title=\"Close PopUp\">&times;</span>");
+              out.println("<div class='avatar' ><img id='avatar' src='img/"+novoU.getFotoPerfil()+"'></div>");
+              out.println("<div id='btnEditImg' class='btnEditImg'>");
+              out.println("<label id='fotoUser' for='trocaFoto'><i class='fas fa-edit' style='color:coral;'></i></label>");
+              out.println("<input type='file' name=\"file\" id=\"trocaFoto\" onchange=\"readURL(this);\">");
+              out.println("</div>");
+              out.println("</div>");
+              out.println("<div id=\"container\" class=\"container\">");
+              out.println("<div class=\"dadosUser\">");
+              out.println("<input type=\"hidden\" id=\"id\" value='"+novoU.getId()+"'>");
+              out.println("<h1 class=\"textosMain\">SoftPlayer</h1>");
+              out.println("<p class=\"textosSeg\" id=\"nome\">"+novoU.getNomeUser()+"</p>");
+              out.println("</div>");
+              out.println("<div id=\"btnEditUser\" class=\"btns\">");
+              out.println("<a><i class=\"fas fa-edit\" style=\"color:coral;\"></i></a>");
+              out.println("</div>");
+              out.println("<div class=\"dadosProf\">");
+              out.println("<h1 class=\"textosMain\">Profissão</h1>");
+              out.println("<p class=\"textosSeg\" id=\"prof\">"+novoU.getProfissao()+"</p>");
+              out.println("</div>");
+              out.println("<div id=\"btnEditProf\" class=\"btns\">");
+              out.println("<a><i class=\"fas fa-edit\" style=\"color:coral;\"></i></a>");
+              out.println("</div>");
+              out.println(" <div class=\"dadosTempo\">");
+              out.println("<h1 class=\"textosMain\">SoftPlayer desde:</h1>");
+              out.println("<p class=\"textosSeg\" id=\"desde\">"+novoU.getTempoTrampo()+"</p>");
+              out.println("</div>");
+              out.println("<div id=\"btnEditTemp\" class=\"btns\">");
+              out.println(" <a><i class=\"fas fa-edit\" style=\"color:coral;\"></i></a>");
+              out.println("</div>");
+              out.println("<div class=\"dadosCont\">");
+              out.println("<h1 class=\"textosMain\">Contato</h1>");
+              out.println("<p class=\"textosSeg\" id=\"contato\">"+novoU.getTelefone()+"</p>");
+              out.println("</div>");
+              out.println("<div id=\"btnEditCont\" class=\"btns\">");
+              out.println(" <a><i class=\"fas fa-edit\" style=\"color:coral;\"></i></a>");
+              out.println("</div>");
+              out.println("</div>");
+              out.println("</div>");
               
+              
+              //
           }
     }     
           

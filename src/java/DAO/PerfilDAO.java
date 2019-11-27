@@ -17,16 +17,20 @@ import model.Usuario;
  * @author Aluno
  */
 public class PerfilDAO {
+
     Connection con;
+    Usuario usuario = new Usuario();
+    Usuario usuario1;
 
     public PerfilDAO() {
-         con = connectionDB.getConnection();
-    
+        con = connectionDB.getConnection();
+
     }
+
     //Atualizar os dados da session
-    public Usuario getDados(Usuario user) throws SQLException{
-    
-        String sql = "select*from usuario where cod_user='"+user.getId()+"'";
+    public Usuario getDados(Usuario user) throws SQLException {
+
+        String sql = "select*from usuario where cod_user='" + user.getId() + "'";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rs = ps.executeQuery(sql);
         //
@@ -41,7 +45,7 @@ public class PerfilDAO {
         String fotoPerfil = null;
         //
 
-        while(rs.next()){
+        while (rs.next()) {
 
             id = rs.getInt("cod_user");
             s = rs.getString("senha");
@@ -50,39 +54,75 @@ public class PerfilDAO {
             tempoTrampo = rs.getString("tempo_trabalho");
             tel = rs.getString("numero_cel");
             fotoPerfil = rs.getString("foto_perfil");
-         
+
         }
-        
-        Usuario usuario = new Usuario(id, nomeUser, profissao, tempoTrampo, tel, fotoPerfil);
-        
+
+        usuario1 = new Usuario(id, nomeUser, profissao, tempoTrampo, tel, fotoPerfil);
+
+        rs.close();
         ps.close();
         con.close();
-        
-        return usuario;
+
+        return usuario1;
+
     }
-    
-    public String setDados(Usuario user){
+
+    public String setDados(Usuario user) {
         try {
-            
-            String sql = "update usuario set nome = '"+user.getNomeUser()+"', profissao = '"+user.getProfissao()+"', tempo_trabalho = '"+user.getTempoTrampo()+"'"
-                    + ", numero_cel = '"+user.getTelefone()+"', foto_perfil = '"+user.getFotoPerfil()+"'"
-                    + " where cod_user = '"+user.getId()+"'";
-            
-            
+
+            String sql = "update usuario set nome = '" + user.getNomeUser() + "', profissao = '" + user.getProfissao() + "', tempo_trabalho = '" + user.getTempoTrampo() + "'"
+                    + ", numero_cel = '" + user.getTelefone() + "', foto_perfil = '" + user.getFotoPerfil() + "'"
+                    + " where cod_user = '" + user.getId() + "'";
+
             PreparedStatement ps = con.prepareStatement(sql);
-            
-            
-            
+
             ps.executeUpdate();
             ps.close();
             con.close();
             return user.toString();
-            
-        } catch (Exception e) {
+
+        } catch (SQLException e) {
             System.out.println(e);
             return e.getMessage();
         }
     }
+
+    public Usuario verOutroUser(int idViagem) {
+        try {
+            String sql = "select u.nome as nome, u.profissao as profissao, u.tempo_trabalho as tempo_trabalho, "
+                    + "u.numero_cel as numero_tel, u.foto_perfil as foto_perfil from viagem v INNER JOIN usuario u ON "
+                    + "u.cod_user = v.cod_motorista where cod_viagem = '"+idViagem+"'";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(sql);
+            //
+
+            // variaveis para pegar os dados do banco
+            String nomeUser = null;
+            String profissao = null;
+            String tempoTrampo = null;
+            String tel = null;
+            String fotoPerfil = null;
+            //
+
+            while (rs.next()) {
+
+                nomeUser = rs.getString("nome");
+                profissao = rs.getString("profissao");
+                tempoTrampo = rs.getString("tempo_trabalho");
+                tel = rs.getString("numero_cel");
+                fotoPerfil = rs.getString("foto_perfil");
+
+            }
+
+            usuario = new Usuario(nomeUser, profissao, tempoTrampo, tel, fotoPerfil);
+
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return usuario;
+    }
 }
-
-
