@@ -21,11 +21,18 @@ public class Mensagem extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String envio = request.getParameter("ENVIAR");
-        switch (envio) {
-            case "MENSAGEM":
-                this.criarBatePapo(request, response);
-        }
+//        switch (envio) {
+//            case "MENSAGEM":
+//                this.criarBatePapo(request, response);
+//    }
+           if(envio.equals("MENSAGEM")){
+               this.criarBatePapo(request, response);
+           }else if(envio.equals("DAHOME")){
+               this.dahome(request, response);
+           }
+          
     }
+    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -71,14 +78,16 @@ public class Mensagem extends HttpServlet {
         // mandar para request e manipular na pag chat.
         request.setAttribute("msg", msg);
         //
+        // Diminuir assentos 
+           
+        //
         //
         // mandar para pag chat
         request.getRequestDispatcher("/chat.jsp").forward(request, response);
 
     }
     private void dahome(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-        // session 
+// session 
         HttpSession session = request.getSession();
         //
        
@@ -96,8 +105,19 @@ public class Mensagem extends HttpServlet {
         request.setAttribute("contatos", listCont);
         //
 
+        /////////// pegando mensagens ////////////// 
+        // dar select nas mensagens pelo codViagem 
+        DadosBatePapoDAO dbDAO = new DadosBatePapoDAO();
+        List<DadosBatePapo> msg = new ArrayList();
+        msg = dbDAO.getMsg(user.getId(), user.getId());
+        //
+        // mandar para request e manipular na pag chat.
+        request.setAttribute("msg", msg);
+        //
+        //
         // mandar para pag chat
         request.getRequestDispatcher("/chat.jsp").forward(request, response);
+
 
     }
     private void mandarMensagem(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

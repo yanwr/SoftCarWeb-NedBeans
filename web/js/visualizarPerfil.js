@@ -10,3 +10,18 @@ function comeca(codViagem){
             } 
         });
 }
+
+function vericacao(codUser, codVi){
+     $.ajax({
+            url:'Solicitar?ENVIAR=verificacao',
+            type: 'POST',
+            data: {
+                codU: codUser,
+                codVi: codVi
+            },
+            success: function(textS){
+                $('#verifica').html(textS); 
+                d = document.getElementById("verifica").style.display = "block";
+            } 
+        });
+}

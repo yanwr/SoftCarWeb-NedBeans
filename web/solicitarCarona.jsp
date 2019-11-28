@@ -107,8 +107,15 @@
                                  out.println("<p id='nameUser'>"+w.getMotorista()+"</p>");
                               out.println("</div>");
                           out.println("</div>");
-
-                          out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+w.getCodUser()+"' class='dadosCorrida'>");
+                          
+                            List<Integer> cods = new ArrayList();
+                            cods.add(w.getCodUser());
+                            cods.add(w.getCodViagem());
+                            int d; int n;
+                            d= w.getCodUser();
+                            n = w.getCodViagem();
+                            
+                          out.println("<div onclick='vericacao("+d+","+n+")' class='dadosCorrida'>");
                               out.println("<ul class='dCorrida'>");
                                   out.println("<li class='saida'>");
                                       out.println("Saida: <p id='nomeSaida'>"+w.getSaida()+"</p>");
@@ -136,7 +143,7 @@
                                   out.println("</li>");
                               out.println("</ul>");
 
-                          out.println("</a>");
+                          out.println("</div>");
                       out.println("</div>");
                  }  
              }
@@ -151,7 +158,7 @@
         
       </div>
         
-      <div id="veriifica" class="verificaCarona" style="display: none;">
+      <div id="verifica" class="verificaCarona" style="display: none;">
             
       </div>
     

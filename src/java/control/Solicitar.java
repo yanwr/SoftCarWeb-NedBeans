@@ -32,6 +32,7 @@ public class Solicitar extends HttpServlet {
         String envio = request.getParameter("ENVIAR");
        switch(envio){
            case "Buscar": this.buscarEspecifica(request, response);
+           case "verificacao": this.verificacao(request, response);
        }
     }
 
@@ -89,27 +90,25 @@ public class Solicitar extends HttpServlet {
           try (PrintWriter out = response.getWriter()) {
               response.setContentType("text/html;charset=UTF-8");
               request.setCharacterEncoding("UTF-8");
+              int codU = Integer.parseInt(request.getParameter("codU"));
+              int codVi = Integer.parseInt(request.getParameter("codVi"));
               // fazer o popUp e mandar para pagina de solicitarCarona para verificar se o usuario quer mesmo aquela carona
-              
-             
-                out.println("<form class='modal-content animate' action='action_page.php'>");
+                out.println("<div class='modal-content animate'>");
                     out.println("<div class='container'>");
                       out.println("<div class='dadosUser'>");
-                          out.println("<p id='nomeUser' class='textosSeg'>Realmente deseja pegar carona com Usuario ?</p>");
+                          out.println("<p id='nomeUser' class='textosSeg'>Realmente deseja pegar essa carona ?</p>");
                       out.println("</div>");
 
                       out.println("<div id='btnEditUser' class='btnIcons'>");
-                            out.println("<a href='#'><i class='fas fa-check-circle' style='color: forestgreen;'></i></a>");
+                            out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+codU+"'><i class='fas fa-check-circle' style='color: forestgreen;'></i></a>");
                       out.println("</div>");
-
 
                       out.println("<div id='btnEditProf' class='btnIcons'>");
-                              out.println("<a href='#'><i class='fas fa-times-circle' style='color: red;'></i></a>");
+                              out.println("<a href='Solicitar?ENVIAR=Solicitar'><i class='fas fa-times-circle' style='color: red;'></i></a>");
                       out.println("</div>");
+                      
                     out.println("</div>");
-                out.println("</form>");
-           
-             
+                out.println("</div>"); 
           }
     }
     
