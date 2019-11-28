@@ -24,8 +24,6 @@ public class Mensagem extends HttpServlet {
         switch (envio) {
             case "MENSAGEM":
                 this.criarBatePapo(request, response);
-           case "DaHome":
-                this.dahome(request, response);
         }
     }
 

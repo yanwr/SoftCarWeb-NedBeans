@@ -37,10 +37,7 @@
                     for(Usuario u : listCont){
                         out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+u.getId()+"' style='text-decoration: none;'>");
                             out.println("<li class='contato' id='contato' >");
-                                out.println("<div class='userPerfil'>");
-                                    out.println("<img src='img/"+u.getFotoPerfil()+"'</img>");
-                                out.println("</div>");
-      
+                                out.println("<div class='userPerfil' style='background-image:url(img/"+u.getFotoPerfil()+");'></div>");
                                 out.println("<div class='nome' id='nome'>");
                                     out.println(""+u.getNomeUser()+"");
                                 out.println("</div>");
@@ -62,9 +59,7 @@
                             
                             for(Usuario w : list){
                                 if(w.getId() == codUser){
-                                    out.println("<div class='imgUser'>");
-                                        out.println("<img src='img/"+w.getFotoPerfil()+"'</img>");
-                                    out.println("</div>");
+                                     out.println("<div class='imgUser' style='background-image:url(img/"+w.getFotoPerfil()+");'></div>");
                                     out.println("<div class='chatCom'>");
                                         out.println("<p class='pChatCom'>"+w.getNomeUser()+"</p>");
                                     out.println("</div>");

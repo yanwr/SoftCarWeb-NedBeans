@@ -22,6 +22,7 @@ public class Solicitar extends HttpServlet {
        String envio = request.getParameter("ENVIAR");
        switch(envio){
            case "Solicitar": this.buscarTodas(request, response);
+           //case "verificacao": this.verificacao(request, response);
        }
     }
 
@@ -84,7 +85,34 @@ public class Solicitar extends HttpServlet {
               //    
           }
     }
-   
+    private void verificacao(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+          try (PrintWriter out = response.getWriter()) {
+              response.setContentType("text/html;charset=UTF-8");
+              request.setCharacterEncoding("UTF-8");
+              // fazer o popUp e mandar para pagina de solicitarCarona para verificar se o usuario quer mesmo aquela carona
+              
+             
+                out.println("<form class='modal-content animate' action='action_page.php'>");
+                    out.println("<div class='container'>");
+                      out.println("<div class='dadosUser'>");
+                          out.println("<p id='nomeUser' class='textosSeg'>Realmente deseja pegar carona com Usuario ?</p>");
+                      out.println("</div>");
+
+                      out.println("<div id='btnEditUser' class='btnIcons'>");
+                            out.println("<a href='#'><i class='fas fa-check-circle' style='color: forestgreen;'></i></a>");
+                      out.println("</div>");
+
+
+                      out.println("<div id='btnEditProf' class='btnIcons'>");
+                              out.println("<a href='#'><i class='fas fa-times-circle' style='color: red;'></i></a>");
+                      out.println("</div>");
+                    out.println("</div>");
+                out.println("</form>");
+           
+             
+          }
+    }
+    
     @Override
     public String getServletInfo() {
         return "Short description";

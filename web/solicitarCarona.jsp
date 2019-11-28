@@ -150,6 +150,10 @@
       <div id="modal-wrapper" class="modal" style="display: none;">
         
       </div>
+        
+      <div id="veriifica" class="verificaCarona" style="display: none;">
+            
+      </div>
     
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>

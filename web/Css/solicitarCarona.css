@@ -337,3 +337,32 @@ main {
         margin-top: -20px; 
     }
 }
+
+/*---------------------- Verificação de  Carona -------------------*/
+.btnIcons{
+    margin: 0px 6% 0px 6%; 
+    display: inline-block;
+    margin-top: 60px; 
+    font-size: 50px;
+}
+
+
+.textosSeg{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    color: #069;
+    margin-top: 10px;
+}
+.verificaCarona {
+    margin-top: 70px;
+    text-align: center;
+    display:none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-width: 200px;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}

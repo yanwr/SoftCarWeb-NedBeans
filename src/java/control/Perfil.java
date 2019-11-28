@@ -34,7 +34,7 @@ public class Perfil extends HttpServlet {
        String envio = request.getParameter("ENVIAR");
        switch(envio){
            case "Atualizar": this.trocaDados(request, response);
-           case "teste": this.teste(request, response);
+           case "teste": this.perfilOutroUser(request, response);
        }
     }
     
@@ -112,7 +112,7 @@ public class Perfil extends HttpServlet {
         return "";
     }
     
-    private void teste(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+    private void perfilOutroUser(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
           try (PrintWriter out = response.getWriter()) {
               response.setContentType("text/html;charset=UTF-8");
               request.setCharacterEncoding("UTF-8");
