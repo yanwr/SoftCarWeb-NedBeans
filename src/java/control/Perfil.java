@@ -129,9 +129,9 @@ public class Perfil extends HttpServlet {
                 out.println("<div class='imgcontainer'>");
                     out.println("<span onclick=\"document.getElementById('modal-wrapper').style.display='none'\" class=\"close\" title=\"Close PopUp\">&times;</span>");
                     if(novoU.getFotoPerfil().isEmpty() || novoU.getFotoPerfil() == null){
-                        out.println("<div class='avatar' ><img id='avatar' style='background-size:cover;' src='img/1.png'></div>");
+                        out.println("<div class='avatar' ><img id='avatar' style='background-size:cover; border: solid 3px coral;' src='img/1.png'></div>");
                     }else{
-                         out.println("<div class='avatar' ><img id='avatar' style='background-size:cover;' src='img/"+novoU.getFotoPerfil()+"'></div>");
+                         out.println("<div class='avatar' ><img id='avatar' style='background-size:cover;  border: solid 3px coral;' src='img/"+novoU.getFotoPerfil()+"'></div>");
                     }
                 out.println("</div>");
                 

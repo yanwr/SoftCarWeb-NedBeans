@@ -54,7 +54,7 @@
 
                           out.println("<div class='perfilUser'>");
                               out.println("<div class='nomeUser'>");
-                                 out.println("<div class='imgPerfil' onclick='comeca("+w.getCodViagem()+")' id='imgPerfil' style=' background-image: url(img/"+w.getFtPerfil()+");margin-top: -25px;'>"+w.getFtPerfil()+"</div>");
+                                 out.println("<div class='imgPerfil' onclick='comeca("+w.getCodViagem()+")' id='imgPerfil' style=' background-image: url(img/"+w.getFtPerfil()+");margin-top: -25px;'></div>");
                                  out.println("<p id='nameUser'>"+w.getMotorista()+"</p>");
                               out.println("</div>");
                           out.println("</div>");

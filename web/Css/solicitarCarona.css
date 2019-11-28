@@ -115,6 +115,8 @@ main {
     width: 70px; 
     background-size: cover;
     margin: auto;
+    border-radius: 50%;
+    border: solid 3px coral;
 }
 .nomeUser{
     width: 100%;

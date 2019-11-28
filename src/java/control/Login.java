@@ -49,8 +49,16 @@ public class Login extends HttpServlet {
                 LoginDAO l = new LoginDAO();
                 Usuario u = l.logar(user);
                 //
-                String manipulacao = arrumarData(u.getTempoTrampo());
-                u.setTempoTrampo(manipulacao);
+                // fazer manipulamento da data vindo do banco de dados e deixa em forma BR
+                if(u.getTempoTrampo() == null || u.getTempoTrampo() == "" || u.getTempoTrampo().isEmpty()){
+                  String dataIni = "0000-00-00";
+                  String manipulacao = arrumarData(dataIni);
+                  u.setTempoTrampo(manipulacao);
+                }else{
+                   String manipulacao = arrumarData(u.getTempoTrampo());
+                   u.setTempoTrampo(manipulacao);
+                }
+                //
                 //
                 if (u.isLogado()) {
                     // Mandar usuario para session 

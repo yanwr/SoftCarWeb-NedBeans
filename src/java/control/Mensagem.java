@@ -24,6 +24,8 @@ public class Mensagem extends HttpServlet {
         switch (envio) {
             case "MENSAGEM":
                 this.criarBatePapo(request, response);
+           case "DaHome":
+                this.dahome(request, response);
         }
     }
 
@@ -76,7 +78,30 @@ public class Mensagem extends HttpServlet {
         request.getRequestDispatcher("/chat.jsp").forward(request, response);
 
     }
+    private void dahome(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
+        // session 
+        HttpSession session = request.getSession();
+        //
+       
+
+        // pegar cod do user que esta logado  
+        Usuario user = new Usuario();
+        user = (Usuario) session.getAttribute("usuario");
+        //
+
+        // criar contatos 
+        DadosBatePapoDAO cont = new DadosBatePapoDAO();
+        List<Usuario> listCont = new ArrayList();
+        listCont = cont.contatos(user.getId());
+
+        request.setAttribute("contatos", listCont);
+        //
+
+        // mandar para pag chat
+        request.getRequestDispatcher("/chat.jsp").forward(request, response);
+
+    }
     private void mandarMensagem(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         //////////// mandando mensagem ////////////////
