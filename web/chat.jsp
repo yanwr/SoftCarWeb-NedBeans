@@ -35,7 +35,7 @@
                     listCont = (List) request.getAttribute("contatos");
                     
                     for(Usuario u : listCont){
-                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+u.getId()+"' style='text-decoration: none;'>");
+                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+u.getId()+"&CodVi=0' style='text-decoration: none;'>");
                             out.println("<li class='contato' id='contato' >");
                                 out.println("<div class='userPerfil' style='background-image:url(img/"+u.getFotoPerfil()+");'></div>");
                                 out.println("<div class='nome' id='nome'>");

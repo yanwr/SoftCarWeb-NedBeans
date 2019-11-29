@@ -90,8 +90,10 @@ public class Solicitar extends HttpServlet {
           try (PrintWriter out = response.getWriter()) {
               response.setContentType("text/html;charset=UTF-8");
               request.setCharacterEncoding("UTF-8");
+              
               int codU = Integer.parseInt(request.getParameter("codU"));
               int codVi = Integer.parseInt(request.getParameter("codVi"));
+              
               // fazer o popUp e mandar para pagina de solicitarCarona para verificar se o usuario quer mesmo aquela carona
                 out.println("<div class='modal-content animate'>");
                     out.println("<div class='container'>");
@@ -100,7 +102,7 @@ public class Solicitar extends HttpServlet {
                       out.println("</div>");
 
                       out.println("<div id='btnEditUser' class='btnIcons'>");
-                            out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+codU+"'><i class='fas fa-check-circle' style='color: forestgreen;'></i></a>");
+                            out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+codU+"&CodVi="+codVi+"'><i class='fas fa-check-circle' style='color: forestgreen;'></i></a>");
                       out.println("</div>");
 
                       out.println("<div id='btnEditProf' class='btnIcons'>");

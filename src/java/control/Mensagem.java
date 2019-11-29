@@ -1,5 +1,6 @@
 package control;
 
+import DAO.AssentosDAO;
 import DAO.DadosBatePapoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -79,6 +80,15 @@ public class Mensagem extends HttpServlet {
         request.setAttribute("msg", msg);
         //
         // Diminuir assentos 
+           int codViagem = Integer.parseInt(request.getParameter("CodVi"));
+           // fazer a busca de todos os assentos disponiveis daquela carona, se for > 0 entao -1, se nao, carona excluida do mural
+                AssentosDAO asDao = new AssentosDAO();
+                AssentosDAO assenDao = new AssentosDAO();
+               int assentos =  asDao.buscarBanco(codViagem);
+               if(assentos != 0){
+                  assenDao.menosBanco(codViagem);
+               }
+           //
            
         //
         //
