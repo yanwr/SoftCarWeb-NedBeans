@@ -29,22 +29,8 @@
                 <input type="text" class="barraProcura" id="barraProcura" placeholder="Procurar">
                 <!--Icon de procura -->
             </div>
-            <ul class="lista">
-                <%
-                    List<Usuario> listCont = new ArrayList();
-                    listCont = (List) request.getAttribute("contatos");
-                    
-                    for(Usuario u : listCont){
-                        out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod="+u.getId()+"&CodVi=0' style='text-decoration: none;'>");
-                            out.println("<li class='contato' id='contato' >");
-                                out.println("<div class='userPerfil' style='background-image:url(img/"+u.getFotoPerfil()+");'></div>");
-                                out.println("<div class='nome' id='nome'>");
-                                    out.println(""+u.getNomeUser()+"");
-                                out.println("</div>");
-                            out.println("</li>");
-                        out.println("</a>");
-                    }
-                %>
+            <ul id ="ulCtt" class="lista">
+                
                 
             </ul>
         </div>
@@ -72,47 +58,7 @@
             
                 <!-- Mensagens do chat -->
                 <div class="chatPapo" id="chatPapo">
-                    <%
-                     List<DadosBatePapo> msg = new ArrayList();   
-                     msg = (List) request.getAttribute("msg");
-                     
-                     Usuario user = new Usuario();
-                     user = (Usuario) session.getAttribute("usuario");
-                    
-                     
-                  out.println("<ul>");
-                     if(msg != null && !msg.isEmpty() ){ 
-                         
-                       for(DadosBatePapo w : msg){
-                           if(w.getUserQueEnviou() == user.getId() ){
-                            
-                               out.println("<li class='batePapoRight'>");
-                                out.println("<div class='mensagemMinha'>");
-                                 out.println(""+w.getMsg()+"");
-                                out.println("</div>");
-                               out.println("</li>");
-                              
-                           }else{
-                             
-                               out.println("<li class='batePapoLeft'>");
-                                out.println("<div class='mensagemDele'>");
-                                 out.println(""+w.getMsg()+"");
-                                out.println("</div>");
-                               out.println("</li>");
-                             
-                           }
-                       }
-                     }else{
-                         out.println("<li class='batePapoRight'>");
-                            out.println("<div class='mensagemMinha'>");
-                                 out.println("Não há mensagens");
-                            out.println("</div>");
-                         out.println("</li>");
-                        
-                     }
-                      out.println("</ul>");
-                      
-                    %>  
+                   
                 </div>
                 
                 
@@ -125,6 +71,6 @@
             </div>      
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
-                <script type="text/javascript" src="js/pegarMsg.js"></script>
+    <script type="text/javascript" src="js/pegarMsg.js"></script>
 </body>
 </html>

@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --------------- Banners --------------- */
+.first-divOne{
+    position: relative;
+    padding-bottom: 40%;
+    padding-top: 60px;
+}
+.first-divOne > div { 
+    position: absolute;
+}
+.slider{
+    opacity: 0;
+    animation-name: slider;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+@keyframes slider{
+
+    25%{
+        opacity: 1;
+       
+    }
+    29%{
+        opacity: 0;
+    }
+}
+.slider:nth-child(1){
+   animation-delay: 0s;
+}
+.slider:nth-child(2){
+    animation-delay: 5s;
+}
+.slider:nth-child(3){
+    animation-delay: 10s;
+}
+.slider:nth-child(4){
+    animation-delay: 15s;
+}
+.mostrarMais{
+    width: 100%;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+}
+.a-mostrarMais{
+    color: white;
+    text-decoration: none;
+    background-color:  rgb(240, 89, 29);
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-bottom: 20px;
+    border-radius: 0px 0px 80px 80px;
+}
+
+/* -------------- Como usar sendo motorista || carona ------------ */
+.second-section{
+    width: 100%;
+}
+.tituloUm{
+    width: 100%;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(240, 89, 29);
+    padding-top: 150px;
+}
+.tituloDois{
+    width: 100%;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(240, 89, 29);
+}
+.trird-section{
+    width: 100%;
+    font-family: sans-serif;
+    display: flex;
+    font-size: 17px; 
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+.forth-section{
+    width: 100%;
+    font-family: sans-serif;
+    display: flex;
+    font-size: 17px; 
+    padding-top: 50px;
+    padding-bottom: 150px;
+}
+.titulo{
+    text-align: center;
+    color: #069;
+}
+.tabela1{
+    text-align: center;
+    padding: 10px;
+    width: 500px;
+    color: #496083;
+}
+.tabela2{
+    text-align: center;
+    padding: 10px;
+    width: 600px;
+    color: #496083;
+}
+.tabela3{
+    text-align: center;
+    padding: 10px;
+    width: 500px;
+    color: #496083;
+}
+@media(max-width: 1000px){
+    .tituloUm{
+        padding-top: 150px;
+    }
+    .trird-section{
+        display: block;
+    }
+    .forth-section{
+        display: block;
+    }
+    .tabela1{
+       width: 100%;
+    }
+    .tabela2{
+        width: 100%;
+    }
+    .tabela3{
+        width: 100%;        
+    }
+}
+.maps{
+    position: relative;
+    padding-bottom: 20%;
+    padding-top: 0px;
+}
+.maps > div { 
+    position: absolute;
+}
+

@@ -8,6 +8,7 @@
     function comeca(){
         para();
         lista();
+        ctt();
     }
     
     function para(){
@@ -41,8 +42,20 @@
                 $('#chatPapo').html(textStatus); 
             } 
         });
-        timeI = setTimeout("lista()", 10000); // tempo de espera para atualizar
+        timeI = setTimeout("lista()", 2000); // tempo de espera para atualizar
         timeR = true; 
+    }
+    
+    function ctt(){
+        $.ajax({
+            url:'Mensagem?ENVIAR=cc',
+            type: 'POST',
+            success: function(textStatus){
+                //alert(textStatus)
+                $('#ulCtt').html(textStatus); 
+            } 
+        });
+        
     }
 
     

@@ -8,8 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import model.DadosBatePapo;
 import model.Usuario;
 
@@ -110,4 +108,37 @@ public class DadosBatePapoDAO {
         }
         return listContato;
     }
+    public List<DadosBatePapo> homeMsg(int codMeu){
+        try{
+        
+            //String sql = " select cod_mensagem, mensagem, user_que_enviou from mensagem where cod_user = '"+codUser+"'";
+            String sql = " select cod_mensagem, mensagem, user_que_enviou from mensagem where "
+                    + "(cod_user = '"+codMeu+"' and user_que_enviou != '"+codMeu+"') or "
+                    + "(user_que_enviou = '"+codMeu+"' and cod_user != '"+codMeu+"' ) ";
+          
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(sql);
+
+            while(rs.next()){
+                
+                msg = new DadosBatePapo();
+                
+                msg.setCodChat(rs.getInt("cod_mensagem"));
+                msg.setMsg(rs.getString("mensagem"));
+                msg.setUserQueEnviou(rs.getInt("user_que_enviou"));
+                
+                listMsg.add(msg);
+            }
+            
+            ps.close();
+            rs.close();
+            con.close();
+
+        }catch(SQLException e){
+            
+            System.out.println(e);
+        }
+        return listMsg;
+    }
+    
 }

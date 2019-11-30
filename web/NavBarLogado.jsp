@@ -277,7 +277,7 @@
                             <li><a href="homeDepoisDeLogar.jsp" id="liUm" class="aMenu"><i class="fas fa-home"></i>Home</a></li>
                             <li><a href="perfil.jsp" class="aMenu"><i class="fas fa-user-cog"></i>Perfil</a></li>
                             <li><a href="Mensagem?ENVIAR=DAHOME" class="aMenu" ><i class="far fa-comment-dots"></i>Chat</a></li>
-                            <li><a href="#" class="aMenu" ><i class="fas fa-question-circle"></i></i>Ajuda</a></li>
+                            <li><a href="ajuda.jsp" class="aMenu" ><i class="fas fa-question-circle"></i></i>Como usar</a></li>
                             <li><a href="Login?Deslogar=Sair" class="aMenu" ><i class="fas fa-power-off"></i>Sair</a></li>
                         </ul>
                     </li>

@@ -1,4 +1,5 @@
 
+<%@page import="model.Usuario"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="model.SolicitarCarona"%>
@@ -43,11 +44,13 @@
         <main>
             <%
              List<SolicitarCarona> listE = (List) request.getAttribute("TCEspecifica");
-             
+              Usuario user = new Usuario();
+               user = (Usuario) session.getAttribute("usuario");// user logado
+               
              if(listE != null && !listE.isEmpty()){
                  
                  for( SolicitarCarona w : listE){
-                     if(w.getAssentos() != 0){
+                     if(w.getAssentos() != 0 && w.getCodUser() != user.getId()){
                         out.println("<div  class='card'>");
                           out.println("<input type='hidden' id='idUser' name='codViagem' value="+w.getCodViagem()+" />");
                           out.println("<div class='hrPost'>"+w.getDataPostagem()+" "+w.getHoraPostagem()+"</div>");
@@ -100,9 +103,10 @@
              }else{
                 
                 List<SolicitarCarona> list = (List) request.getAttribute("TC");
+                
               
                 for( SolicitarCarona w : list){
-                       if(w.getAssentos() != 0){
+                       if(w.getAssentos() != 0  && w.getCodUser() != user.getId()){
                         out.println("<div  class='card'>");
                           out.println("<input type='hidden' id='idUser' name='codViagem' value="+w.getCodViagem()+" />");
                           out.println("<div class='hrPost'>"+w.getDataPostagem()+" "+w.getHoraPostagem()+"</div>");

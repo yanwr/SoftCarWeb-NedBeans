@@ -22,18 +22,14 @@ public class Mensagem extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String envio = request.getParameter("ENVIAR");
-//        switch (envio) {
-//            case "MENSAGEM":
-//                this.criarBatePapo(request, response);
-//    }
-           if(envio.equals("MENSAGEM")){
-               this.criarBatePapo(request, response);
-           }else if(envio.equals("DAHOME")){
-               this.dahome(request, response);
-           }
-          
+
+        if (envio.equals("MENSAGEM")) {
+            this.criarBatePapo(request, response);
+        } else if (envio.equals("DAHOME")) {
+            this.dahome(request, response);
+        }
+
     }
-    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -44,6 +40,8 @@ public class Mensagem extends HttpServlet {
                 this.mandarMensagem(request, response);
             case "Atualizar":
                 this.getMessage(request, response);
+            case "cc":
+                this.contatos(request, response);
         }
     }
 
@@ -80,27 +78,27 @@ public class Mensagem extends HttpServlet {
         request.setAttribute("msg", msg);
         //
         // Diminuir assentos 
-           int codViagem = Integer.parseInt(request.getParameter("CodVi"));
-           // fazer a busca de todos os assentos disponiveis daquela carona, se for > 0 entao -1, se nao, carona excluida do mural
-                AssentosDAO asDao = new AssentosDAO();
-                AssentosDAO assenDao = new AssentosDAO();
-               int assentos =  asDao.buscarBanco(codViagem);
-               if(assentos != 0){
-                  assenDao.menosBanco(codViagem);
-               }
-           //
-           
+        int codViagem = Integer.parseInt(request.getParameter("CodVi"));
+        // fazer a busca de todos os assentos disponiveis daquela carona, se for > 0 entao -1, se nao, carona excluida do mural
+        AssentosDAO asDao = new AssentosDAO();
+        AssentosDAO assenDao = new AssentosDAO();
+        int assentos = asDao.buscarBanco(codViagem);
+        if (assentos != 0) {
+            assenDao.menosBanco(codViagem);
+        }
+        //
+
         //
         //
         // mandar para pag chat
         request.getRequestDispatcher("/chat.jsp").forward(request, response);
 
     }
+
     private void dahome(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 // session 
         HttpSession session = request.getSession();
         //
-       
 
         // pegar cod do user que esta logado  
         Usuario user = new Usuario();
@@ -119,7 +117,7 @@ public class Mensagem extends HttpServlet {
         // dar select nas mensagens pelo codViagem 
         DadosBatePapoDAO dbDAO = new DadosBatePapoDAO();
         List<DadosBatePapo> msg = new ArrayList();
-        msg = dbDAO.getMsg(user.getId(), user.getId());
+        msg = dbDAO.homeMsg(user.getId());
         //
         // mandar para request e manipular na pag chat.
         request.setAttribute("msg", msg);
@@ -128,8 +126,8 @@ public class Mensagem extends HttpServlet {
         // mandar para pag chat
         request.getRequestDispatcher("/chat.jsp").forward(request, response);
 
-
     }
+
     private void mandarMensagem(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         //////////// mandando mensagem ////////////////
@@ -164,10 +162,9 @@ public class Mensagem extends HttpServlet {
         this.getMessage(request, response);
 ////              
 
-       // request.getRequestDispatcher("/chat.jsp").forward(request, response);
-
+        // request.getRequestDispatcher("/chat.jsp").forward(request, response);
     }
-    
+
     private void getMessage(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session = request.getSession();
@@ -187,9 +184,8 @@ public class Mensagem extends HttpServlet {
         // mandar para request e manipular na pag chat.
         request.setAttribute("msg", msg);
         //
-        
+
         // mandar para pag chat
-            
         try (PrintWriter out = response.getWriter()) {
             out.println("<ul>");
             if (msg != null && !msg.isEmpty()) {
@@ -222,16 +218,42 @@ public class Mensagem extends HttpServlet {
 
             }
             out.println("</ul>");
-            
+
         } catch (IOException ex) {
             Logger.getLogger(Mensagem.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    private void contatos(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try (PrintWriter out = response.getWriter()) {
+            HttpSession session = request.getSession();
+            // pegar cod do user que esta logado  
+            Usuario user = new Usuario();
+            user = (Usuario) session.getAttribute("usuario");
+            //
+            // criar contatos 
+            DadosBatePapoDAO cont = new DadosBatePapoDAO();
+            List<Usuario> listCont = new ArrayList();
+            listCont = cont.contatos(user.getId());
+
+            request.setAttribute("contatos", listCont);
+
+            for (Usuario u : listCont) {
+                out.println("<a href='Mensagem?ENVIAR=MENSAGEM&Cod=" + u.getId() + "&CodVi=0' style='text-decoration: none;'>");
+                out.println("<li class='contato' id='contato' >");
+                out.println("<div class='userPerfil' style='background-image:url(img/" + u.getFotoPerfil() + ");'></div>");
+                out.println("<div class='nome' id='nome'>");
+                out.println("" + u.getNomeUser() + "");
+                out.println("</div>");
+                out.println("</li>");
+                out.println("</a>");
+            }
+        }
+    }
+
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
-    
 }
