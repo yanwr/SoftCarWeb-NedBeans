@@ -31,12 +31,17 @@
             }
             
             function atualizar(Campo){
-              var p, input, text;
+              var p, input, text, stNome,stProf, stDesde, stCont;
+              
+              stNome = document.getElementById("");
+              stProf = document.getElementById("");
+              stDesde = document.getElementById("");
+              stCont = document.getElementById("");
               
               if(Campo == 'nome'){
                   p = document.getElementById('nome');
               }else if(Campo == 'prof'){
-                  p = document.getElementById('prof');
+                  p = document.getElementById('prof'); 
               }else if(Campo == 'desde'){
                   p = document.getElementById('desde');
               }else if(Campo == 'contato'){
@@ -45,14 +50,23 @@
               
               text = p.innerHTML;
               
-              p.style.display = 'none';
+              var element = document.getElementById("input");
               
-              input = document.createElement('input');
-              input.type = 'text';
-              input.value = text;
-              input.id = 'input';
-              input.size = Math.max(text.length / 4 * 3, 4);
-              p.parentNode.insertBefore(input, p);
+              if(typeof(element) != 'undefined' && element != null){
+                  alert("Termine de editar o campo anterior !");
+              }else{
+                p.style.display = 'none';
+              
+                input = document.createElement('input');
+                input.type = 'text';
+                input.value = text;
+                input.id = 'input';
+                input.size = Math.max(text.length / 4 * 3, 4);
+                p.parentNode.insertBefore(input, p);
+                  
+              }
+              
+              
               
               var enter = document.getElementById('input');
                 enter.onkeyup = function(e){
@@ -159,7 +173,7 @@
                   <p class="textosSeg" id="nome">${sessionScope.usuario.nomeUser}</p>
               </div>
                 <div id="btnEditUser" class="btns">
-                    <button class="btnIcon" value="nome" onclick="atualizar('nome')"><i class="fas fa-edit" style="color:coral;"></i></button>
+                    <button class="btnIcon" id="icNome" value="nome" onclick="atualizar('nome')"><i class="fas fa-edit" style="color:coral;"></i></button>
               </div>
       
               <div class="dadosProf">
@@ -167,7 +181,7 @@
                   <p class="textosSeg" id="prof">${sessionScope.usuario.profissao}</p>
               </div>
               <div id="btnEditProf" class="btns">
-                      <button class="btnIcon" onclick="atualizar('prof')"><i class="fas fa-edit" style="color:coral;"></i></button>
+                      <button class="btnIcon" id="icProf" onclick="atualizar('prof')"><i class="fas fa-edit" style="color:coral;"></i></button>
               </div>
       
               <div class="dadosTempo">
@@ -175,7 +189,7 @@
                       <p class="textosSeg" id="desde">${sessionScope.usuario.tempoTrampo}</p>
               </div>
               <div id="btnEditTemp" class="btns">
-                      <button class="btnIcon" onclick="atualizar('desde')"><i class="fas fa-edit" style="color:coral;"></i></button>
+                      <button class="btnIcon" id="desde" onclick="atualizar('desde')"><i class="fas fa-edit" style="color:coral;"></i></button>
               </div>
       
               <div class="dadosCont">
@@ -183,7 +197,7 @@
                   <p class="textosSeg" id="contato">${sessionScope.usuario.telefone}</p>
               </div>
               <div id="btnEditCont" class="btns">
-                 <button class="btnIcon" onclick="atualizar('contato')"><i class="fas fa-edit" style="color:coral;"></i></button>
+                 <button class="btnIcon" id="icProf" onclick="atualizar('contato')"><i class="fas fa-edit" style="color:coral;"></i></button>
               </div>
               <input type="submit" id="btnA" name="ENVIAR" value="Atualizar"  onclick="comecar()"/>
             </div>

@@ -46,7 +46,8 @@ public class Mensagem extends HttpServlet {
     }
 
     private void criarBatePapo(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         // session 
         HttpSession session = request.getSession();
         //
@@ -96,10 +97,15 @@ public class Mensagem extends HttpServlet {
     }
 
     private void dahome(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-// session 
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        // session 
         HttpSession session = request.getSession();
         //
-
+        // passar um codUser padrao para sempre acessar sem mensagem nenhuma 
+        int codUser = 0;
+        session.setAttribute("codUser", codUser);
+        //
         // pegar cod do user que esta logado  
         Usuario user = new Usuario();
         user = (Usuario) session.getAttribute("usuario");
@@ -129,7 +135,8 @@ public class Mensagem extends HttpServlet {
     }
 
     private void mandarMensagem(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         //////////// mandando mensagem ////////////////
         // session 
         HttpSession session = request.getSession();
@@ -159,14 +166,12 @@ public class Mensagem extends HttpServlet {
 
         //
         //  
-        this.getMessage(request, response);
-////              
-
+        this.getMessage(request, response);           
         // request.getRequestDispatcher("/chat.jsp").forward(request, response);
     }
 
     private void getMessage(HttpServletRequest request, HttpServletResponse response) {
-
+        response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
 
         int codUser = (int) session.getAttribute("codUser");
@@ -211,8 +216,8 @@ public class Mensagem extends HttpServlet {
                 }
             } else {
                 out.println("<li class='batePapoRight'>");
-                out.println("<div class='mensagemMinha'>");
-                out.println("Não há mensagens");
+                out.println("<div class='msgN'>");
+                    out.println("Não há mensagens");
                 out.println("</div>");
                 out.println("</li>");
 
@@ -226,6 +231,8 @@ public class Mensagem extends HttpServlet {
 
     private void contatos(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try (PrintWriter out = response.getWriter()) {
+            response.setContentType("text/html;charset=UTF-8");
+            request.setCharacterEncoding("UTF-8");
             HttpSession session = request.getSession();
             // pegar cod do user que esta logado  
             Usuario user = new Usuario();

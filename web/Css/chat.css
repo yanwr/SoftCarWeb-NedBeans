@@ -158,6 +158,20 @@ html{
     line-height: 130%;
     padding: 10px 15px;
 }
+.msgN{
+    list-style: none;
+    max-width: 70vh;
+    position: relative;
+    display: block;
+    clear: both;
+    color: #bbb;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 120px;
+    margin-left: 400px;
+    line-height: 130%;
+    padding: 14px 15px;
+}
 /*-------------- TextArea ----------------*/
 .areaSendMensagem{
     background-color: #e8eaf0;

@@ -63,9 +63,9 @@
                         </a>
                     </li>
                     <hr class=" linha" style="width: 100px; background-color: #263238; border-top: 0px solid;">
-                    <li class="item">
+                    <li class="item" style="margin-left: 20px;">
                         <a>
-                            <img src="https://www.sc.senai.br/cursos/images/logos/logo-rodape.png">
+                            <img src="img/senai_logo.png">
                         </a>
                     </li>
                 </ul>

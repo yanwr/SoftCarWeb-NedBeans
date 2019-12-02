@@ -55,7 +55,8 @@
                 $('#ulCtt').html(textStatus); 
             } 
         });
-        
+        timeI = setTimeout("ctt()", 2000); // tempo de espera para atualizar
+        timeR = true; 
     }
 
     
