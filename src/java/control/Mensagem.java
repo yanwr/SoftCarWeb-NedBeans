@@ -119,17 +119,7 @@ public class Mensagem extends HttpServlet {
         request.setAttribute("contatos", listCont);
         //
 
-        /////////// pegando mensagens ////////////// 
-        // dar select nas mensagens pelo codViagem 
-        DadosBatePapoDAO dbDAO = new DadosBatePapoDAO();
-        List<DadosBatePapo> msg = new ArrayList();
-        msg = dbDAO.homeMsg(user.getId());
-        //
-        // mandar para request e manipular na pag chat.
-        request.setAttribute("msg", msg);
-        //
-        //
-        // mandar para pag chat
+      
         request.getRequestDispatcher("/chat.jsp").forward(request, response);
 
     }
