@@ -51,7 +51,7 @@ public class PerfilDAO {
             s = rs.getString("senha");
             nomeUser = rs.getString("nome");
             profissao = rs.getString("profissao");
-            tempoTrampo = rs.getString("tempo_trabalho");
+            tempoTrampo = arrumarData(rs.getString("tempo_trabalho"));
             tel = rs.getString("numero_cel");
             fotoPerfil = rs.getString("foto_perfil");
 
@@ -65,6 +65,19 @@ public class PerfilDAO {
 
         return usuario1;
 
+    }
+
+    private String arrumarData(String string) {
+        String[] items = string.split("-");
+        String data = "";
+        for (int i = items.length - 1; i >= 0; i--) {
+            if (i == 0) {
+                data += items[i];
+            } else {
+                data += items[i] + "-";
+            }
+        }
+        return data;
     }
 
     public String setDados(Usuario user) {
@@ -91,7 +104,7 @@ public class PerfilDAO {
         try {
             String sql = "select u.nome as nome, u.profissao as profissao, u.tempo_trabalho as tempo_trabalho, "
                     + "u.numero_cel as numero_cel, u.foto_perfil as foto_perfil from viagem v INNER JOIN usuario u ON "
-                    + "u.cod_user = v.cod_motorista where cod_viagem = '"+idViagem+"'";
+                    + "u.cod_user = v.cod_motorista where cod_viagem = '" + idViagem + "'";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);
             //
