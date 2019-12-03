@@ -33,7 +33,7 @@
                         </a>
                     </li>
                     <li class="item">
-                        <a class="btn-item" href="" title="Nicolas Ouriques"style="background-color: royalblue;">
+                        <a class="btn-item" href="https://www.linkedin.com/in/nicolas-ouriques-bb5052198/" title="Nicolas Ouriques"style="background-color: royalblue;">
                             <i class="fab fa-linkedin-in btn-i" > </i>
                         </a>
                     </li>
